@@ -5,7 +5,6 @@ const HeaderWrapper = styled.header`
   color: var(--white);
   height: 80%;
   width: 100%;
-  padding-top: 32px;
   background: url(${bg});
   background-size: cover;
   background-position: center center;
@@ -15,11 +14,8 @@ const HeaderMain = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  /* height: 58px; */
-  height: 10%;
   border-bottom: 1px solid var(--gray);
-  padding-left: 24px;
-  padding-right: 24px;
+  padding: 32px 24px;
 `;
 
 const Title = styled.h2`

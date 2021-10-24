@@ -3,7 +3,6 @@ import styled from 'styled-components';
 const ProductsWrapper = styled.div`
   padding: 0 24px;
   margin-top: 40px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -11,14 +10,13 @@ const ProductsWrapper = styled.div`
 
 const Product = styled.div`
   position: relative;
-  height: 30%;
+  height: 70vw;
   display: flex;
   flex-direction: column;
   align-items: center;
   isolation: isolate;
 `;
 
-const ImageWrapper = styled.div``;
 const ProductImg = styled.img`
   position: absolute;
   width: 50%;
@@ -66,6 +64,8 @@ const ProductButtonIcon = styled.span`
   height: 100%;
   align-items: center;
   color: var(--dark-orange);
+
+  padding-bottom: 2px;
 `;
 
 export {
@@ -74,7 +74,6 @@ export {
   ProductImg,
   ProductTitle,
   ProductButton,
-  ImageWrapper,
   ProductBackground,
   ProductButtonLabel,
   ProductButtonIcon,

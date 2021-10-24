@@ -6,7 +6,6 @@ import {
   ProductImg,
   ProductTitle,
   ProductBackground,
-  ImageWrapper,
   ProductButtonLabel,
   ProductButtonIcon,
 } from './styles';

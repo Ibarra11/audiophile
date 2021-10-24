@@ -1,12 +1,14 @@
 import React from 'react';
 import { AppContainer } from './styles';
 import Header from '../Header';
-import Products from '../Products';
+import ProductCategories from '../ProductCategories';
+import ProductShowcase from '../ProductShowcase';
 const App = () => {
   return (
     <AppContainer>
       <Header />
-      <Products />
+      <ProductCategories />
+      <ProductShowcase />
     </AppContainer>
   );
 };
