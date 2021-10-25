@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Button from '../Buttons';
 import {
   CircleWrapper,
   ShowcaseItem,
@@ -33,7 +33,7 @@ const ProductShowcase = () => {
             Upgrade to premium speakers that are phenomenally built to deliver truly remarkable
             sound.
           </ShowcaseItemText>
-          <ShowcaseButton>See Product</ShowcaseButton>
+          <Button id={'btn2'}>See Product</Button>
         </ShowcaseBody>
       </ShowcaseItem>
     </ShowcaseWrapper>

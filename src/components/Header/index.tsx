@@ -1,4 +1,6 @@
 import React from 'react';
+import { ShoppingCart, Menu } from 'react-feather';
+import Button from '../Buttons';
 import {
   HeaderWrapper,
   HeaderMain,
@@ -10,7 +12,7 @@ import {
   HeaderBodyText,
   HeaderBodyButton,
 } from './styles';
-import { ShoppingCart, Menu } from 'react-feather';
+
 const Header = () => {
   return (
     <HeaderWrapper>
@@ -30,7 +32,7 @@ const Header = () => {
           Experience natural, lifelike audio and exceptional build quality made for the passionate
           music enthusiast
         </HeaderBodyText>
-        <HeaderBodyButton>See Product</HeaderBodyButton>
+        <Button id={'btn1'}>See Product</Button>
       </HeaderBody>
     </HeaderWrapper>
   );
