@@ -10,7 +10,7 @@ const ProductsWrapper = styled.div`
 
 const Product = styled.div`
   position: relative;
-  height: 70vw;
+  height: 60vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,9 +18,7 @@ const Product = styled.div`
 `;
 
 const ProductImg = styled.img`
-  position: absolute;
   width: 50%;
-  z-index: -1;
 `;
 
 const ProductTitle = styled.h5`
@@ -29,9 +27,8 @@ const ProductTitle = styled.h5`
   line-height: ${20.5 / 16}rem;
   letter-spacing: 1vw;
   text-transform: uppercase;
-  position: relative;
-  top: 25%;
-  margin-top: 30%;
+  margin-bottom: 17px;
+  margin-top: 0;
 `;
 
 const ProductButton = styled.button`
@@ -47,34 +44,12 @@ const ProductButton = styled.button`
 
 const ProductBackground = styled.span`
   position: absolute;
+  z-index: -1;
   bottom: 0;
-  height: 75%;
+  height: 70%;
   width: 100%;
   background-color: var(--gray);
-  z-index: -1;
   border-radius: 8px;
 `;
 
-const ProductButtonLabel = styled.label`
-  margin-right: 4px;
-`;
-
-const ProductButtonIcon = styled.span`
-  display: flex;
-  height: 100%;
-  align-items: center;
-  color: var(--dark-orange);
-
-  padding-bottom: 2px;
-`;
-
-export {
-  ProductsWrapper,
-  Product,
-  ProductImg,
-  ProductTitle,
-  ProductButton,
-  ProductBackground,
-  ProductButtonLabel,
-  ProductButtonIcon,
-};
+export { ProductsWrapper, Product, ProductImg, ProductTitle, ProductButton, ProductBackground };

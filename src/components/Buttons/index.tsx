@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-
+import { ChevronRight } from 'react-feather';
 type ButtonTypes = 'btn1' | 'btn2' | 'btn3';
 interface ButtonProps {
   id: ButtonTypes;
@@ -14,7 +14,12 @@ const Buttons = ({ children, id }: ButtonProps) => {
     case 'btn2':
       return <Button2>{children}</Button2>;
     case 'btn3':
-      return <BaseButton>{children}</BaseButton>;
+      return (
+        <Button3>
+          {children}
+          <ChevronRight size={18} strokeWidth="2" />
+        </Button3>
+      );
   }
 };
 
@@ -31,6 +36,7 @@ const BaseButton = styled.button`
   color: inherit;
   text-transform: uppercase;
   letter-spacing: 1px;
+  font-size: ${13 / 16}rem;
   padding: 15px 0;
   width: 160px;
 `;
@@ -39,7 +45,7 @@ const Button1 = styled(BaseButton)`
   background-color: var(--dark-orange);
   color: var(--white);
   font-weight: 700;
-  font-size: ${13 / 16}rem;
+
   &:hover {
     background-color: var(--light-orange);
   }
@@ -52,5 +58,18 @@ const Button2 = styled(BaseButton)`
   &:hover {
     color: var(--white);
     background-color: var(--primary-black);
+  }
+`;
+
+const Button3 = styled(BaseButton)`
+  background-color: transparent;
+  padding: 0;
+  &:hover {
+    color: var(--dark-orange);
+  }
+  & > svg {
+    color: var(--dark-orange);
+    position: relative;
+    bottom: 1px;
   }
 `;
