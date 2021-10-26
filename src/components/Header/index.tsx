@@ -10,7 +10,6 @@ import {
   HeaderBodySubHeading,
   HeaderBodyMainHeading,
   HeaderBodyText,
-  HeaderBodyButton,
 } from './styles';
 
 const Header = () => {

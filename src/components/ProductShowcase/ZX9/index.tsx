@@ -12,6 +12,7 @@ import {
   Text,
   Title,
 } from './styles';
+
 const Speaker = () => {
   return (
     <Wrapper>

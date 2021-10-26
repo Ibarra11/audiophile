@@ -66,19 +66,6 @@ const HeaderBodyText = styled.p`
   opacity: 0.75;
 `;
 
-const HeaderBodyButton = styled.button`
-  background-color: var(--dark-orange);
-  color: inherit;
-  font-size: ${13 / 16}rem;
-  line-height: 18px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  width: 160px;
-  padding: 15px 0;
-
-  border: none;
-`;
-
 export {
   HeaderWrapper,
   HeaderMain,
@@ -88,5 +75,4 @@ export {
   HeaderBodySubHeading,
   HeaderBodyMainHeading,
   HeaderBodyText,
-  HeaderBodyButton,
 };
