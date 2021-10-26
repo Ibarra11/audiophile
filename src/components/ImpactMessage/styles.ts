@@ -7,7 +7,8 @@ const Wrapper = styled.section`
 `;
 
 const Img = styled.img`
-  height: 55%;
+  min-height: ${300 / 16}rem;
+  max-height: ${588 / 16}rem;
   border-radius: 8px;
   max-width: 100%;
 `;
