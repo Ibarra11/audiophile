@@ -12,7 +12,9 @@ const GlobalStyle = createGlobalStyle`
     --dark-orange-alpha50: hsla(22, 65%, 57%, .5);
     --light-orange: #FBAF85;
     --white: #FFFFFF;
-    --gray: #F1F1F1;
+    --gray: hsla(0, 0%, 84.31%);
+    --gray-alpha-25: hsla(0, 0%, 84.31%, 0.25);
+    --gray-alpha-50: hsla(0, 0%, 84.31%, 0.50);
     --light-gray: #FAFAFA;
     --primary-black: #000000;
     --secondary-black: #101010;
@@ -20,8 +22,10 @@ const GlobalStyle = createGlobalStyle`
   }
   
    html,body, #root{
-    
      height: 100%;
+   }
+   h1, h2, h3, h4, h5,h6, p{
+     margin: 0;
    }
 `;
 ReactDOM.render(
