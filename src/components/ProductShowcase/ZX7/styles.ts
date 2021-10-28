@@ -22,7 +22,7 @@ const Img = styled.img`
 const Content = styled.div``;
 
 const Title = styled.h3`
-  color: var(--primary-black);
+  color: hsl(--clr-primary-black);
   font-size: ${28 / 16}rem;
   font-weight: 700;
   text-transform: uppercase;

@@ -48,7 +48,7 @@ const ProductBackground = styled.span`
   bottom: 0;
   height: 70%;
   width: 100%;
-  background-color: var(--gray);
+  background-color: hsl(var(--clr-primary-gray));
   border-radius: 8px;
 `;
 

@@ -5,8 +5,8 @@ const Wrapper = styled.footer`
   display: flex;
   flex-direction: column;
   gap: ${48 / 16}rem;
-  background-color: var(--primary-black);
-  color: var(--white);
+  background-color: hsl(--clr-primary-black);
+  color: hsl(var(--clr-white));
   max-height: ${654 / 16}rem;
   margin-top: 120px;
   text-align: center;
@@ -34,14 +34,14 @@ const NavLink = styled.a`
 `;
 
 const Text = styled.p`
-  color: var(--gray-alpha-25);
+  color: hsl(var(--clr-primary-gray) / 0.25);
   font-size: ${15 / 16}rem;
   font-weight: 200;
   line-height: 25px;
 `;
 
 const Copyright = styled.p`
-  color: var(--gray-alpha-50);
+  color: hsl(var(--clr-primary-gray) / 0.5);
   font-size: ${15 / 16}rem;
   font-weight: 700;
   line-height: 25px;
@@ -69,7 +69,7 @@ const OrangeInlineBorder = styled.span`
   left: 0;
   right: 0;
   margin: 0 auto;
-  background-color: var(--dark-orange);
+  background-color: hsl(var(--clr-orange)); ;
 `;
 
 export {

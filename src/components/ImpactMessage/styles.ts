@@ -32,7 +32,7 @@ const Text = styled.p`
 `;
 
 const TextOrange = styled.span`
-  color: var(--dark-orange);
+  color: hsl(var(--clr-orange)); ;
 `;
 
 export { Wrapper, Img, Header, Text, TextOrange };

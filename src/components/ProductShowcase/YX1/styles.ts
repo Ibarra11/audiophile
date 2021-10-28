@@ -19,7 +19,7 @@ const Content = styled.div`
   justify-content: center;
   height: calc(50% - 12px);
   border-radius: 8px;
-  background-color: var(--gray);
+  background-color: hsl(var(--clr-primary-gray));
   padding-left: 24px;
 `;
 

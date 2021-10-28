@@ -42,22 +42,23 @@ const BaseButton = styled.button`
 `;
 
 const Button1 = styled(BaseButton)`
-  background-color: var(--dark-orange);
-  color: var(--white);
+  background-color: hsl(var(--clr-primary-orange));
+  color: hsl(var(--clr-white));
   font-weight: 700;
 
-  &:hover {
-    background-color: var(--light-orange);
+  &:hover,
+  &:active {
+    background-color: hsl(var(--clr-secondary-orange));
   }
 `;
 
 const Button2 = styled(BaseButton)`
   background-color: transparent;
-  border: 2px solid var(--primary-black);
-  color: var(--primary-black);
+  border: 2px solid hsl(--clr-primary-black);
+  color: hsl(--clr-primary-black);
   &:hover {
-    color: var(--white);
-    background-color: var(--primary-black);
+    color: hsl(var(--clr-white));
+    background-color: hsl(--clr-primary-black);
   }
 `;
 
@@ -65,10 +66,10 @@ const Button3 = styled(BaseButton)`
   background-color: transparent;
   padding: 0;
   &:hover {
-    color: var(--dark-orange);
+    color: hsl(var(--clr-orange));
   }
   & > svg {
-    color: var(--dark-orange);
+    color: hsl(var(--clr-orange));
     position: relative;
     bottom: 1px;
   }

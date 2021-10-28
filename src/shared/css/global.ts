@@ -80,6 +80,18 @@ select {
 /* End of Reset css */
 
 /* Defined Global Styles */
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
+  :root{
+    --clr-primary-orange: 22 65% 57%;
+    --clr-secondary-orange: 21 94% 75%;
+    --clr-white: 0 0% 100%;
+    --clr-primary-gray: 0, 0%, 84.31%;
+
+    --clr-secondary-gray: 0 0% 98%;
+    --clr-primary-black: 0 0% 0%;
+    --clr-secondary-black: #101010;
+    font-family: "Manrope", sans-serif;
+  }
 body{
     min-height: 100vh;
     line-height: 1.5;

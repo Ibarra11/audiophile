@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import bg from '../../assets/home/mobile/image-header.jpg';
 
 const HeaderWrapper = styled.header`
-  color: var(--white);
+  color: hsl(var(--clr-white));
   height: 80%;
   width: 100%;
   background: url(${bg});
@@ -14,7 +14,7 @@ const HeaderMain = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid hsl(var(--clr-primary-gray));
   padding: 32px 24px;
 `;
 

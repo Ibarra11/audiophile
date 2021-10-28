@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 const Wrapper = styled.div`
   position: relative;
-  background-color: var(--dark-orange);
+  background-color: hsl(var(--clr-orange));
   height: 600px;
   padding: 2px 3px 0 4px;
   border-radius: 8px;
@@ -65,7 +65,7 @@ const Content = styled.div`
   height: 100%;
   padding: 0 23px;
   padding-bottom: 55px;
-  color: var(--white);
+  color: hsl(var(--clr-white));
   text-align: center;
 `;
 
