@@ -13,16 +13,17 @@ const HeaderWrapper = styled.header`
 
 const HeaderMain = styled.div`
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   padding: ${32 / 16}rem ${24 / 16}rem;
   border-bottom: 1px solid hsl(var(--clr-primary-gray));
 `;
 
-const HeaderTitle = styled.h2`
-  font-size: ${24 / 16}rem;
-  margin: 0;
+const HeaderIcon = styled.img`
+  position: relative;
 `;
+
+const HeaderLogo = styled.img``;
 
 const HeaderIconWrapper = styled.div`
   display: flex;
@@ -64,7 +65,8 @@ const HeaderBodyText = styled.p`
 export {
   HeaderWrapper,
   HeaderMain,
-  HeaderTitle,
+  HeaderLogo,
+  HeaderIcon,
   HeaderIconWrapper,
   HeaderBody,
   HeaderBodySubHeading,
