@@ -1,7 +1,7 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 const Wrapper = styled.div`
   position: relative;
-  background-color: hsl(var(--clr-orange));
+  background-color: hsl(var(--clr-primary-orange));
   height: 600px;
   padding: 2px 3px 0 4px;
   border-radius: 8px;

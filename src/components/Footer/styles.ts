@@ -1,11 +1,11 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const Wrapper = styled.footer`
   position: relative;
   display: flex;
   flex-direction: column;
   gap: ${48 / 16}rem;
-  background-color: hsl(--clr-primary-black);
+  background-color: hsl(var(--clr-primary-black));
   color: hsl(var(--clr-white));
   max-height: ${654 / 16}rem;
   margin-top: 120px;

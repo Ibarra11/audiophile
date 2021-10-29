@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const Wrapper = styled.section`
   margin-top: ${120 / 16}rem;

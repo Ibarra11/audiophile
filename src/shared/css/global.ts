@@ -16,6 +16,8 @@ h1,
 h2,
 h3,
 h4,
+h5,
+h6,
 p,
 figure,
 blockquote,
@@ -80,21 +82,56 @@ select {
 /* End of Reset css */
 
 /* Defined Global Styles */
+
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
   :root{
+    /* Colors */
     --clr-primary-orange: 22 65% 57%;
     --clr-secondary-orange: 21 94% 75%;
     --clr-white: 0 0% 100%;
     --clr-primary-gray: 0, 0%, 84.31%;
-
     --clr-secondary-gray: 0 0% 98%;
     --clr-primary-black: 0 0% 0%;
     --clr-secondary-black: #101010;
+
+    /* Font Sizes */
+    --fs-h1: ${56 / 16}rem;
+    --fs-h2: ${40 / 16}rem;
+    --fs-h3: ${32 / 16}rem;
+    --fs-h4: ${28 / 16}rem;
+    --fs-h5: ${24 / 16}rem;
+    --fs-h6: ${18 / 16}rem;
+    --text-body: ${15 / 16}rem;
+    --text-overline: ${14 / 16}rem;
+    --text-subtitle: ${13 / 16}rem;
+
     font-family: "Manrope", sans-serif;
   }
-body{
+
+  body{
     min-height: 100vh;
-    line-height: 1.5;
+    line-height: 1.6;
 }
+
+
+/* ALl Header elements are capitalized and are bolded */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+h1{
+  letter-spacing: clamp(1px, .3vw, 2px );
+}
+/* With Bigger fonts we want less line-height */
+h1, h2,h3{
+  line-height: 1.1;
+}
+/* End of Defined Global Styles */
 `;
 export default GlobalStyles;

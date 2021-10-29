@@ -4,8 +4,8 @@ import Button from '../Buttons';
 import {
   HeaderWrapper,
   HeaderMain,
-  Title,
-  IconWrapper,
+  HeaderTitle,
+  HeaderIconWrapper,
   HeaderBody,
   HeaderBodySubHeading,
   HeaderBodyMainHeading,
@@ -16,13 +16,13 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderMain>
-        <IconWrapper>
+        <HeaderIconWrapper>
           <Menu size={24} />
-        </IconWrapper>
-        <Title>audiophile</Title>
-        <IconWrapper>
+        </HeaderIconWrapper>
+        <HeaderTitle>audiophile</HeaderTitle>
+        <HeaderIconWrapper>
           <ShoppingCart size={24} />
-        </IconWrapper>
+        </HeaderIconWrapper>
       </HeaderMain>
       <HeaderBody>
         <HeaderBodySubHeading>new product</HeaderBodySubHeading>

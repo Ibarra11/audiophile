@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { ChevronRight } from 'react-feather';
 type ButtonTypes = 'btn1' | 'btn2' | 'btn3';
 interface ButtonProps {

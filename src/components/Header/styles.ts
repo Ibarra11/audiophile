@@ -1,76 +1,71 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import bg from '../../assets/home/mobile/image-header.jpg';
 
 const HeaderWrapper = styled.header`
   color: hsl(var(--clr-white));
-  height: 80%;
-  width: 100%;
+  height: 38rem;
   background: url(${bg});
   background-size: cover;
   background-position: center center;
+  display: flex;
+  flex-direction: column;
 `;
 
 const HeaderMain = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  padding: ${32 / 16}rem ${24 / 16}rem;
   border-bottom: 1px solid hsl(var(--clr-primary-gray));
-  padding: 32px 24px;
 `;
 
-const Title = styled.h2`
+const HeaderTitle = styled.h2`
   font-size: ${24 / 16}rem;
   margin: 0;
 `;
 
-const IconWrapper = styled.div`
+const HeaderIconWrapper = styled.div`
   display: flex;
   padding-top: 3px;
 `;
 
 const HeaderBody = styled.div`
-  height: 90%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 24px;
+  padding: 0;
+  padding-left: ${24 / 16}rem;
+  padding-right: ${23 / 16}rem;
 `;
 
-const HeaderBodySubHeading = styled.h6`
-  font-size: ${14 / 16}rem;
+const HeaderBodySubHeading = styled.span`
+  color: hsl(var(--clr-white) / 0.5);
+  font-size: var(--text-overline);
   letter-spacing: 10px;
   text-transform: uppercase;
-  opacity: 50%;
-  margin: 0;
-  margin-bottom: 16px;
+  margin-bottom: ${16 / 16}rem;
 `;
 
 const HeaderBodyMainHeading = styled.h1`
-  font-size: ${36 / 16}rem;
-  font-weight: 700;
-  line-height: 40px;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  margin: 0;
-  margin-bottom: 24px;
+  font-size: clamp(${36 / 16}rem, 6vw + 1rem, var(--fs-h1));
+  margin-bottom: ${24 / 16}rem;
 `;
 
 const HeaderBodyText = styled.p`
-  font-size: ${15 / 16}rem;
-  line-height: 25px;
-  margin: 0;
-  margin-bottom: 28px;
+  color: hsl(var(--clr-white) / 0.75);
+  font-size: var(--text-body);
   font-weight: 200;
-  opacity: 0.75;
+  margin-bottom: ${28 / 16}rem;
 `;
 
 export {
   HeaderWrapper,
   HeaderMain,
-  Title,
-  IconWrapper,
+  HeaderTitle,
+  HeaderIconWrapper,
   HeaderBody,
   HeaderBodySubHeading,
   HeaderBodyMainHeading,
