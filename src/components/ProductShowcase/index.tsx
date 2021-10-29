@@ -1,7 +1,7 @@
 import React from 'react';
-import ZX9 from './ZX9';
-import ZX7 from './ZX7';
-import YX1 from './YX1';
+import ZX9 from './ZX9_Speaker';
+import ZX7 from './ZX7_Speaker';
+import YX1 from './YX1_Earphones';
 import { ShowcaseWrapper } from './styles';
 
 const ProductShowcase = () => {

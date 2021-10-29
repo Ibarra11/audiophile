@@ -13,26 +13,23 @@ const Img = styled.img`
   max-width: 100%;
 `;
 
-const Header = styled.h3`
-  font-size: ${28 / 16}rem;
-  font-weight: 700;
-  line-height: 38.25px;
+const Header = styled.h2`
+  font-size: clamp(${28 / 16}rem, 3vw + 1rem, var(--fs-h2));
   letter-spacing: 1px;
-  text-transform: uppercase;
   margin-top: ${40 / 16}rem;
   margin-bottom: ${32 / 16}rem;
 `;
 
 const Text = styled.p`
-  font-size: ${15 / 16}rem;
+  color: hsl(var(--clr-primary-black) / 0.5);
+  font-size: var(--text-body);
   font-weight: 200;
-  line-height: 25px;
   margin: 0;
-  margin-bottom: ${16 / 16}rem;
+  margin-bottom: ${25 / 16}rem;
 `;
 
 const TextOrange = styled.span`
-  color: hsl(var(--clr-orange)); ;
+  color: hsl(var(--clr-primary-orange)); ;
 `;
 
 export { Wrapper, Img, Header, Text, TextOrange };

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components/macro';
 import ArrowRight from '../../assets/shared/desktop/icon-arrow-right.svg';
-type ButtonTypes = 'btn1' | 'btn2' | 'btn3';
+type ButtonTypes = 'btn1' | 'btn2' | 'btn3' | 'btn4';
 interface ButtonProps {
   id: ButtonTypes;
   children: ReactNode;
@@ -14,11 +14,13 @@ const Buttons = ({ children, id }: ButtonProps) => {
     case 'btn2':
       return <Button2>{children}</Button2>;
     case 'btn3':
+      return <Button3>{children}</Button3>;
+    case 'btn4':
       return (
-        <Button3>
+        <Button4>
           {children}
           <Icon src={ArrowRight} alt="right arrow icon" />
-        </Button3>
+        </Button4>
       );
   }
 };
@@ -55,16 +57,29 @@ const Button1 = styled(BaseButton)`
 `;
 
 const Button2 = styled(BaseButton)`
-  background-color: transparent;
-  border: 2px solid hsl(--clr-primary-black);
-  color: hsl(--clr-primary-black);
-  &:hover {
-    color: hsl(var(--clr-white));
-    background-color: hsl(--clr-primary-black);
+  background-color: hsl(var(--clr-primary-black));
+  color: hsl(var(--clr-white));
+  &:hover,
+  &:active {
+    background-color: transparent;
+    color: hsl(var(--clr-primary-black));
+    border: 1px solid;
   }
 `;
 
 const Button3 = styled(BaseButton)`
+  background-color: transparent;
+  color: hsl(var(--clr-primary-black));
+  border: 1px solid hsl(var(--clr-primary-black));
+
+  &:hover,
+  &:active {
+    background-color: hsl(var(--clr-primary-black));
+    color: hsl(var(--clr-white));
+  }
+`;
+
+const Button4 = styled(BaseButton)`
   background-color: transparent;
   padding: 0;
   width: ${57 / 16}rem;

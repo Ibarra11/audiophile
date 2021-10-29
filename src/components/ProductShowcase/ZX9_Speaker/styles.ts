@@ -71,19 +71,17 @@ const Content = styled.div`
 
 const Title = styled.h3`
   font-size: ${36 / 16}rem;
-  font-weight: 700;
-  line-height: 40px;
   letter-spacing: 1vw;
   text-transform: uppercase;
   margin-top: 0;
-  margin-bottom: 24px;
+  margin-bottom: ${24 / 16}rem;
 `;
 
 const Text = styled.p`
-  font-size: ${15 / 16}rem;
+  color: hsl(var(--clr-white) / 0.5);
+  font-size: var(--text-body);
   font-weight: 200;
-  line-height: 25px;
-  margin-bottom: 24px;
+  margin-bottom: ${24 / 16}rem;
 `;
 
 export {

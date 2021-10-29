@@ -26,7 +26,7 @@ const ProductItem = ({ productImg, productTitle, buttonLabel }: ProductProps) =>
     <Product>
       <ProductImg src={productImg} alt={`${productTitle} category`} />
       <ProductTitle>{productTitle}</ProductTitle>
-      <ProductButton id={'btn3'}>Shop</ProductButton>
+      <ProductButton id={'btn4'}>Shop</ProductButton>
       <ProductBackground />
     </Product>
   );

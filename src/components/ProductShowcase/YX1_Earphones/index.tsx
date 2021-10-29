@@ -7,7 +7,7 @@ const YX1 = () => (
     <Img src={EarphonesImg} alt="earphones" />
     <Content>
       <Title>Yx1 Earphones</Title>
-      <Button id={'btn2'}>See Product</Button>
+      <Button id={'btn3'}>See Product</Button>
     </Content>
   </Wrapper>
 );
