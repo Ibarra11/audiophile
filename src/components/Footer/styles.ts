@@ -4,6 +4,7 @@ const Wrapper = styled.footer`
   position: relative;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: ${48 / 16}rem;
   background-color: hsl(var(--clr-primary-black));
   color: hsl(var(--clr-white));
@@ -13,10 +14,11 @@ const Wrapper = styled.footer`
   padding: ${52 / 16}rem ${24 / 16}rem ${38 / 16}rem;
 `;
 
+const LogoIcon = styled.img``;
+
 const Header = styled.h4`
   font-size: ${25 / 16}rem;
   letter-spacing: 1px;
-  text-transform: lowercase;
 `;
 
 const Nav = styled.nav`
@@ -28,23 +30,19 @@ const Nav = styled.nav`
 `;
 
 const NavLink = styled.a`
-  color: inherit;
-  font-size: ${13 / 16}rem;
-  text-transform: uppercase;
+  font-size: var(--text-subtitle);
 `;
 
 const Text = styled.p`
   color: hsl(var(--clr-primary-gray) / 0.25);
-  font-size: ${15 / 16}rem;
+  font-size: var(--text-body);
   font-weight: 200;
-  line-height: 25px;
 `;
 
 const Copyright = styled.p`
   color: hsl(var(--clr-primary-gray) / 0.5);
-  font-size: ${15 / 16}rem;
+  font-size: var(--text-body);
   font-weight: 700;
-  line-height: 25px;
 `;
 
 const SocialLinks = styled.div`
@@ -74,6 +72,7 @@ const OrangeInlineBorder = styled.span`
 
 export {
   Wrapper,
+  LogoIcon,
   Header,
   Nav,
   NavLink,

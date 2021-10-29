@@ -1,5 +1,3 @@
-import React from 'react';
-// import { ShoppingCart, Menu } from 'react-feather';
 import Logo from '../../assets/shared/desktop/logo.svg';
 import ShoppingCart from '../../assets/shared/desktop/icon-cart.svg';
 import HamburgerMenu from '../../assets/shared/tablet/icon-hamburger.svg';
@@ -9,7 +7,6 @@ import {
   HeaderMain,
   HeaderLogo,
   HeaderIcon,
-  HeaderIconWrapper,
   HeaderBody,
   HeaderBodySubHeading,
   HeaderBodyMainHeading,
@@ -20,15 +17,9 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <HeaderMain>
-        {/* <HeaderIconWrapper>
-          <Menu size={24} />
-        </HeaderIconWrapper> */}
         <HeaderIcon src={HamburgerMenu} />
         <HeaderLogo src={Logo} alt="audiophile logo img" />
         <HeaderIcon src={ShoppingCart} />
-        {/* <HeaderIconWrapper>
-          <ShoppingCart size={24} />
-        </HeaderIconWrapper> */}
       </HeaderMain>
       <HeaderBody>
         <HeaderBodySubHeading>new product</HeaderBodySubHeading>

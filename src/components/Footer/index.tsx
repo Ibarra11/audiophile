@@ -1,6 +1,11 @@
 import React from 'react';
+import Logo from '../../assets/shared/desktop/logo.svg';
+import FacebookIcon from '../../assets/shared/desktop/icon-facebook.svg';
+import TwitterIcon from '../../assets/shared/desktop/icon-twitter.svg';
+import InstagramIcon from '../../assets/shared/desktop/icon-instagram.svg';
 import {
   Wrapper,
+  LogoIcon,
   Header,
   Nav,
   NavLink,
@@ -11,13 +16,12 @@ import {
   Icon,
   OrangeInlineBorder,
 } from './styles';
-import FacebookIcon from '../../assets/shared/desktop/icon-facebook.svg';
-import TwitterIcon from '../../assets/shared/desktop/icon-twitter.svg';
-import InstagramIcon from '../../assets/shared/desktop/icon-instagram.svg';
+
 const Footer = () => (
   <Wrapper>
     <OrangeInlineBorder />
-    <Header>audiophile</Header>
+    <LogoIcon src={Logo} alt="site logo" />
+
     <Nav>
       <NavLink>Home</NavLink>
       <NavLink>Headphones</NavLink>
