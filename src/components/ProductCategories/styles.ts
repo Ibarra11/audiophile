@@ -1,29 +1,28 @@
 import styled from 'styled-components/macro';
 
 const ProductsWrapper = styled.div`
-  padding: 0 24px;
-  margin-top: 40px;
+  padding: 0 ${24 / 16}rem;
+  margin-top: ${40 / 16}rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 `;
 
 const Product = styled.div`
+  isolation: isolate;
   position: relative;
-  height: 60vw;
+  height: clamp(${217 / 16}rem, 20vw, ${284 / 16}rem);
   display: flex;
   flex-direction: column;
   align-items: center;
-  isolation: isolate;
 `;
 
 const ProductImg = styled.img`
-  width: 50%;
+  width: 45%;
 `;
 
 const ProductTitle = styled.h5`
   font-size: ${15 / 16}rem;
-  font-weight: 700;
   line-height: ${20.5 / 16}rem;
   letter-spacing: 1vw;
   text-transform: uppercase;
@@ -43,12 +42,10 @@ const ProductButton = styled.button`
 `;
 
 const ProductBackground = styled.span`
-  position: absolute;
   z-index: -1;
-  bottom: 0;
-  height: 70%;
-  width: 100%;
-  background-color: hsl(var(--clr-primary-gray));
+  position: absolute;
+  inset: 25% 0 0 0;
+  background-color: hsla(var(--clr-primary-gray) / 0.25);
   border-radius: 8px;
 `;
 

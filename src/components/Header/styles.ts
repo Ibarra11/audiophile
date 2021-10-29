@@ -19,9 +19,7 @@ const HeaderMain = styled.div`
   border-bottom: 1px solid hsl(var(--clr-primary-gray));
 `;
 
-const HeaderIcon = styled.img`
-  position: relative;
-`;
+const HeaderIcon = styled.img``;
 
 const HeaderLogo = styled.img``;
 

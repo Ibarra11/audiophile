@@ -89,7 +89,7 @@ select {
     --clr-primary-orange: 22 65% 57%;
     --clr-secondary-orange: 21 94% 75%;
     --clr-white: 0 0% 100%;
-    --clr-primary-gray: 0, 0%, 84.31%;
+    --clr-primary-gray: 0 0% 84.31%;
     --clr-secondary-gray: 0 0% 98%;
     --clr-primary-black: 0 0% 0%;
     --clr-secondary-black: #101010;

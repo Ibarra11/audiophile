@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components/macro';
-import { ChevronRight } from 'react-feather';
+import ArrowRight from '../../assets/shared/desktop/icon-arrow-right.svg';
 type ButtonTypes = 'btn1' | 'btn2' | 'btn3';
 interface ButtonProps {
   id: ButtonTypes;
@@ -17,7 +17,7 @@ const Buttons = ({ children, id }: ButtonProps) => {
       return (
         <Button3>
           {children}
-          <ChevronRight size={18} strokeWidth="2" />
+          <Icon src={ArrowRight} alt="right arrow icon" />
         </Button3>
       );
   }
@@ -25,20 +25,22 @@ const Buttons = ({ children, id }: ButtonProps) => {
 
 export default Buttons;
 
+const Icon = styled.img`
+  position: relative;
+  bottom: 1px;
+`;
 const BaseButton = styled.button`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border: none;
-  font-family: inherit;
   padding: 0;
   cursor: pointer;
-  color: inherit;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: ${13 / 16}rem;
-  padding: 15px 0;
-  width: 160px;
+  font-size: var(--text-subtitle);
+  padding: ${15 / 16}rem 0;
+  width: ${160 / 16}rem;
 `;
 
 const Button1 = styled(BaseButton)`
@@ -65,12 +67,9 @@ const Button2 = styled(BaseButton)`
 const Button3 = styled(BaseButton)`
   background-color: transparent;
   padding: 0;
+  width: ${57 / 16}rem;
+  justify-content: space-between;
   &:hover {
-    color: hsl(var(--clr-orange));
-  }
-  & > svg {
-    color: hsl(var(--clr-orange));
-    position: relative;
-    bottom: 1px;
+    color: hsl(var(--clr-primary-orange));
   }
 `;

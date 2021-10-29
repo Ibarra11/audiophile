@@ -24,7 +24,7 @@ interface ProductProps {
 const ProductItem = ({ productImg, productTitle, buttonLabel }: ProductProps) => {
   return (
     <Product>
-      <ProductImg src={productImg} />
+      <ProductImg src={productImg} alt={`${productTitle} category`} />
       <ProductTitle>{productTitle}</ProductTitle>
       <ProductButton id={'btn3'}>Shop</ProductButton>
       <ProductBackground />
