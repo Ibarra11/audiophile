@@ -36,15 +36,16 @@ const CustomDialogContent = styled(DialogContent)`
 `;
 
 const CloseButtonWrapper = styled.button`
+  z-index: 10;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
   display: flex;
   color: red;
   justify-content: center;
   align-items: center;
   background: transparent;
   border: none;
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
 `;
 
 export default MobileNav;
