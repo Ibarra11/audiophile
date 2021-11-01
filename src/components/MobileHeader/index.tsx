@@ -18,7 +18,7 @@ const MobileHeader = () => {
   };
   return (
     <MobileHeaderWrapper>
-      <MobileNav showModal={showModal} />
+      <MobileNav showModal={showModal} toggleModal={toggleModal} />
       <MobileHeaderIconButtonWrapper onClick={toggleModal}>
         <MobileHeaderIcon src={HamburgerMenu} />
       </MobileHeaderIconButtonWrapper>

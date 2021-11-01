@@ -1,25 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ProductNav from '../ProductNav';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import { VisuallyHidden } from '@reach/visually-hidden';
-
+import { X } from 'react-feather';
 interface ModalNavProps {
   showModal: boolean;
+  toggleModal: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const MobileNav = ({ showModal }: ModalNavProps) => {
+const MobileNav = ({ showModal, toggleModal }: ModalNavProps) => {
   console.log('Mobile Nav');
-  const [showDialog, setShowDialog] = useState(false);
-  const toggleDialog = () =>
-    setShowDialog((prevShowDialogState) => {
-      return !prevShowDialogState;
-    });
-  const close = (e: React.MouseEvent<Element, MouseEvent> | React.KeyboardEvent<Element>) => {};
-
   return (
-    <CustomDialogOverlay isOpen={showModal} onDismiss={close}>
+    <CustomDialogOverlay isOpen={showModal} onDismiss={toggleModal}>
       <CustomDialogContent>
-        <ModalNav />
+        <CloseButtonWrapper onClick={toggleModal}>
+          <VisuallyHidden>Close</VisuallyHidden>
+          <X size={24} />
+        </CloseButtonWrapper>
+        <ProductNav mobile={true} />
       </CustomDialogContent>
     </CustomDialogOverlay>
   );
@@ -35,13 +33,18 @@ const CustomDialogContent = styled(DialogContent)`
   position: fixed;
   inset: 90px 0;
   background-color: hsl(var(--clr-white));
-  padding-bottom: 0.5rem;
 `;
 
-const ModalNav = styled(ProductNav)`
+const CloseButtonWrapper = styled.button`
+  display: flex;
   color: red;
-  border: 1px solid red;
-  margin-top: 100px;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  border: none;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
 `;
 
 export default MobileNav;
