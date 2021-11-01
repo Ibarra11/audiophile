@@ -6,7 +6,7 @@ import ProductEarphonesImg from '../../assets/shared/desktop/image-category-thum
 import ProductButton from '../Buttons';
 import { ProductsWrapper, Product, ProductImg, ProductTitle, ProductBackground } from './styles';
 
-const Products = () => {
+const ProductNav = () => {
   return (
     <ProductsWrapper>
       <ProductItem productImg={ProductHeadphoneImg} productTitle="Headphones" buttonLabel="shop" />
@@ -32,4 +32,4 @@ const ProductItem = ({ productImg, productTitle, buttonLabel }: ProductProps) =>
   );
 };
 
-export default Products;
+export default ProductNav;

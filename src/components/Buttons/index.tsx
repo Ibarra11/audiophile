@@ -27,10 +27,7 @@ const Buttons = ({ children, id }: ButtonProps) => {
 
 export default Buttons;
 
-const Icon = styled.img`
-  position: relative;
-  bottom: 1px;
-`;
+const Icon = styled.img``;
 const BaseButton = styled.button`
   display: inline-flex;
   align-items: center;
@@ -49,7 +46,6 @@ const Button1 = styled(BaseButton)`
   background-color: hsl(var(--clr-primary-orange));
   color: hsl(var(--clr-white));
   font-weight: 700;
-
   &:hover,
   &:active {
     background-color: hsl(var(--clr-secondary-orange));

@@ -85,6 +85,8 @@ select {
 
  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;700&display=swap');
   :root{
+
+    --reach-dialog: 1;
     /* Colors */
     --clr-primary-orange: 22 65% 57%;
     --clr-secondary-orange: 21 94% 75%;

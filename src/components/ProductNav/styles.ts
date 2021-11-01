@@ -1,0 +1,46 @@
+import styled from 'styled-components/macro';
+
+const ProductsWrapper = styled.nav`
+  padding: 1rem ${24 / 16}rem 1rem;
+  margin-top: ${40 / 16}rem;
+  border: 1px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+`;
+
+const Product = styled.div`
+  isolation: isolate;
+  position: relative;
+  flex: 1;
+  flex-basis: ${225 / 16}rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  height: clamp(217px, 30vw, 284px);
+  padding-bottom: ${22 / 16}rem;
+  border: 1px solid red;
+`;
+
+const ProductImg = styled.img`
+  height: 80%;
+`;
+
+const ProductTitle = styled.h5`
+  font-size: ${15 / 16}rem;
+  letter-spacing: 2px;
+  margin-top: -2rem;
+`;
+
+const ProductBackground = styled.span`
+  z-index: -1;
+  position: absolute;
+  inset: 25% 0 0 0;
+  background-color: hsla(var(--clr-primary-gray) / 0.25);
+  border-radius: 8px;
+`;
+
+export { ProductsWrapper, Product, ProductImg, ProductTitle, ProductBackground };
