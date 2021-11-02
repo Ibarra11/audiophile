@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ProductHeadphoneImg from '../../assets/shared/desktop/image-category-thumbnail-headphones.png';
 import ProductSpeakerImg from '../../assets/shared/desktop/image-category-thumbnail-speakers.png';
 import ProductEarphonesImg from '../../assets/shared/desktop/image-category-thumbnail-earphones.png';
@@ -8,6 +9,7 @@ import {
   ProductsNavWrapper,
   Product,
   ProductImg,
+  ProductNavLink,
   ProductTitle,
   ProductBackground,
   MobileProductsNavWrapper,
@@ -57,7 +59,6 @@ interface ProductProps {
   mobile?: boolean;
 }
 const ProductItem = ({ productImg, productTitle, buttonLabel, mobile }: ProductProps) => {
-  console.log(mobile);
   return mobile ? (
     <MobileProduct>
       <MobileProductImg src={productImg} alt={`${productTitle} category`} />
@@ -69,7 +70,9 @@ const ProductItem = ({ productImg, productTitle, buttonLabel, mobile }: ProductP
     <Product>
       <ProductImg src={productImg} alt={`${productTitle} category`} />
       <ProductTitle>{productTitle}</ProductTitle>
-      <ProductButton id={'btn4'}>{buttonLabel}</ProductButton>
+      <ProductButton id={'btn4'}>
+        <ProductNavLink to={`/${productTitle.toLowerCase()}`}>{buttonLabel}</ProductNavLink>
+      </ProductButton>
       <ProductBackground />
     </Product>
   );

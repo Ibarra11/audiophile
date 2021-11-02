@@ -1,7 +1,5 @@
 import React, { ReactNode, useState } from 'react';
-// import Logo from '../../assets/shared/desktop/logo.svg';
-// import ShoppingCart from '../../assets/shared/desktop/icon-cart.svg';
-// import HamburgerMenu from '../../assets/shared/tablet/icon-hamburger.svg';
+
 import Button from '../Buttons';
 
 import {
@@ -15,17 +13,9 @@ import {
 interface HeaderProps {
   children: ReactNode;
 }
-const Header = ({ children }: HeaderProps) => {
-  // const [showNav, setShowNav] = useState(false);
-  // const toggleNav = (e: React.MouseEvent<HTMLButtonElement>) => {
-  //   setShowNav((prevShowNav) => !prevShowNav);
-  // };
-  // console.log(showNav);
-
-  console.log('what');
+const Header = () => {
   return (
     <HeaderHeroWrapper>
-      {children}
       <HeaderHeroBody>
         <HeaderHeroBodySubHeading>new product</HeaderHeroBodySubHeading>
         <HeaderHeroBodyMainHeading>xx99 mark II headphones</HeaderHeroBodyMainHeading>

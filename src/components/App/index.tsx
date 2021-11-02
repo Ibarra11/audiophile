@@ -4,15 +4,29 @@ import HeaderHero from '../HeaderHero';
 import ProductNav from '../ProductNav';
 import ProductShowcase from '../ProductShowcase';
 import ImpactMessage from '../ImpactMessage';
-import MobileMenu from '../MobileNav';
 import MobileHeader from '../MobileHeader';
 import Footer from '../Footer';
+import { Switch, Route, Link } from 'react-router-dom';
 const App = () => {
   return (
     <AppContainer>
-      <HeaderHero>
-        <MobileHeader />
-      </HeaderHero>
+      <MobileHeader />
+
+      <Switch>
+        <Route path="/headphones">
+          <h1>Headphones</h1>
+        </Route>
+        <Route path="/speakers">
+          <h1>Speakers</h1>
+        </Route>
+        <Route path="/earphones">
+          <h1>Earphones</h1>
+        </Route>
+        <Route path="/">
+          <HeaderHero></HeaderHero>
+        </Route>
+      </Switch>
+
       <ProductNav />
       <ProductShowcase />
       <ImpactMessage />

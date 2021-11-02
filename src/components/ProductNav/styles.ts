@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-
+import { Link } from 'react-router-dom';
 const ProductsNavWrapper = styled.nav`
   padding: 1rem ${24 / 16}rem 1rem;
   margin-top: ${40 / 16}rem;
@@ -33,6 +33,8 @@ const Product = styled.div`
 `;
 
 const MobileProduct = styled.div`
+  height: 30%;
+  flex: 1;
   isolation: isolate;
   position: relative;
   display: flex;
@@ -47,13 +49,18 @@ const ProductImg = styled.img`
 `;
 
 const MobileProductImg = styled.img`
-  height: 120px;
+  height: 10vh;
 `;
 
 const ProductTitle = styled.h5`
   font-size: ${15 / 16}rem;
   letter-spacing: 2px;
   margin-top: -2rem;
+`;
+
+const ProductNavLink = styled(Link)`
+  color: hsl(var(--clr-secondary-black));
+  text-decoration: none;
 `;
 
 const ProductBackground = styled.span`
@@ -67,6 +74,7 @@ const ProductBackground = styled.span`
 export {
   ProductsNavWrapper,
   Product,
+  ProductNavLink,
   ProductImg,
   ProductTitle,
   ProductBackground,

@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const MobileHeaderWrapper = styled.header`
+  background-color: hsl(var(--clr-primary-black) / 0.9);
   display: flex;
   justify-content: space-between;
   padding-block: 2rem;
