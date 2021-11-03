@@ -1,26 +1,29 @@
 import React, { ReactNode } from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import ArrowRight from '../../assets/shared/desktop/icon-arrow-right.svg';
 type ButtonTypes = 'btn1' | 'btn2' | 'btn3' | 'btn4';
+
 interface ButtonProps {
   id: ButtonTypes;
   children: ReactNode;
+  path?: string;
 }
 
-const Buttons = ({ children, id }: ButtonProps) => {
+const Buttons = ({ children, id, path }: ButtonProps) => {
   switch (id) {
     case 'btn1':
-      return <Button1>{children}</Button1>;
+      return <Button1 to="/">{children}</Button1>;
     case 'btn2':
-      return <Button2>{children}</Button2>;
+      return <Button2 to="/">{children}</Button2>;
     case 'btn3':
-      return <Button3>{children}</Button3>;
+      return <Button3 to="/">{children}</Button3>;
     case 'btn4':
       return (
-        <Button4>
+        <ButtonLink to={path ? path : '/'}>
           {children}
           <Icon src={ArrowRight} alt="right arrow icon" />
-        </Button4>
+        </ButtonLink>
       );
   }
 };
@@ -28,7 +31,8 @@ const Buttons = ({ children, id }: ButtonProps) => {
 export default Buttons;
 
 const Icon = styled.img``;
-const BaseButton = styled.button`
+
+const BaseButton = styled(Link)`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -36,6 +40,7 @@ const BaseButton = styled.button`
   padding: 0;
   cursor: pointer;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 1px;
   font-size: var(--text-subtitle);
   padding: ${15 / 16}rem 0;
@@ -76,6 +81,17 @@ const Button3 = styled(BaseButton)`
 `;
 
 const Button4 = styled(BaseButton)`
+  background-color: transparent;
+  padding: 0;
+  width: ${57 / 16}rem;
+  justify-content: space-between;
+  &:hover {
+    color: hsl(var(--clr-primary-orange));
+  }
+`;
+
+const ButtonLink = styled(BaseButton)`
+  color: hsl(var(--clr-primary-black));
   background-color: transparent;
   padding: 0;
   width: ${57 / 16}rem;
