@@ -11,7 +11,6 @@ import {
 } from './styles';
 
 const MobileHeader = () => {
-  console.log('MobileHeader');
   const [showModal, setShowModal] = useState(false);
   const toggleModal = (e: React.MouseEvent<HTMLButtonElement>) => {
     setShowModal((prevShowModal) => !prevShowModal);

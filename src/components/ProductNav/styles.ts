@@ -1,5 +1,6 @@
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
+
 const ProductsNavWrapper = styled.nav`
   padding: 1rem ${24 / 16}rem 1rem;
   margin-top: ${40 / 16}rem;

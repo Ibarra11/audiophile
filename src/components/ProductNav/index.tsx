@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import ProductButton from '../Buttons';
+
 import ProductHeadphoneImg from '../../assets/shared/desktop/image-category-thumbnail-headphones.png';
 import ProductSpeakerImg from '../../assets/shared/desktop/image-category-thumbnail-speakers.png';
 import ProductEarphonesImg from '../../assets/shared/desktop/image-category-thumbnail-earphones.png';
 
-import ProductButton from '../Buttons';
 import {
   ProductsNavWrapper,
   Product,
@@ -16,10 +16,13 @@ import {
   MobileProduct,
   MobileProductImg,
 } from './styles';
+
 interface ProductNavProps {
   mobile?: boolean;
+  handleToggleModal?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const ProductNav = ({ mobile }: ProductNavProps) => {
+
+const ProductNav = ({ mobile, handleToggleModal }: ProductNavProps) => {
   return mobile ? (
     <MobileProductsNavWrapper>
       <ProductItem
@@ -27,6 +30,7 @@ const ProductNav = ({ mobile }: ProductNavProps) => {
         productImg={ProductHeadphoneImg}
         productTitle="Headphones"
         buttonLabel="shop"
+        handleToggleModal={handleToggleModal}
       />
 
       <ProductItem
@@ -34,6 +38,7 @@ const ProductNav = ({ mobile }: ProductNavProps) => {
         productImg={ProductSpeakerImg}
         productTitle="Speakers"
         buttonLabel="shop"
+        handleToggleModal={handleToggleModal}
       />
 
       <ProductItem
@@ -41,6 +46,7 @@ const ProductNav = ({ mobile }: ProductNavProps) => {
         productImg={ProductEarphonesImg}
         productTitle="Earphones"
         buttonLabel="shop"
+        handleToggleModal={handleToggleModal}
       />
     </MobileProductsNavWrapper>
   ) : (
@@ -57,21 +63,36 @@ interface ProductProps {
   productTitle: string;
   buttonLabel: string;
   mobile?: boolean;
+  handleToggleModal?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
-const ProductItem = ({ productImg, productTitle, buttonLabel, mobile }: ProductProps) => {
+const ProductItem = ({
+  productImg,
+  productTitle,
+  buttonLabel,
+  mobile,
+  handleToggleModal,
+}: ProductProps) => {
   return mobile ? (
     <MobileProduct>
       <MobileProductImg src={productImg} alt={`${productTitle} category`} />
       <ProductTitle>{productTitle}</ProductTitle>
-      <ProductButton id={'btn4'}>{buttonLabel}</ProductButton>
+      {/* <ProductButton id={'btn4'}>
+        <ProductNavLink to={`/${productTitle.toLowerCase()}`}>{buttonLabel}</ProductNavLink>
+      </ProductButton> */}
+      <ProductButton id={'btn4'} path={`/${productTitle.toLowerCase()}`}>
+        {buttonLabel}
+      </ProductButton>
       <ProductBackground />
     </MobileProduct>
   ) : (
     <Product>
       <ProductImg src={productImg} alt={`${productTitle} category`} />
       <ProductTitle>{productTitle}</ProductTitle>
-      <ProductButton id={'btn4'}>
+      {/* <ProductButton id={'btn4'}>
         <ProductNavLink to={`/${productTitle.toLowerCase()}`}>{buttonLabel}</ProductNavLink>
+      </ProductButton> */}
+      <ProductButton id={'btn4'} path={`/${productTitle.toLowerCase()}`}>
+        {buttonLabel}
       </ProductButton>
       <ProductBackground />
     </Product>

@@ -9,15 +9,14 @@ interface ModalNavProps {
   toggleModal: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 const MobileNav = ({ showModal, toggleModal }: ModalNavProps) => {
-  console.log('Mobile Nav');
   return (
     <CustomDialogOverlay isOpen={showModal} onDismiss={toggleModal}>
-      <CustomDialogContent>
+      <CustomDialogContent aria-label="Mobile Navigation for products">
         <CloseButtonWrapper onClick={toggleModal}>
           <VisuallyHidden>Close</VisuallyHidden>
           <X size={24} />
         </CloseButtonWrapper>
-        <ProductNav mobile={true} />
+        <ProductNav handleToggleModal={toggleModal} mobile={true} />
       </CustomDialogContent>
     </CustomDialogOverlay>
   );

@@ -1,4 +1,4 @@
-import React, { ReactNode, useState } from 'react';
+import React from 'react';
 
 import Button from '../Buttons';
 
@@ -10,9 +10,6 @@ import {
   HeaderHeroBodyText,
 } from './styles';
 
-interface HeaderProps {
-  children: ReactNode;
-}
 const Header = () => {
   return (
     <HeaderHeroWrapper>
