@@ -23,10 +23,10 @@ const Footer = () => (
     <LogoIcon src={Logo} alt="site logo" />
 
     <Nav>
-      <NavLink>Home</NavLink>
-      <NavLink>Headphones</NavLink>
-      <NavLink>Speakers</NavLink>
-      <NavLink>Earphones</NavLink>
+      <NavLink to="/">Home</NavLink>
+      <NavLink to="/headphones">Headphones</NavLink>
+      <NavLink to="/speakers">Speakers</NavLink>
+      <NavLink to="/earphones">Earphones</NavLink>
     </Nav>
     <Text>
       Audiophile is an all in one stop to fulfill your audio needs. We're a small team of music

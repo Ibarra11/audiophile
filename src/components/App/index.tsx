@@ -11,7 +11,6 @@ import { Switch, Route, useLocation } from 'react-router-dom';
 
 function ScrollToTop({ children }: { children: React.ReactNode }) {
   const location = useLocation();
-  console.log(location);
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location]);

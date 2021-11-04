@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-
+import { Link } from 'react-router-dom';
 const Wrapper = styled.footer`
   position: relative;
   display: flex;
@@ -29,8 +29,14 @@ const Nav = styled.nav`
   letter-spacing: 2px;
 `;
 
-const NavLink = styled.a`
+const NavLink = styled(Link)`
+  color: hsl(var(--clr-white));
   font-size: var(--text-subtitle);
+  text-decoration: none;
+  &:hover,
+  &:active {
+    cursor: pointer;
+  }
 `;
 
 const Text = styled.p`
