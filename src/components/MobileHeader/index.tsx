@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import MobileNav from '../MobileNav';
+import MobileNav from '../ModalNav';
 import Logo from '../../assets/shared/desktop/logo.svg';
 import ShoppingCart from '../../assets/shared/desktop/icon-cart.svg';
 import HamburgerMenu from '../../assets/shared/tablet/icon-hamburger.svg';
@@ -18,7 +18,7 @@ const MobileHeader = () => {
 
   return (
     <MobileHeaderWrapper>
-      <MobileNav isOpen={showModal} onCloseModal={handleCloseModal} onOpenModal={handleOpenModal} />
+      <MobileNav isOpen={showModal} onCloseModal={handleCloseModal} />
       <MobileHeaderIconButtonWrapper onClick={handleOpenModal}>
         <MobileHeaderIcon src={HamburgerMenu} />
       </MobileHeaderIconButtonWrapper>

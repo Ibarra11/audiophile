@@ -1,5 +1,4 @@
 import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
 
 const ProductsNavWrapper = styled.nav`
   padding: 1rem ${24 / 16}rem 1rem;
@@ -59,11 +58,6 @@ const ProductTitle = styled.h5`
   margin-top: -2rem;
 `;
 
-const ProductNavLink = styled(Link)`
-  color: hsl(var(--clr-secondary-black));
-  text-decoration: none;
-`;
-
 const ProductBackground = styled.span`
   z-index: -1;
   position: absolute;
@@ -75,7 +69,6 @@ const ProductBackground = styled.span`
 export {
   ProductsNavWrapper,
   Product,
-  ProductNavLink,
   ProductImg,
   ProductTitle,
   ProductBackground,

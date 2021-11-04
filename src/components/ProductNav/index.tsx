@@ -9,7 +9,6 @@ import {
   ProductsNavWrapper,
   Product,
   ProductImg,
-  ProductNavLink,
   ProductTitle,
   ProductBackground,
   MobileProductsNavWrapper,
@@ -76,9 +75,6 @@ const ProductItem = ({
     <MobileProduct>
       <MobileProductImg src={productImg} alt={`${productTitle} category`} />
       <ProductTitle>{productTitle}</ProductTitle>
-      {/* <ProductButton id={'btn4'}>
-        <ProductNavLink to={`/${productTitle.toLowerCase()}`}>{buttonLabel}</ProductNavLink>
-      </ProductButton> */}
       <ProductButton onClick={onCloseModal} id={'btn4'} path={`/${productTitle.toLowerCase()}`}>
         {buttonLabel}
       </ProductButton>
@@ -88,9 +84,6 @@ const ProductItem = ({
     <Product>
       <ProductImg src={productImg} alt={`${productTitle} category`} />
       <ProductTitle>{productTitle}</ProductTitle>
-      {/* <ProductButton id={'btn4'}>
-        <ProductNavLink to={`/${productTitle.toLowerCase()}`}>{buttonLabel}</ProductNavLink>
-      </ProductButton> */}
       <ProductButton id={'btn4'} path={`/${productTitle.toLowerCase()}`}>
         {buttonLabel}
       </ProductButton>

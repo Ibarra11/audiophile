@@ -6,11 +6,9 @@ import { VisuallyHidden } from '@reach/visually-hidden';
 import { X } from 'react-feather';
 interface ModalNavProps {
   isOpen: boolean;
-  onOpenModal: () => void;
   onCloseModal: () => void;
 }
-const MobileNav = ({ isOpen, onOpenModal, onCloseModal }: ModalNavProps) => {
-  console.log('Mobile Nav: ' + isOpen);
+const MobileNav = ({ isOpen, onCloseModal }: ModalNavProps) => {
   return (
     <CustomDialogOverlay isOpen={isOpen} onDismiss={onCloseModal}>
       <CustomDialogContent aria-label="Mobile Navigation for products">
