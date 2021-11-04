@@ -19,10 +19,10 @@ import {
 
 interface ProductNavProps {
   mobile?: boolean;
-  handleToggleModal?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onCloseModal?: () => void;
 }
 
-const ProductNav = ({ mobile, handleToggleModal }: ProductNavProps) => {
+const ProductNav = ({ mobile, onCloseModal }: ProductNavProps) => {
   return mobile ? (
     <MobileProductsNavWrapper>
       <ProductItem
@@ -30,7 +30,7 @@ const ProductNav = ({ mobile, handleToggleModal }: ProductNavProps) => {
         productImg={ProductHeadphoneImg}
         productTitle="Headphones"
         buttonLabel="shop"
-        handleToggleModal={handleToggleModal}
+        onCloseModal={onCloseModal}
       />
 
       <ProductItem
@@ -38,7 +38,7 @@ const ProductNav = ({ mobile, handleToggleModal }: ProductNavProps) => {
         productImg={ProductSpeakerImg}
         productTitle="Speakers"
         buttonLabel="shop"
-        handleToggleModal={handleToggleModal}
+        onCloseModal={onCloseModal}
       />
 
       <ProductItem
@@ -46,7 +46,7 @@ const ProductNav = ({ mobile, handleToggleModal }: ProductNavProps) => {
         productImg={ProductEarphonesImg}
         productTitle="Earphones"
         buttonLabel="shop"
-        handleToggleModal={handleToggleModal}
+        onCloseModal={onCloseModal}
       />
     </MobileProductsNavWrapper>
   ) : (
@@ -63,14 +63,14 @@ interface ProductProps {
   productTitle: string;
   buttonLabel: string;
   mobile?: boolean;
-  handleToggleModal?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onCloseModal?: () => void;
 }
 const ProductItem = ({
   productImg,
   productTitle,
   buttonLabel,
   mobile,
-  handleToggleModal,
+  onCloseModal,
 }: ProductProps) => {
   return mobile ? (
     <MobileProduct>
@@ -79,7 +79,7 @@ const ProductItem = ({
       {/* <ProductButton id={'btn4'}>
         <ProductNavLink to={`/${productTitle.toLowerCase()}`}>{buttonLabel}</ProductNavLink>
       </ProductButton> */}
-      <ProductButton id={'btn4'} path={`/${productTitle.toLowerCase()}`}>
+      <ProductButton onClick={onCloseModal} id={'btn4'} path={`/${productTitle.toLowerCase()}`}>
         {buttonLabel}
       </ProductButton>
       <ProductBackground />

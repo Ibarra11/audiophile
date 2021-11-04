@@ -5,18 +5,20 @@ import { DialogOverlay, DialogContent } from '@reach/dialog';
 import { VisuallyHidden } from '@reach/visually-hidden';
 import { X } from 'react-feather';
 interface ModalNavProps {
-  showModal: boolean;
-  toggleModal: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  isOpen: boolean;
+  onOpenModal: () => void;
+  onCloseModal: () => void;
 }
-const MobileNav = ({ showModal, toggleModal }: ModalNavProps) => {
+const MobileNav = ({ isOpen, onOpenModal, onCloseModal }: ModalNavProps) => {
+  console.log('Mobile Nav: ' + isOpen);
   return (
-    <CustomDialogOverlay isOpen={showModal} onDismiss={toggleModal}>
+    <CustomDialogOverlay isOpen={isOpen} onDismiss={onCloseModal}>
       <CustomDialogContent aria-label="Mobile Navigation for products">
-        <CloseButtonWrapper onClick={toggleModal}>
+        <CloseButtonWrapper onClick={onCloseModal}>
           <VisuallyHidden>Close</VisuallyHidden>
           <X size={24} />
         </CloseButtonWrapper>
-        <ProductNav handleToggleModal={toggleModal} mobile={true} />
+        <ProductNav onCloseModal={onCloseModal} mobile={true} />
       </CustomDialogContent>
     </CustomDialogOverlay>
   );

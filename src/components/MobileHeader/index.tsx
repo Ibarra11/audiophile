@@ -12,13 +12,14 @@ import {
 
 const MobileHeader = () => {
   const [showModal, setShowModal] = useState(false);
-  const toggleModal = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setShowModal((prevShowModal) => !prevShowModal);
-  };
+
+  const handleCloseModal = () => setShowModal(false);
+  const handleOpenModal = () => setShowModal(true);
+
   return (
     <MobileHeaderWrapper>
-      <MobileNav showModal={showModal} toggleModal={toggleModal} />
-      <MobileHeaderIconButtonWrapper onClick={toggleModal}>
+      <MobileNav isOpen={showModal} onCloseModal={handleCloseModal} onOpenModal={handleOpenModal} />
+      <MobileHeaderIconButtonWrapper onClick={handleOpenModal}>
         <MobileHeaderIcon src={HamburgerMenu} />
       </MobileHeaderIconButtonWrapper>
       <MobileHeaderIconLinkWrapper>
