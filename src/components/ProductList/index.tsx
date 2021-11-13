@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { useLocation } from 'react-router';
 import {
   ProductListWrapper,
   ProductListHeader,
@@ -12,18 +12,25 @@ import {
   ProductSubTitle,
 } from './styles';
 import Buttons from '../Buttons';
-import { Products } from '../../data';
+import Products from '../../data';
 
 interface ProductListProps {
-  listType: 'headphones' | 'speakers' | 'earphones';
+  productType: 'headphones' | 'speaker' | 'earphones';
 }
 
-const ProductList = ({ listType }: ProductListProps) => {
+const ProductList = ({ productType }: ProductListProps) => {
   return (
     <ProductListWrapper>
-      <ProductListHeader>{listType}</ProductListHeader>
-      {Products[listType].map((product, index) => {
-        return <Product key={product.title} product={product} index={index} />;
+      <ProductListHeader>{productType}</ProductListHeader>
+      {Products[productType].map((product, index) => {
+        return (
+          <Product
+            key={product.title}
+            product={product}
+            index={index}
+            type={productType}
+          />
+        );
       })}
     </ProductListWrapper>
   );
@@ -31,23 +38,40 @@ const ProductList = ({ listType }: ProductListProps) => {
 
 interface ProductProps {
   product: {
-    img: string;
+    mainImg: string;
     title: string;
-    text: string;
+    description: string;
+    id: string;
+    newProduct: boolean;
   };
+  type: ProductListProps['productType'];
   index: number;
 }
-const Product = ({ product, index }: ProductProps) => {
+const Product = ({
+  product,
+  index,
+  type,
+}: ProductProps) => {
+  const location = useLocation();
   return (
     <ProductWrapper>
       <ProductImgWrapper>
-        <ProductImg src={product.img} />
+        <ProductImg src={product.mainImg} />
       </ProductImgWrapper>
       <ProductContent>
-        {index === 0 && <ProductSubTitle>New Product</ProductSubTitle>}
-        <ProductTitle>{product.title}</ProductTitle>
-        <ProductText>{product.text}</ProductText>
-        <Buttons id="btn1">See Product</Buttons>
+        {product.newProduct && (
+          <ProductSubTitle>New Product</ProductSubTitle>
+        )}
+        <ProductTitle>{`${product.title} ${type}`}</ProductTitle>
+        <ProductText>{product.description}</ProductText>
+        <Buttons
+          path={`${location.pathname}/${product.title
+            .split(' ')
+            .join('_')}/${product.id}`}
+          id="btn1"
+        >
+          See Product
+        </Buttons>
       </ProductContent>
     </ProductWrapper>
   );

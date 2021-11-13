@@ -11,14 +11,19 @@ interface ButtonProps {
   onClick?: () => void;
 }
 
-const Buttons = ({ children, id, path, onClick }: ButtonProps) => {
+const Buttons = ({
+  children,
+  id,
+  path = '/',
+  onClick,
+}: ButtonProps) => {
   switch (id) {
     case 'btn1':
-      return <Button1 to="/">{children}</Button1>;
+      return <Button1 to={path}>{children}</Button1>;
     case 'btn2':
-      return <Button2 to="/">{children}</Button2>;
+      return <Button2 to={path}>{children}</Button2>;
     case 'btn3':
-      return <Button3 to="/">{children}</Button3>;
+      return <Button3 to={path}>{children}</Button3>;
     case 'btn4':
       return (
         <ButtonLink to={path || '/'} onClick={onClick}>

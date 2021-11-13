@@ -7,9 +7,18 @@ import ProductList from '../ProductList';
 import ImpactMessage from '../ImpactMessage';
 import MobileHeader from '../MobileHeader';
 import Footer from '../Footer';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import Product from '../Product';
+import {
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom';
 
-function ScrollToTop({ children }: { children: React.ReactNode }) {
+function ScrollToTop({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -23,20 +32,37 @@ const App = () => {
     <AppContainer>
       <MobileHeader />
       <ScrollToTop>
-        <Switch>
-          <Route path="/headphones">
-            <ProductList listType="headphones" />
-          </Route>
-          <Route path="/speakers">
-            <ProductList listType="speakers" />
-          </Route>
-          <Route path="/earphones">
-            <ProductList listType="earphones" />
-          </Route>
-          <Route path="/">
-            <HeaderHero></HeaderHero>
-          </Route>
-        </Switch>
+        <Routes>
+          <Route
+            path="/headphones/:headphone/:id"
+            element={<Product productType="headphones" />}
+          />
+          <Route
+            path="/speakers/:speaker/:id"
+            element={<Product productType="speaker" />}
+          />
+          <Route
+            path="/earphones/:earphone/:id"
+            element={<Product productType="earphones" />}
+          />
+          <Route
+            path="/headphones"
+            element={
+              <ProductList productType="headphones" />
+            }
+          ></Route>
+          <Route
+            path="/speakers"
+            element={<ProductList productType="speaker" />}
+          ></Route>
+          <Route
+            path="/earphones"
+            element={
+              <ProductList productType="earphones" />
+            }
+          ></Route>
+          <Route path="/" element={<HeaderHero />}></Route>
+        </Routes>
       </ScrollToTop>
       <ProductNav />
       <ProductShowcase />
