@@ -1,6 +1,10 @@
 import React from 'react';
+import { useLocation } from 'react-router';
+import { getProductId } from '../../../utilities';
 import styled from 'styled-components';
 import Button from '../../Buttons';
+
+import { ProductTypes, ProductTitles } from '../../../shared/types';
 
 import XX99_Mark_1 from '../../../assets/shared/mobile/image-xx99-mark-one-headphones.jpg';
 import XX99_Mark_2 from '../../../assets/shared/mobile/image-xx99-mark-two-headphones.jpg';
@@ -18,11 +22,13 @@ const ProductList = [
 ];
 
 interface Props {
-  currentProduct: string;
+  currentProduct: ProductTitles;
+  productType: ProductTypes;
 }
 
 const ProductRecommendationList = ({
   currentProduct,
+  productType,
 }: Props) => {
   let productRecommendations: {
     title: string;
@@ -90,8 +96,9 @@ const ProductRecommendationList = ({
         return (
           <ProductRecommendation
             key={recommendation.title}
-            title={recommendation.title}
+            title={recommendation.title as ProductTitles}
             img={recommendation.img}
+            productType={productType}
           />
         );
       })}
@@ -102,19 +109,21 @@ const ProductRecommendationList = ({
 const ProductRecommendation = ({
   img,
   title,
+  productType,
 }: {
   img: string;
-  title: string;
+  title: ProductTitles;
+  productType: ProductTypes;
 }) => {
+  const productId = getProductId(title, productType);
+  console.log(productId);
   return (
     <>
       <ProductImgWrapper>
         <ProductImg src={img} />
       </ProductImgWrapper>
       <ProductTitle>
-        {title === 'ZX9' || title === 'ZX7'
-          ? title + ' Speaker'
-          : title}
+        {title === 'ZX9' || title === 'ZX7' ? title + ' Speaker' : title}
       </ProductTitle>
       <Button id={'btn1'}>See Prodcut</Button>
     </>

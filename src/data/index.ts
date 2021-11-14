@@ -4,7 +4,7 @@ import { Earphones } from './Earphones';
 
 const Products = {
   headphones: Headphones,
-  speaker: Speakers,
+  speakers: Speakers,
   earphones: Earphones,
 };
 

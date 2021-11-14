@@ -1,5 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router';
+import { ProductTypes } from '../../shared/types';
 import {
   ProductListWrapper,
   ProductListHeader,
@@ -15,7 +16,7 @@ import Buttons from '../Buttons';
 import Products from '../../data';
 
 interface ProductListProps {
-  productType: 'headphones' | 'speaker' | 'earphones';
+  productType: ProductTypes;
 }
 
 const ProductList = ({ productType }: ProductListProps) => {
@@ -47,11 +48,7 @@ interface ProductProps {
   type: ProductListProps['productType'];
   index: number;
 }
-const Product = ({
-  product,
-  index,
-  type,
-}: ProductProps) => {
+const Product = ({ product, index, type }: ProductProps) => {
   const location = useLocation();
   return (
     <ProductWrapper>

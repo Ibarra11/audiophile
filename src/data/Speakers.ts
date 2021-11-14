@@ -10,6 +10,9 @@ import ZX7_Gallery_Mobile_1 from '../assets/product-zx7-speaker/mobile/image-gal
 import ZX7_Gallery_Mobile_2 from '../assets/product-zx7-speaker/mobile/image-gallery-2.jpg';
 import ZX7_Gallery_Mobile_3 from '../assets/product-zx7-speaker/mobile/image-gallery-3.jpg';
 
+import ZX7_Recommendation_Mobile from '../assets/shared/mobile/image-zx7-speaker.jpg';
+import ZX9_Recommendation_Mobile from '../assets/shared/mobile/image-zx9-speaker.jpg';
+
 export const Speakers = [
   {
     id: uniqid(),
@@ -35,11 +38,14 @@ export const Speakers = [
       img_2_mb: ZX9_Gallery_Mobile_2,
       img_3_mb: ZX9_Gallery_Mobile_3,
     },
+    recommendationImages: {
+      mobile: ZX9_Recommendation_Mobile,
+    },
   },
   {
     id: uniqid(),
     mainImg: ZX7_Main,
-    title: 'ZX7',
+    title: 'ZX7' as const,
     description:
       'Stream high quality sound wirelessly with minimal to no loss. The ZX7 speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.',
     price: 3500,
@@ -59,6 +65,9 @@ export const Speakers = [
       img_1_mb: ZX7_Gallery_Mobile_1,
       img_2_mb: ZX7_Gallery_Mobile_2,
       img_3_mb: ZX7_Gallery_Mobile_3,
+    },
+    recommendationImages: {
+      mobile: ZX7_Recommendation_Mobile,
     },
   },
 ];

@@ -13,7 +13,6 @@ const SectionWrapper = styled.section`
   & > :not(:last-child) {
     margin-bottom: ${88 / 16}rem;
   }
-
   margin-bottom: ${120 / 16}rem;
 `;
 

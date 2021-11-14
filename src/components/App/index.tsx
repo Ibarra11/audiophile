@@ -8,17 +8,9 @@ import ImpactMessage from '../ImpactMessage';
 import MobileHeader from '../MobileHeader';
 import Footer from '../Footer';
 import Product from '../Product';
-import {
-  Routes,
-  Route,
-  useLocation,
-} from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
-function ScrollToTop({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+function ScrollToTop({ children }: { children: React.ReactNode }) {
   const location = useLocation();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,7 +31,7 @@ const App = () => {
           />
           <Route
             path="/speakers/:speaker/:id"
-            element={<Product productType="speaker" />}
+            element={<Product productType="speakers" />}
           />
           <Route
             path="/earphones/:earphone/:id"
@@ -47,21 +39,18 @@ const App = () => {
           />
           <Route
             path="/headphones"
-            element={
-              <ProductList productType="headphones" />
-            }
+            element={<ProductList productType="headphones" />}
           ></Route>
           <Route
             path="/speakers"
-            element={<ProductList productType="speaker" />}
+            element={<ProductList productType="speakers" />}
           ></Route>
           <Route
             path="/earphones"
-            element={
-              <ProductList productType="earphones" />
-            }
+            element={<ProductList productType="earphones" />}
           ></Route>
-          <Route path="/" element={<HeaderHero />}></Route>
+          <Route path="/" element={<HeaderHero />} />
+          <Route path="*" element={<HeaderHero />} />
         </Routes>
       </ScrollToTop>
       <ProductNav />

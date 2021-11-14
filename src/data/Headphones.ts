@@ -4,6 +4,10 @@ import Mark_II_Main from '../assets/product-xx99-mark-two-headphones/mobile/imag
 import Mark_I_Main from '../assets/product-xx99-mark-one-headphones/mobile/image-product.jpg';
 import XX59_Main from '../assets/product-xx59-headphones/mobile/image-product.jpg';
 
+import MarkII_Recommendation_Mobile from '../assets/shared/mobile/image-xx99-mark-two-headphones.jpg';
+import MarkI_Recommendation_Mobile from '../assets/shared/mobile/image-xx99-mark-one-headphones.jpg';
+import XX59_Recommendation_Mobile from '../assets/shared/mobile/image-xx59-headphones.jpg';
+
 import MarkII_Gallery_Mobile_1 from '../assets/product-xx99-mark-two-headphones/mobile/image-gallery-1.jpg';
 import MarkII_Gallery_Mobile_2 from '../assets/product-xx99-mark-two-headphones/mobile/image-gallery-2.jpg';
 import MarkII_Gallery_Mobile_3 from '../assets/product-xx99-mark-two-headphones/mobile/image-gallery-3.jpg';
@@ -19,7 +23,7 @@ export const Headphones = [
   {
     id: uniqid(),
     mainImg: Mark_II_Main,
-    title: 'xx99 mark II',
+    title: 'XX99 MARK II',
     description:
       'The new XX99 Mark II headphones is the pinnacle of pristine audio. It redefines your premium headphone experience by reproducing the balanced depth and precision of studio-quality sound.',
     price: 2999,
@@ -40,11 +44,14 @@ export const Headphones = [
       img_2_mb: MarkII_Gallery_Mobile_2,
       img_3_mb: MarkII_Gallery_Mobile_3,
     },
+    recommendationImages: {
+      mobile: MarkII_Recommendation_Mobile,
+    },
   },
   {
     id: uniqid(),
     mainImg: Mark_I_Main,
-    title: 'xx99 Mark I',
+    title: 'XX99 MARK I',
     description:
       'As the gold standard for headphones, the classic XX99 Mark I offers detailed and accurate audio reproduction for audiophiles, mixing engineers, and music aficionados alike in studios and on the go.',
     price: 1750,
@@ -64,11 +71,14 @@ export const Headphones = [
       img_2_mb: MarkI_Gallery_Mobile_2,
       img_3_mb: MarkI_Gallery_Mobile_3,
     },
+    recommendationImages: {
+      mobile: MarkI_Recommendation_Mobile,
+    },
   },
   {
     id: uniqid(),
     mainImg: XX59_Main,
-    title: 'xx59',
+    title: 'XX59',
     description:
       'Enjoy your audio almost anywhere and customize it to your specific tastes with the XX59 headphones. The stylish yet durable versatile wireless headset is a brilliant companion at home or on the move.',
     price: 899,
@@ -87,6 +97,9 @@ export const Headphones = [
       img_1_mb: XX59_Gallery_Mobile_1,
       img_2_mb: XX59_Gallery_Mobile_2,
       img_3_mb: XX59_Gallery_Mobile_3,
+    },
+    recommendationImages: {
+      mobile: XX59_Recommendation_Mobile,
     },
   },
 ];

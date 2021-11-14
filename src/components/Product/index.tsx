@@ -3,10 +3,13 @@ import { useParams, useLocation } from 'react-router';
 import ProductFeatures from './Product_Features';
 import ProductContentList from './Product_Content_List';
 import ProductGallery from './Product_Gallery';
+import ProductRecommendationList from './Product_RecommendationList';
 import Products from '../../data';
 import Buttons from '../Buttons';
 import { DollarSign } from 'react-feather';
-import ProductRecommendationList from './Product_RecommendationList';
+
+import { ProductTitles, ProductTypes } from '../../shared/types';
+
 import {
   SectionWrapper,
   PrevLink,
@@ -25,13 +28,7 @@ import {
   CountValue,
 } from './styles';
 
-interface ProductLayoutProps {
-  productType: 'headphones' | 'speaker' | 'earphones';
-}
-
-const ProductLayout = ({
-  productType,
-}: ProductLayoutProps) => {
+const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
   const { id } = useParams();
   const product = Products[productType].find(
     (product) => product.id === id,
@@ -39,9 +36,7 @@ const ProductLayout = ({
 
   return (
     <SectionWrapper>
-      <PrevLink onClick={() => window.history.back()}>
-        Go Back
-      </PrevLink>
+      <PrevLink onClick={() => window.history.back()}>Go Back</PrevLink>
       <Product
         mainImg={product.mainImg}
         newProduct={product.newProduct}
@@ -52,7 +47,8 @@ const ProductLayout = ({
       <ProductContentList contents={product.contents} />
       <ProductGallery images={product.gallery} />
       <ProductRecommendationList
-        currentProduct={product.title.toUpperCase()}
+        currentProduct={product['title'] as ProductTitles}
+        productType={productType}
       />
     </SectionWrapper>
   );
@@ -76,9 +72,7 @@ function Product({
         <ProductImg src={mainImg} />
       </ProductImgWrapper>
       <ProductContent>
-        {newProduct && (
-          <ProductSubHeading>New Product</ProductSubHeading>
-        )}
+        {newProduct && <ProductSubHeading>New Product</ProductSubHeading>}
         <ProductHeading>{title}</ProductHeading>
         <Text>{description}</Text>
         <ProductPrice>
