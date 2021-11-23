@@ -1,28 +1,23 @@
+import { createScanner } from 'typescript';
 import Products from '../data';
 import { Cart, Actions, ActionTypes } from '../shared/types';
 
 export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
   switch (action.type) {
     case ActionTypes.ADD_PRODUCT: {
-      console.log(action);
       const { id } = action.payload.product;
       const productIndex = cart.products.findIndex(
         (product) => product.id === id,
       );
       if (productIndex >= 0) {
         const productsCpy = [...cart.products];
-        console.log('products: ' + productsCpy[productIndex].amount);
-        console.log('payload: ' + action.payload.product.amount);
-        console.log(productsCpy[productIndex]);
+
         productsCpy[productIndex] = {
           ...productsCpy[productIndex],
           amount:
             productsCpy[productIndex].amount +
             action.payload.product.amount,
         };
-        console.log(productsCpy[productIndex]);
-
-        console.log(productsCpy);
         return {
           products: productsCpy,
           size: cart.size + action.payload.product.amount,
@@ -35,25 +30,29 @@ export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
       }
     }
 
-    // case REMOVE_PRODUCT: {
-    //   if (action.payload && action.payload.id && cart.size > 0) {
-    //     const product = cart[action.payload.id];
-    //     if (product.count === 1) {
-    //       const cartCpy = { ...cart };
-    //       delete cartCpy[action.payload.id];
-    //       return cartCpy;
-    //     } else {
-    //       return {
-    //         ...cart,
-    //         [action.payload.id]: {
-    //           ...cart[action.payload.id],
-    //           count: product.count - 1,
-    //         },
-    //       };
-    //     }
-    //   }
-    //   return cart;
-    // }
+    case ActionTypes.REMOVE_PRODUCT: {
+      const { id } = action.payload;
+      const productIndex = cart.products.findIndex(
+        (product) => product.id === id,
+      );
+      if (cart.products[productIndex].amount > 1) {
+        let cartCpy = [...cart.products];
+        let productCpy = { ...cartCpy[productIndex] };
+        productCpy.amount--;
+        cartCpy[productIndex] = productCpy;
+        return {
+          products: cartCpy,
+          size: cart.size - 1,
+        };
+      } else {
+        let cartCpy = [...cart.products];
+        cartCpy.splice(productIndex, 1);
+        return {
+          products: cartCpy,
+          size: cart.size - 1,
+        };
+      }
+    }
     case ActionTypes.REMOVE_ALL_PRODUCTS: {
       if (cart.size > 0) {
         return { products: [], size: 0 };

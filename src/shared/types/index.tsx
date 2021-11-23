@@ -1,3 +1,5 @@
+import { isDotDotDotToken } from 'typescript';
+
 type EarphoneTitles = 'YX1 WIRELESS';
 
 // eslint-disable-next-line prettier/prettier
@@ -31,6 +33,12 @@ export type Actions =
       type: ActionTypes.ADD_PRODUCT;
       payload: {
         product: Product;
+      };
+    }
+  | {
+      type: ActionTypes.REMOVE_PRODUCT;
+      payload: {
+        id: string;
       };
     }
   | { type: ActionTypes.REMOVE_ALL_PRODUCTS };

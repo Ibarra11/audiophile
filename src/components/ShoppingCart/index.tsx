@@ -45,7 +45,16 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
                   </ProductPrice>
                 </ProductDetails>
                 <ProductCounter>
-                  <ProductCountButton>-</ProductCountButton>
+                  <ProductCountButton
+                    onClick={() =>
+                      dispatch({
+                        type: ActionTypes.REMOVE_PRODUCT,
+                        payload: { id: product.id },
+                      })
+                    }
+                  >
+                    -
+                  </ProductCountButton>
                   {product.amount}
                   <ProductCountButton
                     onClick={() =>
