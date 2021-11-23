@@ -18,6 +18,8 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
   const cart = useCart();
   const dispatch = useCartDispatch();
 
+  console.log(cart);
+
   return (
     <CustomDialogOverlay isOpen={isOpen} onDismiss={onClose}>
       <CustomDialogContent aria-label="shopping cart modal">

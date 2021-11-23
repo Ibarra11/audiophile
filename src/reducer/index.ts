@@ -4,10 +4,23 @@ import { Cart, Actions, ActionTypes } from '../shared/types';
 export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
   switch (action.type) {
     case ActionTypes.ADD_PRODUCT: {
-      return {
-        products: [...cart.products, { ...action.payload.product }],
-        size: cart.size + action.payload.product.amount,
-      };
+      const { id } = action.payload.product;
+      const productIndex = cart.products.findIndex(
+        (product) => product.id === id,
+      );
+      if (productIndex >= 0) {
+        const productsCpy = [...cart.products];
+        productsCpy[productIndex].amount += action.payload.product.amount;
+        return {
+          products: productsCpy,
+          size: cart.size + action.payload.product.amount,
+        };
+      } else {
+        return {
+          products: [...cart.products, { ...action.payload.product }],
+          size: cart.size + action.payload.product.amount,
+        };
+      }
     }
 
     // case REMOVE_PRODUCT: {
