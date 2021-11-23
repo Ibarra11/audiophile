@@ -1,9 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useCart } from '../../context/ShoppingCartContext';
+import {
+  useCart,
+  useCartDispatch,
+} from '../../context/ShoppingCartContext';
+import { ActionTypes } from '../../shared/types';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import { ProductText } from '../ProductList/styles';
 import { Product } from '../ProductNav/styles';
+import { Action } from 'history';
 
 type Props = {
   isOpen: boolean;
@@ -11,13 +16,20 @@ type Props = {
 };
 const ShoppingCart = ({ isOpen, onClose }: Props) => {
   const cart = useCart();
-  console.log(cart);
+  const dispatch = useCartDispatch();
+
   return (
     <CustomDialogOverlay isOpen={isOpen} onDismiss={onClose}>
       <CustomDialogContent aria-label="shopping cart modal">
         <CartHeader>
-          <CartHeading>Cart (3)</CartHeading>
-          <CartButton>Remove all</CartButton>
+          <CartHeading>Cart ({cart.size})</CartHeading>
+          <CartButton
+            onClick={() =>
+              dispatch({ type: ActionTypes.REMOVE_ALL_PRODUCTS })
+            }
+          >
+            Remove all
+          </CartButton>
         </CartHeader>
         <CartList>
           {cart.products.map((product) => {

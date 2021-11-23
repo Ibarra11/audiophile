@@ -31,6 +31,7 @@ export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
     // }
     case ActionTypes.REMOVE_ALL_PRODUCTS: {
       if (cart.size > 0) {
+        return { products: [], size: 0 };
       }
       return cart;
     }
