@@ -50,9 +50,21 @@ const ProductNav = ({ mobile, onCloseModal }: ProductNavProps) => {
     </MobileProductsNavWrapper>
   ) : (
     <ProductsNavWrapper>
-      <ProductItem productImg={ProductHeadphoneImg} productTitle="Headphones" buttonLabel="Shop" />
-      <ProductItem productImg={ProductSpeakerImg} productTitle="Speakers" buttonLabel="Shop" />
-      <ProductItem productImg={ProductEarphonesImg} productTitle="Earphones" buttonLabel="Shop" />
+      <ProductItem
+        productImg={ProductHeadphoneImg}
+        productTitle="Headphones"
+        buttonLabel="Shop"
+      />
+      <ProductItem
+        productImg={ProductSpeakerImg}
+        productTitle="Speakers"
+        buttonLabel="Shop"
+      />
+      <ProductItem
+        productImg={ProductEarphonesImg}
+        productTitle="Earphones"
+        buttonLabel="Shop"
+      />
     </ProductsNavWrapper>
   );
 };
@@ -73,9 +85,16 @@ const ProductItem = ({
 }: ProductProps) => {
   return mobile ? (
     <MobileProduct>
-      <MobileProductImg src={productImg} alt={`${productTitle} category`} />
+      <MobileProductImg
+        src={productImg}
+        alt={`${productTitle} category`}
+      />
       <ProductTitle>{productTitle}</ProductTitle>
-      <ProductButton onClick={onCloseModal} id={'btn4'} path={`/${productTitle.toLowerCase()}`}>
+      <ProductButton
+        onClick={onCloseModal}
+        id={'btn4'}
+        path={`/${productTitle.toLowerCase()}`}
+      >
         {buttonLabel}
       </ProductButton>
       <ProductBackground />

@@ -5,9 +5,7 @@ interface ProductContentListProps {
   contents: { content: string; amount: number }[];
 }
 
-const ProductContentList = ({
-  contents,
-}: ProductContentListProps) => {
+const ProductContentList = ({ contents }: ProductContentListProps) => {
   return (
     <Wrapper>
       <Heading>In the Box</Heading>
@@ -16,8 +14,7 @@ const ProductContentList = ({
           return (
             <Item key={item.content}>
               <ItemType>
-                <ItemAmount>{item.amount}x</ItemAmount>{' '}
-                {item.content}
+                <ItemAmount>{item.amount}x</ItemAmount> {item.content}
               </ItemType>
             </Item>
           );

@@ -9,7 +9,9 @@ const MobileHeaderWrapper = styled.header`
   border-bottom: 1px solid hsl(var(--clr-secondary-gray) / 0.25);
 `;
 
-const MobileHeaderIcon = styled.img``;
+const MobileHeaderIcon = styled.img`
+  display: block;
+`;
 
 const MobileHeaderIconButtonWrapper = styled.button`
   position: relative;

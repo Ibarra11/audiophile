@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams, useLocation } from 'react-router';
 import ProductFeatures from './Product_Features';
 import ProductContentList from './Product_Content_List';
@@ -8,7 +8,13 @@ import Products from '../../data';
 import Buttons from '../Buttons';
 import { DollarSign } from 'react-feather';
 
-import { ProductTitles, ProductTypes } from '../../shared/types';
+import { useCartDispatch } from '../../context/ShoppingCartContext';
+
+import {
+  ProductTitles,
+  ProductTypes,
+  ActionTypes,
+} from '../../shared/types';
 
 import {
   SectionWrapper,
@@ -42,6 +48,8 @@ const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
         newProduct={product.newProduct}
         title={product.title}
         description={product.description}
+        id={product.id}
+        price={product.price}
       />
       <ProductFeatures features={product.features} />
       <ProductContentList contents={product.contents} />
@@ -59,13 +67,46 @@ interface ProductProps {
   newProduct: boolean;
   title: string;
   description: string;
+  id: string;
+  price: number;
 }
 function Product({
   mainImg,
   newProduct,
   title,
   description,
+  id,
+  price,
 }: ProductProps) {
+  const [productCount, setProductCount] = useState(1);
+  const dispatch = useCartDispatch();
+  function handleCartAddition() {
+    let updatedTitle: string | undefined;
+    if (title === 'XX99 MARK II') {
+      updatedTitle = 'XX99 MK II';
+    } else if (title === 'XX99 MARK I') {
+      updatedTitle = 'XX88 MK I';
+    }
+    dispatch({
+      type: ActionTypes.ADD_PRODUCT,
+      payload: {
+        product: {
+          id,
+          mainImg,
+          title: updatedTitle ? updatedTitle : title,
+          price,
+          amount: productCount,
+        },
+      },
+    });
+    setProductCount(1);
+  }
+  function handleDecrementProductCount() {
+    if (productCount > 1) {
+      setProductCount(productCount - 1);
+    }
+  }
+
   return (
     <ProductWrapper>
       <ProductImgWrapper>
@@ -80,11 +121,19 @@ function Product({
         </ProductPrice>
         <ProductButtons>
           <ButtonCounterWrapper>
-            <ButtonDecrement>-</ButtonDecrement>
-            <CountValue>{1}</CountValue>
-            <ButtonIncrement>+</ButtonIncrement>
+            <ButtonDecrement onClick={handleDecrementProductCount}>
+              -
+            </ButtonDecrement>
+            <CountValue>{productCount}</CountValue>
+            <ButtonIncrement
+              onClick={() => setProductCount(productCount + 1)}
+            >
+              +
+            </ButtonIncrement>
           </ButtonCounterWrapper>
-          <Buttons id={'btn1'}>Add to Cart</Buttons>
+          <Buttons id={'btn1'} type="btn" onClick={handleCartAddition}>
+            Add to Cart
+          </Buttons>
         </ProductButtons>
       </ProductContent>
     </ProductWrapper>

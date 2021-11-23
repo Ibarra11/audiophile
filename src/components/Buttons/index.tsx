@@ -9,6 +9,7 @@ interface ButtonProps {
   children: ReactNode;
   path?: string;
   onClick?: () => void;
+  type?: 'btn' | 'link';
 }
 
 const Buttons = ({
@@ -16,10 +17,19 @@ const Buttons = ({
   id,
   path = '/',
   onClick,
+  type,
 }: ButtonProps) => {
   switch (id) {
     case 'btn1':
-      return <Button1 to={path}>{children}</Button1>;
+      if (type === 'btn') {
+        return (
+          <Button1 as="button" onClick={onClick}>
+            {children}
+          </Button1>
+        );
+      } else {
+        return <Button1 to={path}>{children}</Button1>;
+      }
     case 'btn2':
       return <Button2 to={path}>{children}</Button2>;
     case 'btn3':

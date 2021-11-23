@@ -28,7 +28,8 @@ const Speaker = () => {
       <Content>
         <Title>ZX9 Speaker</Title>
         <Text>
-          Upgrade to premium speakers that are phenomenally built to deliver truly remarkable sound.
+          Upgrade to premium speakers that are phenomenally built to
+          deliver truly remarkable sound.
         </Text>
         <Button id={'btn2'}>See Product</Button>
       </Content>

@@ -115,6 +115,18 @@ select {
     line-height: 1.6;
 }
 
+button {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+}
+
 
 /* ALl Header elements are capitalized and are bolded */
 h1,

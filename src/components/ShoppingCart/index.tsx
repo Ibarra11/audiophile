@@ -1,16 +1,42 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useCart } from '../../context/ShoppingCartContext';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
+import { ProductText } from '../ProductList/styles';
+import { Product } from '../ProductNav/styles';
 
 type Props = {
   isOpen: boolean;
   onClose: () => void;
 };
 const ShoppingCart = ({ isOpen, onClose }: Props) => {
+  const cart = useCart();
+  console.log(cart);
   return (
     <CustomDialogOverlay isOpen={isOpen} onDismiss={onClose}>
-      <CustomDialogContent>
-        <h1>Cart</h1>
+      <CustomDialogContent aria-label="shopping cart modal">
+        <CartHeader>
+          <CartHeading>Cart (3)</CartHeading>
+          <CartButton>Remove all</CartButton>
+        </CartHeader>
+        <CartList>
+          {cart.products.map((product) => {
+            return (
+              <CartRow key={product.id}>
+                <ProductImg src={product.mainImg} />
+                <ProductDetails>
+                  <ProductTitle>{product.title}</ProductTitle>
+                  <ProductPrice>{product.price}</ProductPrice>
+                </ProductDetails>
+                <ProductCounter>
+                  <ProductCountButton>-</ProductCountButton>
+                  {product.amount}
+                  <ProductCountButton>+</ProductCountButton>
+                </ProductCounter>
+              </CartRow>
+            );
+          })}
+        </CartList>
       </CustomDialogContent>
     </CustomDialogOverlay>
   );
@@ -29,7 +55,57 @@ const CustomDialogContent = styled(DialogContent)`
   width: ${327 / 16}rem;
   margin-top: 24px;
   margin-inline: auto;
+  padding: 32px 28px;
   border-radius: 6px;
 `;
+
+const CartHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const CartHeading = styled.h6`
+  font-size: var(--fs-h6);
+`;
+
+const CartButton = styled.button`
+  color: hsl(var(--clr-primary-black) / 0.5);
+  font-size: var(--text-body);
+  text-decoration: underline;
+`;
+
+const CartList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-block: 32px;
+`;
+
+const CartRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+`;
+
+const ProductImg = styled.img`
+  display: block;
+  height: 64px;
+  width: 64px;
+  object-fit: cover;
+`;
+
+const ProductDetails = styled.div``;
+
+const ProductTitle = styled.h6``;
+
+const ProductPrice = styled.span``;
+
+const ProductCounter = styled.div`
+  display: flex;
+  margin-left: auto;
+`;
+
+const ProductCountButton = styled.button``;
 
 export default ShoppingCart;

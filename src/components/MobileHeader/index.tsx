@@ -4,6 +4,7 @@ import ShoppingCart from '../ShoppingCart';
 import Logo from '../../assets/shared/desktop/logo.svg';
 import CartIcon from '../../assets/shared/desktop/icon-cart.svg';
 import HamburgerMenu from '../../assets/shared/tablet/icon-hamburger.svg';
+
 import {
   MobileHeaderWrapper,
   MobileHeaderIcon,

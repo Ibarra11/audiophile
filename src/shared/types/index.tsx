@@ -11,3 +11,34 @@ export type ProductTitles =
   | SpeakerTitles;
 
 export type ProductTypes = 'headphones' | 'speakers' | 'earphones';
+
+export type Product = {
+  id: string;
+  title: string;
+  mainImg: string;
+  price: number;
+  amount: number;
+};
+
+export enum ActionTypes {
+  ADD_PRODUCT = 'ADD_PRODUCT',
+  REMOVE_PRODUCT = 'REMOVE_PRODUCT',
+  REMOVE_ALL_PRODUCTS = 'REMOVE_ALL_PRODUCTS',
+}
+
+export type Actions =
+  | {
+      type: ActionTypes.ADD_PRODUCT;
+      payload: {
+        product: Product;
+      };
+    }
+  | { type: ActionTypes.REMOVE_ALL_PRODUCTS };
+// type CartItem = {
+//   [productId: string]: Product;
+// };
+
+export type Cart = {
+  products: Product[];
+  size: number;
+};

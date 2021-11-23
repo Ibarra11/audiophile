@@ -15,10 +15,12 @@ const Header = () => {
     <HeaderHeroWrapper>
       <HeaderHeroBody>
         <HeaderHeroBodySubHeading>new product</HeaderHeroBodySubHeading>
-        <HeaderHeroBodyMainHeading>xx99 mark II headphones</HeaderHeroBodyMainHeading>
+        <HeaderHeroBodyMainHeading>
+          xx99 mark II headphones
+        </HeaderHeroBodyMainHeading>
         <HeaderHeroBodyText>
-          Experience natural, lifelike audio and exceptional build quality made for the passionate
-          music enthusiast
+          Experience natural, lifelike audio and exceptional build quality
+          made for the passionate music enthusiast
         </HeaderHeroBodyText>
         <Button id={'btn1'}>See Product</Button>
       </HeaderHeroBody>
