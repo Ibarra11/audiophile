@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import numeral from 'numeral';
 import {
   useCart,
   useCartDispatch,
@@ -16,9 +17,8 @@ type Props = {
 };
 const ShoppingCart = ({ isOpen, onClose }: Props) => {
   const cart = useCart();
-  const dispatch = useCartDispatch();
-
   console.log(cart);
+  const dispatch = useCartDispatch();
 
   return (
     <CustomDialogOverlay isOpen={isOpen} onDismiss={onClose}>
@@ -40,12 +40,23 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
                 <ProductImg src={product.mainImg} />
                 <ProductDetails>
                   <ProductTitle>{product.title}</ProductTitle>
-                  <ProductPrice>{product.price}</ProductPrice>
+                  <ProductPrice>
+                    $ {numeral(product.price).format('0,0')}
+                  </ProductPrice>
                 </ProductDetails>
                 <ProductCounter>
                   <ProductCountButton>-</ProductCountButton>
                   {product.amount}
-                  <ProductCountButton>+</ProductCountButton>
+                  <ProductCountButton
+                    onClick={() =>
+                      dispatch({
+                        type: ActionTypes.ADD_PRODUCT,
+                        payload: { product: { ...product, amount: 1 } },
+                      })
+                    }
+                  >
+                    +
+                  </ProductCountButton>
                 </ProductCounter>
               </CartRow>
             );
@@ -111,15 +122,36 @@ const ProductImg = styled.img`
 
 const ProductDetails = styled.div``;
 
-const ProductTitle = styled.h6``;
+const ProductTitle = styled.h6`
+  font-size: var(--text-body);
+`;
 
-const ProductPrice = styled.span``;
+const ProductPrice = styled.span`
+  color: hsl(var(--clr-primary-black) / 0.5);
+  font-size: var(--text-subtitle);
+  font-weight: 700;
+`;
 
 const ProductCounter = styled.div`
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-left: auto;
+  background-color: hsl(var(--clr-primary-gray));
+  width: 96px;
+  height: 32px;
+  padding-inline: 8px;
 `;
 
-const ProductCountButton = styled.button``;
+const ProductCountButton = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 18px;
+  &:last-of-type {
+  }
+`;
 
 export default ShoppingCart;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams, useLocation } from 'react-router';
+import numeral from 'numeral';
 import ProductFeatures from './Product_Features';
 import ProductContentList from './Product_Content_List';
 import ProductGallery from './Product_Gallery';
@@ -83,7 +84,7 @@ function Product({
   function handleCartAddition() {
     let updatedTitle: string | undefined;
     if (title === 'XX99 MARK II') {
-      updatedTitle = 'XX99 MK II';
+      updatedTitle = 'XX99 MK I';
     } else if (title === 'XX99 MARK I') {
       updatedTitle = 'XX88 MK I';
     }
@@ -116,9 +117,7 @@ function Product({
         {newProduct && <ProductSubHeading>New Product</ProductSubHeading>}
         <ProductHeading>{title}</ProductHeading>
         <Text>{description}</Text>
-        <ProductPrice>
-          <DollarSign size={18} /> 2,999
-        </ProductPrice>
+        <ProductPrice>$ {numeral(price).format('0,0')}</ProductPrice>
         <ProductButtons>
           <ButtonCounterWrapper>
             <ButtonDecrement onClick={handleDecrementProductCount}>

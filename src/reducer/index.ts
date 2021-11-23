@@ -4,13 +4,25 @@ import { Cart, Actions, ActionTypes } from '../shared/types';
 export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
   switch (action.type) {
     case ActionTypes.ADD_PRODUCT: {
+      console.log(action);
       const { id } = action.payload.product;
       const productIndex = cart.products.findIndex(
         (product) => product.id === id,
       );
       if (productIndex >= 0) {
         const productsCpy = [...cart.products];
-        productsCpy[productIndex].amount += action.payload.product.amount;
+        console.log('products: ' + productsCpy[productIndex].amount);
+        console.log('payload: ' + action.payload.product.amount);
+        console.log(productsCpy[productIndex]);
+        productsCpy[productIndex] = {
+          ...productsCpy[productIndex],
+          amount:
+            productsCpy[productIndex].amount +
+            action.payload.product.amount,
+        };
+        console.log(productsCpy[productIndex]);
+
+        console.log(productsCpy);
         return {
           products: productsCpy,
           size: cart.size + action.payload.product.amount,
