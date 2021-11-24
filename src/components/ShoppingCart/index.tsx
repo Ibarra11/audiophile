@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import numeral from 'numeral';
+import Buttons from '../Buttons';
 import {
   useCart,
   useCartDispatch,
@@ -17,13 +18,13 @@ type Props = {
 };
 const ShoppingCart = ({ isOpen, onClose }: Props) => {
   const cart = useCart();
-  console.log(cart);
   const dispatch = useCartDispatch();
+  let cartTotal = 0;
 
   return (
     <CustomDialogOverlay isOpen={isOpen} onDismiss={onClose}>
       <CustomDialogContent aria-label="shopping cart modal">
-        <CartHeader>
+        <Row>
           <CartHeading>Cart ({cart.size})</CartHeading>
           <CartButton
             onClick={() =>
@@ -32,9 +33,10 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
           >
             Remove all
           </CartButton>
-        </CartHeader>
+        </Row>
         <CartList>
           {cart.products.map((product) => {
+            cartTotal += product.price * product.amount;
             return (
               <CartRow key={product.id}>
                 <ProductImg src={product.mainImg} />
@@ -71,6 +73,15 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
             );
           })}
         </CartList>
+        <CheckoutGroup>
+          <BottomRow>
+            <Text>Total</Text>
+            <CartHeading>$ {numeral(cartTotal).format('0,0')}</CartHeading>
+          </BottomRow>
+          <Buttons id={'btn1'} type="btn">
+            Checkout
+          </Buttons>
+        </CheckoutGroup>
       </CustomDialogContent>
     </CustomDialogOverlay>
   );
@@ -84,16 +95,20 @@ const CustomDialogOverlay = styled(DialogOverlay)`
 `;
 
 const CustomDialogContent = styled(DialogContent)`
-  background-color: hsl(var(--clr-white));
   height: ${488 / 16}rem;
   width: ${327 / 16}rem;
+  display: flex;
+  gap: 32px;
+  flex-direction: column;
+  justify-content: space-between;
   margin-top: 24px;
   margin-inline: auto;
   padding: 32px 28px;
   border-radius: 6px;
+  background-color: hsl(var(--clr-white));
 `;
 
-const CartHeader = styled.div`
+const Row = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -110,10 +125,14 @@ const CartButton = styled.button`
 `;
 
 const CartList = styled.div`
+  width: calc(100% + 20px);
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  margin-block: 32px;
+  margin-left: -10px;
+  padding-right: 12px;
+  overflow: auto;
 `;
 
 const CartRow = styled.div`
@@ -146,8 +165,8 @@ const ProductCounter = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-left: auto;
-  background-color: hsl(var(--clr-primary-gray));
-  width: 96px;
+  background-color: hsl(var(--clr-primary-black) / 0.2);
+  width: 88px;
   height: 32px;
   padding-inline: 8px;
 `;
@@ -156,11 +175,25 @@ const ProductCountButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 16px;
   height: 18px;
-  &:last-of-type {
+`;
+
+const CheckoutGroup = styled.div`
+  & button {
+    width: 100%;
   }
+`;
+
+const BottomRow = styled(Row)`
+  justify-self: flex-end;
+  margin-bottom: 24px;
+`;
+
+const Text = styled.p`
+  color: hsl(var(--clr-primary-black) / 0.5);
+  font-size: var(--text-body);
+  text-transform: uppercase;
 `;
 
 export default ShoppingCart;

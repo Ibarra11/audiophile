@@ -87,6 +87,8 @@ function Product({
       updatedTitle = 'XX99 MK I';
     } else if (title === 'XX99 MARK I') {
       updatedTitle = 'XX88 MK I';
+    } else if (title === 'YX1 WIRELESS') {
+      updatedTitle = 'YX1';
     }
     dispatch({
       type: ActionTypes.ADD_PRODUCT,
