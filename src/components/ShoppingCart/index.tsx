@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import numeral from 'numeral';
+import CartList from '../CartList';
+import { DialogOverlay, DialogContent } from '@reach/dialog';
 import Buttons from '../Buttons';
 import {
   useCart,
   useCartDispatch,
 } from '../../context/ShoppingCartContext';
 import { ActionTypes } from '../../shared/types';
-import { DialogOverlay, DialogContent } from '@reach/dialog';
-import { ProductText } from '../ProductList/styles';
-import { Product } from '../ProductNav/styles';
-import { Action } from 'history';
 
 type Props = {
   isOpen: boolean;
@@ -19,8 +17,6 @@ type Props = {
 const ShoppingCart = ({ isOpen, onClose }: Props) => {
   const cart = useCart();
   const dispatch = useCartDispatch();
-  let cartTotal = 0;
-
   return (
     <CustomDialogOverlay isOpen={isOpen} onDismiss={onClose}>
       <CustomDialogContent aria-label="shopping cart modal">
@@ -34,51 +30,20 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
             Remove all
           </CartButton>
         </Row>
-        <CartList>
-          {cart.products.map((product) => {
-            cartTotal += product.price * product.amount;
-            return (
-              <CartRow key={product.id}>
-                <ProductImg src={product.mainImg} />
-                <ProductDetails>
-                  <ProductTitle>{product.title}</ProductTitle>
-                  <ProductPrice>
-                    $ {numeral(product.price).format('0,0')}
-                  </ProductPrice>
-                </ProductDetails>
-                <ProductCounter>
-                  <ProductCountButton
-                    onClick={() =>
-                      dispatch({
-                        type: ActionTypes.REMOVE_PRODUCT,
-                        payload: { id: product.id },
-                      })
-                    }
-                  >
-                    -
-                  </ProductCountButton>
-                  {product.amount}
-                  <ProductCountButton
-                    onClick={() =>
-                      dispatch({
-                        type: ActionTypes.ADD_PRODUCT,
-                        payload: { product: { ...product, amount: 1 } },
-                      })
-                    }
-                  >
-                    +
-                  </ProductCountButton>
-                </ProductCounter>
-              </CartRow>
-            );
-          })}
-        </CartList>
+        <CartList dispatch={dispatch} />
         <CheckoutGroup>
           <BottomRow>
             <Text>Total</Text>
-            <CartHeading>$ {numeral(cartTotal).format('0,0')}</CartHeading>
+            <CartHeading>
+              $ {numeral(cart.total).format('0,0')}
+            </CartHeading>
           </BottomRow>
-          <Buttons id={'btn1'} type="btn">
+          <Buttons
+            id={'btn1'}
+            type="link"
+            path={'/checkout'}
+            onClick={() => onClose()}
+          >
             Checkout
           </Buttons>
         </CheckoutGroup>
@@ -122,61 +87,6 @@ const CartButton = styled.button`
   color: hsl(var(--clr-primary-black) / 0.5);
   font-size: var(--text-body);
   text-decoration: underline;
-`;
-
-const CartList = styled.div`
-  width: calc(100% + 20px);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-left: -10px;
-  padding-right: 12px;
-  overflow: auto;
-`;
-
-const CartRow = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 16px;
-`;
-
-const ProductImg = styled.img`
-  display: block;
-  height: 64px;
-  width: 64px;
-  object-fit: cover;
-`;
-
-const ProductDetails = styled.div``;
-
-const ProductTitle = styled.h6`
-  font-size: var(--text-body);
-`;
-
-const ProductPrice = styled.span`
-  color: hsl(var(--clr-primary-black) / 0.5);
-  font-size: var(--text-subtitle);
-  font-weight: 700;
-`;
-
-const ProductCounter = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: auto;
-  background-color: hsl(var(--clr-primary-black) / 0.2);
-  width: 88px;
-  height: 32px;
-  padding-inline: 8px;
-`;
-
-const ProductCountButton = styled.button`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 16px;
-  height: 18px;
 `;
 
 const CheckoutGroup = styled.div`
