@@ -1,5 +1,3 @@
-import { createScanner } from 'typescript';
-import Products from '../data';
 import { Cart, Actions, ActionTypes } from '../shared/types';
 
 export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {

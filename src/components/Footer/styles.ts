@@ -9,7 +9,7 @@ const Wrapper = styled.footer`
   background-color: hsl(var(--clr-primary-black));
   color: hsl(var(--clr-white));
   max-height: ${654 / 16}rem;
-  margin-top: 120px;
+
   text-align: center;
   padding: ${52 / 16}rem ${24 / 16}rem ${38 / 16}rem;
 `;

@@ -28,7 +28,11 @@ const Buttons = ({
           </Button1>
         );
       } else {
-        return <Button1 to={path}>{children}</Button1>;
+        return (
+          <Button1 onClick={onClick} to={path}>
+            {children}
+          </Button1>
+        );
       }
     case 'btn2':
       return <Button2 to={path}>{children}</Button2>;

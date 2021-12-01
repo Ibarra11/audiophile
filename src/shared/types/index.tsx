@@ -1,5 +1,3 @@
-import { isDotDotDotToken } from 'typescript';
-
 type EarphoneTitles = 'YX1 WIRELESS';
 
 // eslint-disable-next-line prettier/prettier
@@ -49,4 +47,7 @@ export type Actions =
 export type Cart = {
   products: Product[];
   size: number;
+  total: number;
 };
+
+export type Dispatch = (action: Actions) => void;

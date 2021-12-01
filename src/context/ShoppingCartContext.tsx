@@ -1,17 +1,17 @@
 import React, { ReactNode } from 'react';
 import { createContext, useContext, useReducer } from 'react';
 import { ShoppingCartReducer } from '../reducer';
-import { Cart, Actions } from '../shared/types';
+import { Cart, Dispatch } from '../shared/types';
 
 const ShoppingCartContext = createContext<Cart | null>(null);
 
-type Dispatch = (action: Actions) => void;
 const ShoppingCartDispatchContext = createContext<Dispatch | null>(null);
 
 const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, dispatch] = useReducer(ShoppingCartReducer, {
     products: [],
     size: 0,
+    total: 0,
   });
   return (
     <ShoppingCartContext.Provider value={cart}>

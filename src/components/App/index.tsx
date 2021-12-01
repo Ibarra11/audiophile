@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, ReactNode } from 'react';
 import ShoppingCartProvider from '../../context/ShoppingCartContext';
 import { AppContainer } from './styles';
 import HeaderHero from '../HeaderHero';
@@ -9,6 +9,7 @@ import ImpactMessage from '../ImpactMessage';
 import MobileHeader from '../MobileHeader';
 import Footer from '../Footer';
 import Product from '../Product';
+import CheckoutForm from '../CheckoutForm';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
 function ScrollToTop({ children }: { children: React.ReactNode }) {
@@ -29,39 +30,79 @@ const App = () => {
           <Routes>
             <Route
               path="/headphones/:headphone/:id"
-              element={<Product productType="headphones" />}
+              element={
+                <MainLayout>
+                  <Product productType="headphones" />
+                </MainLayout>
+              }
             />
             <Route
               path="/speakers/:speaker/:id"
-              element={<Product productType="speakers" />}
+              element={
+                <MainLayout>
+                  <Product productType="speakers" />
+                </MainLayout>
+              }
             />
             <Route
               path="/earphones/:earphone/:id"
-              element={<Product productType="earphones" />}
+              element={
+                <MainLayout>
+                  <Product productType="earphones" />
+                </MainLayout>
+              }
             />
             <Route
               path="/headphones"
-              element={<ProductList productType="headphones" />}
-            ></Route>
+              element={
+                <MainLayout>
+                  <ProductList productType="headphones" />
+                </MainLayout>
+              }
+            />
             <Route
               path="/speakers"
-              element={<ProductList productType="speakers" />}
-            ></Route>
+              element={
+                <MainLayout>
+                  <ProductList productType="speakers" />
+                </MainLayout>
+              }
+            />
             <Route
               path="/earphones"
-              element={<ProductList productType="earphones" />}
-            ></Route>
-            <Route path="/" element={<HeaderHero />} />
+              element={
+                <MainLayout>
+                  <ProductList productType="earphones" />
+                </MainLayout>
+              }
+            />
+            <Route path="/checkout" element={<CheckoutForm />} />
+            <Route
+              path="/"
+              element={
+                <MainLayout>
+                  <HeaderHero />
+                </MainLayout>
+              }
+            />
             <Route path="*" element={<HeaderHero />} />
           </Routes>
         </ScrollToTop>
       </ShoppingCartProvider>
+      <Footer />
+    </AppContainer>
+  );
+};
 
+const MainLayout = ({ children }: { children: ReactNode }) => {
+  console.log(children);
+  return (
+    <>
+      {children}
       <ProductNav />
       <ProductShowcase />
       <ImpactMessage />
-      <Footer />
-    </AppContainer>
+    </>
   );
 };
 

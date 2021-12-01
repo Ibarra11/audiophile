@@ -5,7 +5,7 @@ import { ActionTypes, Dispatch } from '../../shared/types';
 import { useCart } from '../../context/ShoppingCartContext';
 
 type Props = {
-  dispatch: Dispatch;
+  dispatch?: Dispatch;
 };
 
 const CartList = ({ dispatch }: Props) => {
@@ -23,29 +23,33 @@ const CartList = ({ dispatch }: Props) => {
                 $ {numeral(product.price).format('0,0')}
               </ProductPrice>
             </ProductDetails>
-            <ProductCounter>
-              <ProductCountButton
-                onClick={() =>
-                  dispatch({
-                    type: ActionTypes.REMOVE_PRODUCT,
-                    payload: { id: product.id },
-                  })
-                }
-              >
-                -
-              </ProductCountButton>
-              {product.amount}
-              <ProductCountButton
-                onClick={() =>
-                  dispatch({
-                    type: ActionTypes.ADD_PRODUCT,
-                    payload: { product: { ...product, amount: 1 } },
-                  })
-                }
-              >
-                +
-              </ProductCountButton>
-            </ProductCounter>
+            {dispatch ? (
+              <ProductCounter>
+                <ProductCountButton
+                  onClick={() =>
+                    dispatch({
+                      type: ActionTypes.REMOVE_PRODUCT,
+                      payload: { id: product.id },
+                    })
+                  }
+                >
+                  -
+                </ProductCountButton>
+                {product.amount}
+                <ProductCountButton
+                  onClick={() =>
+                    dispatch({
+                      type: ActionTypes.ADD_PRODUCT,
+                      payload: { product: { ...product, amount: 1 } },
+                    })
+                  }
+                >
+                  +
+                </ProductCountButton>
+              </ProductCounter>
+            ) : (
+              <ProductCount>x{product.amount}</ProductCount>
+            )}
           </CartRow>
         );
       })}
@@ -107,4 +111,12 @@ const ProductCountButton = styled.button`
   justify-content: center;
   width: 16px;
   height: 18px;
+`;
+
+const ProductCount = styled.span`
+  display: inline-block;
+  align-self: flex-start;
+  transform: translateY(25%);
+  margin-left: auto;
+  color: hsl(var(--clr-primary-black) / 0.5);
 `;

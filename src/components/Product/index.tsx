@@ -84,9 +84,9 @@ function Product({
   function handleCartAddition() {
     let updatedTitle: string | undefined;
     if (title === 'XX99 MARK II') {
-      updatedTitle = 'XX99 MK I';
+      updatedTitle = 'XX99 MK II';
     } else if (title === 'XX99 MARK I') {
-      updatedTitle = 'XX88 MK I';
+      updatedTitle = 'XX99 MK I';
     } else if (title === 'YX1 WIRELESS') {
       updatedTitle = 'YX1';
     }
