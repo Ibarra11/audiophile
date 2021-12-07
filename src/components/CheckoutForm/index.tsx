@@ -1,4 +1,6 @@
 import React from 'react';
+import * as Yup from 'yup';
+import Buttons from '../Buttons';
 import CartList from '../CartList';
 import { useCart } from '../../context/ShoppingCartContext';
 import { TextInput, RadioButton } from './helpers';
@@ -11,40 +13,43 @@ import {
   FormGroupWrapper,
   FormGroup,
   FormGroupHeader,
-  InputGroup,
-  RadioGroup,
-  Label,
-  Input,
   SummaryWrapper,
   SummaryHeading,
   SummaryRow,
   RowTitle,
   RowPrice,
   OrangeRowPrice,
+  ErrorText,
 } from './styles';
+
+const CheckoutSchema = Yup.object().shape({
+  Name: Yup.string().required(),
+  Email: Yup.string().email().required(),
+  'Phone Number': Yup.string().required(),
+  Address: Yup.string().required(),
+  'Zip Code': Yup.string().max(5).required(),
+  City: Yup.string().required(),
+  Country: Yup.string().required(),
+  'Payment Method': Yup.string().required(),
+  'e-number': Yup.string().required(),
+  'e-pin': Yup.string().required(),
+});
 
 const CheckoutForm = () => {
   const formik = useFormik({
     initialValues: {
-      name: '',
-      email: '',
-      phone: '',
-      address: '',
-      zipcode: '',
-      city: '',
-      country: '',
-      paymentMethod: '',
+      Name: '',
+      Email: '',
+      'Phone Number': '',
+      Address: '',
+      'Zip Code': '',
+      City: '',
+      Country: '',
+      'Payment Method': 'e-money',
       'e-number': '',
       'e-pin': '',
     },
-    validate: (values) => {
-      console.log(values);
-      const errors: { [index: string]: string } = {};
-      if (values.name.length > 15) {
-        errors.name = 'Name must be less than 15 characters';
-      }
-      return errors;
-    },
+    validationSchema: CheckoutSchema,
     onSubmit: (values) => {
       console.log(values);
     },
@@ -53,33 +58,39 @@ const CheckoutForm = () => {
   const shippingCost = cart.total * 0.025;
   const vatCost = cart.total * 0.08;
   const grandTotal = cart.total + shippingCost + vatCost;
+  console.log(formik);
   return (
     <Wrapper>
-      <Form>
+      <Form
+        onSubmit={(e) => {
+          e.preventDefault();
+          formik.submitForm();
+        }}
+      >
         <FormGroupWrapper>
           <Heading>Checkout</Heading>
           <FormGroup>
             <FormGroupHeader>Billing Details</FormGroupHeader>
             <TextInput
               label="Name"
-              name="name"
-              id="name"
+              name="Name"
+              id="Name"
               type="text"
               fieldProps={formik.getFieldProps}
               meta={[formik.touched, formik.errors]}
             />
             <TextInput
               label="Email Address"
-              name="email"
-              id="email"
+              name="Email"
+              id="Email"
               type="email"
               fieldProps={formik.getFieldProps}
               meta={[formik.touched, formik.errors]}
             />
             <TextInput
               label="Phone Number"
-              name="phone"
-              id="phone"
+              name="Phone Number"
+              id="Phone Number"
               type="tel"
               fieldProps={formik.getFieldProps}
               meta={[formik.touched, formik.errors]}
@@ -89,32 +100,32 @@ const CheckoutForm = () => {
             <FormGroupHeader>Shipping Info</FormGroupHeader>
             <TextInput
               label="Address"
-              name="address"
-              id="address"
+              name="Address"
+              id="Address"
               type="text"
               fieldProps={formik.getFieldProps}
               meta={[formik.touched, formik.errors]}
             />
             <TextInput
               label="Zip Code"
-              name="zipcode"
-              id="zipcode"
+              name="Zip Code"
+              id="Zip Code"
               type="text"
               fieldProps={formik.getFieldProps}
               meta={[formik.touched, formik.errors]}
             />
             <TextInput
               label="City"
-              name="city"
-              id="city"
+              name="City"
+              id="City"
               type="text"
               fieldProps={formik.getFieldProps}
               meta={[formik.touched, formik.errors]}
             />
             <TextInput
               label="Country"
-              name="country"
-              id="country"
+              name="Country"
+              id="Country"
               type="text"
               fieldProps={formik.getFieldProps}
               meta={[formik.touched, formik.errors]}
@@ -125,19 +136,24 @@ const CheckoutForm = () => {
             <RadioButton
               label="e-Money"
               id="e-money"
-              name="paymentMethod"
+              name="Payment Method"
               type="radio"
               fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
+              checked={formik.values['Payment Method'] === 'e-money'}
             />
+
             <RadioButton
               label="Cash on Delivery"
-              name="paymentMethod"
+              name="Payment Method"
               id="cash"
               type="radio"
               fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
+              checked={formik.values['Payment Method'] === 'cash'}
             />
+            {formik.errors['Payment Method'] &&
+            formik.touched['Payment Method'] ? (
+              <ErrorText>Select one of the payment methods</ErrorText>
+            ) : null}
             <TextInput
               label="e-money Number"
               name="e-number"
@@ -177,6 +193,10 @@ const CheckoutForm = () => {
               {numeral(grandTotal).format('0,0.00')}
             </OrangeRowPrice>
           </SummaryRow>
+          {/* <Buttons id={'btn1'} type="btn">
+            Continue & Pay
+          </Buttons> */}
+          <button type="submit">Continute & Pay</button>
         </SummaryWrapper>
       </Form>
     </Wrapper>

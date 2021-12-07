@@ -1,5 +1,5 @@
 import { FieldInputProps, FormikErrors, FormikTouched } from 'formik';
-import { InputGroup, Label, Input, RadioGroup } from './styles';
+import { InputGroup, Label, Input, RadioGroup, ErrorText } from './styles';
 
 interface ITextInput {
   label: string;
@@ -17,7 +17,7 @@ const TextInput = ({ label, fieldProps, meta, ...props }: ITextInput) => {
       <Label htmlFor={props.name || props.id}>{label}</Label>
       <Input {...props} {...fieldProps(props.name)} />
       {touched[props.name] && errors[props.name] ? (
-        <div>{errors[props.name]}</div>
+        <ErrorText>{errors[props.name]}</ErrorText>
       ) : null}
     </InputGroup>
   );
@@ -29,23 +29,25 @@ interface IRadioButton {
   id: string;
   type: 'radio';
   fieldProps: (nameOrOptions: any) => FieldInputProps<any>;
-  meta: [FormikTouched<any>, FormikErrors<any>];
+  checked: boolean;
 }
 
 const RadioButton = ({
   label,
   fieldProps,
-  meta,
+  checked,
   ...props
 }: IRadioButton) => {
-  const [touched, errors] = meta;
+  console.log(props.id + ' ' + checked);
   return (
-    <RadioGroup>
-      <Input {...props} {...fieldProps(props.name)} value={props.id} />
+    <RadioGroup checked={checked}>
+      <Input
+        {...props}
+        {...fieldProps(props.name)}
+        value={props.id}
+        checked={checked}
+      />
       <Label htmlFor={props.name || props.id}>{label}</Label>
-      {touched[props.name] && errors[props.name] ? (
-        <div>{errors[props.name]}</div>
-      ) : null}
     </RadioGroup>
   );
 };
