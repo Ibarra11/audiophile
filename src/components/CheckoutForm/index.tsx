@@ -22,18 +22,30 @@ import {
   ErrorText,
 } from './styles';
 
-const CheckoutSchema = Yup.object().shape({
-  Name: Yup.string().required(),
-  Email: Yup.string().email().required(),
-  'Phone Number': Yup.string().required(),
-  Address: Yup.string().required(),
-  'Zip Code': Yup.string().max(5).required(),
-  City: Yup.string().required(),
-  Country: Yup.string().required(),
-  'Payment Method': Yup.string().required(),
-  'e-number': Yup.string().required(),
-  'e-pin': Yup.string().required(),
-});
+const CheckoutSchema = Yup.object().shape(
+  {
+    Name: Yup.string().required(),
+    Email: Yup.string().email().required(),
+    'Phone Number': Yup.string().required(),
+    Address: Yup.string().required(),
+    'Zip Code': Yup.string().max(5).required(),
+    City: Yup.string().required(),
+    Country: Yup.string().required(),
+    'Payment Method': Yup.string().required(),
+    'e-number': Yup.string().ensure().when('Payment Method', {
+      is: 'e-money',
+      then: Yup.string().required(),
+    }),
+    'e-pin': Yup.string().ensure().when('Payment Method', {
+      is: 'e-money',
+      then: Yup.string().required(),
+    }),
+  },
+  [
+    ['Payment Method', 'e-number'],
+    ['Payment Method', 'e-pin'],
+  ],
+);
 
 const CheckoutForm = () => {
   const formik = useFormik({
@@ -58,7 +70,7 @@ const CheckoutForm = () => {
   const shippingCost = cart.total * 0.025;
   const vatCost = cart.total * 0.08;
   const grandTotal = cart.total + shippingCost + vatCost;
-  console.log(formik);
+
   return (
     <Wrapper>
       <Form

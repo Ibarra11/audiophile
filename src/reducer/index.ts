@@ -4,16 +4,22 @@ export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
   switch (action.type) {
     case ActionTypes.ADD_PRODUCT: {
       const { product } = action.payload;
+      // We are checking to see if the product already exists in the cart
       const productIndex = cart.products.findIndex(
         (cartProduct) => cartProduct.id === product.id,
       );
+      // We enter this condition if the product exists
       if (productIndex >= 0) {
+        // We make a copy of the whole carts array
         const productsCpy = [...cart.products];
 
+        // We just find product by index and increment the amount. We copy the object, to not
+        // change the original object.
         productsCpy[productIndex] = {
           ...productsCpy[productIndex],
           amount: productsCpy[productIndex].amount + product.amount,
         };
+
         return {
           products: productsCpy,
           size: cart.size + product.amount,
@@ -46,7 +52,7 @@ export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
       } else {
         let cartCpy = [...cart.products];
         const product = cartCpy.splice(productIndex, 1)[0];
-        console.log(product);
+
         return {
           products: cartCpy,
           size: cart.size - 1,

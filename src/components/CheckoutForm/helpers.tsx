@@ -38,7 +38,6 @@ const RadioButton = ({
   checked,
   ...props
 }: IRadioButton) => {
-  console.log(props.id + ' ' + checked);
   return (
     <RadioGroup checked={checked}>
       <Input
