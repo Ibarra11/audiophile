@@ -17,6 +17,7 @@ type Props = {
 const ShoppingCart = ({ isOpen, onClose }: Props) => {
   const cart = useCart();
   const dispatch = useCartDispatch();
+  const isCartEmpty = cart.size === 0;
   return (
     <CustomDialogOverlay isOpen={isOpen} onDismiss={onClose}>
       <CustomDialogContent aria-label="shopping cart modal">
@@ -42,9 +43,9 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
             id={'btn1'}
             width={'full'}
             btnType="link"
-            path={'/checkout'}
-            onClick={() => onClose()}
-            opacity={'3/4'}
+            path={isCartEmpty ? undefined : '/checkout'}
+            onClick={isCartEmpty ? undefined : () => onClose()}
+            opacity={isCartEmpty ? '3/4' : undefined}
           >
             Checkout
           </Buttons>

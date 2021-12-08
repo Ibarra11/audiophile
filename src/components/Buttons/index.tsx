@@ -11,7 +11,7 @@ interface ButtonProps {
   path?: string;
   onClick?: () => void;
   btnType?: 'btn' | 'link';
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   width?: WidthTypes;
   opacity?: OpacityTypes;
 }
@@ -24,6 +24,7 @@ const Buttons = ({
   btnType,
   width,
   opacity,
+  disabled,
 }: ButtonProps) => {
   switch (id) {
     case 'btn1':
@@ -34,6 +35,7 @@ const Buttons = ({
             width={width}
             opacity={opacity}
             onClick={onClick}
+            disabled={disabled}
           >
             {children}
           </Button1>
