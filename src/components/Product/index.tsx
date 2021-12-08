@@ -132,7 +132,7 @@ function Product({
               +
             </ButtonIncrement>
           </ButtonCounterWrapper>
-          <Buttons id={'btn1'} type="btn" onClick={handleCartAddition}>
+          <Buttons id={'btn1'} btnType="btn" onClick={handleCartAddition}>
             Add to Cart
           </Buttons>
         </ProductButtons>

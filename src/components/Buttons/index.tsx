@@ -11,7 +11,7 @@ interface ButtonProps {
   children: ReactNode;
   path?: string;
   onClick?: () => void;
-  type?: 'btn' | 'link';
+  btnType?: 'btn' | 'link';
   width?: '1/4' | '1/2' | '3/4' | 'full' | number;
 }
 
@@ -20,12 +20,12 @@ const Buttons = ({
   id,
   path = '/',
   onClick,
-  type,
+  btnType,
   width,
 }: ButtonProps) => {
   switch (id) {
     case 'btn1':
-      if (type === 'btn') {
+      if (btnType === 'btn') {
         return (
           <Button1 as="button" onClick={onClick} width={width}>
             {children}

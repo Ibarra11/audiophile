@@ -41,7 +41,7 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
           <Buttons
             id={'btn1'}
             width={'full'}
-            type="link"
+            btnType="link"
             path={'/checkout'}
             onClick={() => onClose()}
           >
