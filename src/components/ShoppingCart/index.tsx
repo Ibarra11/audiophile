@@ -40,6 +40,7 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
           </BottomRow>
           <Buttons
             id={'btn1'}
+            width={'full'}
             type="link"
             path={'/checkout'}
             onClick={() => onClose()}

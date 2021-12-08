@@ -1,8 +1,10 @@
 import React, { ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
+import { couldStartTrivia } from 'typescript';
 import ArrowRight from '../../assets/shared/desktop/icon-arrow-right.svg';
 type ButtonTypes = 'btn1' | 'btn2' | 'btn3' | 'btn4';
+type WidthTypes = '1/4' | '1/2' | '3/4' | 'full' | number | undefined;
 
 interface ButtonProps {
   id: ButtonTypes;
@@ -10,6 +12,7 @@ interface ButtonProps {
   path?: string;
   onClick?: () => void;
   type?: 'btn' | 'link';
+  width?: '1/4' | '1/2' | '3/4' | 'full' | number;
 }
 
 const Buttons = ({
@@ -18,18 +21,19 @@ const Buttons = ({
   path = '/',
   onClick,
   type,
+  width,
 }: ButtonProps) => {
   switch (id) {
     case 'btn1':
       if (type === 'btn') {
         return (
-          <Button1 as="button" onClick={onClick}>
+          <Button1 as="button" onClick={onClick} width={width}>
             {children}
           </Button1>
         );
       } else {
         return (
-          <Button1 onClick={onClick} to={path}>
+          <Button1 width={width} onClick={onClick} to={path}>
             {children}
           </Button1>
         );
@@ -67,7 +71,35 @@ const BaseButton = styled(Link)`
   width: ${160 / 16}rem;
 `;
 
-const Button1 = styled(BaseButton)`
+function calculateWidth(size: WidthTypes) {
+  if (size == null) {
+    return;
+  } else if (typeof size === 'number') {
+    return `${size}px`;
+  } else {
+    switch (size) {
+      case '1/4': {
+        return '25%';
+      }
+      case '1/2': {
+        return '50%';
+      }
+      case '3/4': {
+        return '75%';
+      }
+      case 'full': {
+        return '100%';
+      }
+    }
+  }
+}
+
+const Button1 = styled(BaseButton)<{
+  width: WidthTypes;
+}>`
+  width: ${(p) => {
+    return calculateWidth(p.width);
+  }};
   background-color: hsl(var(--clr-primary-orange));
   color: hsl(var(--clr-white));
   font-weight: 700;

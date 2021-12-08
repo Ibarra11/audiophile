@@ -205,10 +205,9 @@ const CheckoutForm = () => {
               {numeral(grandTotal).format('0,0.00')}
             </OrangeRowPrice>
           </SummaryRow>
-          {/* <Buttons id={'btn1'} type="btn">
+          <Buttons id={'btn1'} type="btn" width={'full'}>
             Continue & Pay
-          </Buttons> */}
-          <button type="submit">Continute & Pay</button>
+          </Buttons>
         </SummaryWrapper>
       </Form>
     </Wrapper>
