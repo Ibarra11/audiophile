@@ -44,6 +44,7 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
             btnType="link"
             path={'/checkout'}
             onClick={() => onClose()}
+            opacity={'3/4'}
           >
             Checkout
           </Buttons>

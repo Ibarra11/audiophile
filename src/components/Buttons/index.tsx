@@ -1,10 +1,9 @@
 import React, { ReactNode } from 'react';
+import { ButtonTypes, WidthTypes, OpacityTypes } from './types';
+import { calculateWidth, calculateOpacity } from './helpers';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
-import { couldStartTrivia } from 'typescript';
 import ArrowRight from '../../assets/shared/desktop/icon-arrow-right.svg';
-type ButtonTypes = 'btn1' | 'btn2' | 'btn3' | 'btn4';
-type WidthTypes = '1/4' | '1/2' | '3/4' | 'full' | number | undefined;
 
 interface ButtonProps {
   id: ButtonTypes;
@@ -12,7 +11,9 @@ interface ButtonProps {
   path?: string;
   onClick?: () => void;
   btnType?: 'btn' | 'link';
-  width?: '1/4' | '1/2' | '3/4' | 'full' | number;
+  disabled?: boolean;
+  width?: WidthTypes;
+  opacity?: OpacityTypes;
 }
 
 const Buttons = ({
@@ -22,18 +23,29 @@ const Buttons = ({
   onClick,
   btnType,
   width,
+  opacity,
 }: ButtonProps) => {
   switch (id) {
     case 'btn1':
       if (btnType === 'btn') {
         return (
-          <Button1 as="button" onClick={onClick} width={width}>
+          <Button1
+            as="button"
+            width={width}
+            opacity={opacity}
+            onClick={onClick}
+          >
             {children}
           </Button1>
         );
       } else {
         return (
-          <Button1 width={width} onClick={onClick} to={path}>
+          <Button1
+            width={width}
+            opacity={opacity}
+            onClick={onClick}
+            to={path}
+          >
             {children}
           </Button1>
         );
@@ -71,36 +83,15 @@ const BaseButton = styled(Link)`
   width: ${160 / 16}rem;
 `;
 
-function calculateWidth(size: WidthTypes) {
-  if (size == null) {
-    return;
-  } else if (typeof size === 'number') {
-    return `${size}px`;
-  } else {
-    switch (size) {
-      case '1/4': {
-        return '25%';
-      }
-      case '1/2': {
-        return '50%';
-      }
-      case '3/4': {
-        return '75%';
-      }
-      case 'full': {
-        return '100%';
-      }
-    }
-  }
-}
-
 const Button1 = styled(BaseButton)<{
   width: WidthTypes;
+  opacity: OpacityTypes;
 }>`
   width: ${(p) => {
     return calculateWidth(p.width);
   }};
   background-color: hsl(var(--clr-primary-orange));
+  opacity: ${(p) => calculateOpacity(p.opacity)};
   color: hsl(var(--clr-white));
   font-weight: 700;
   &:hover,
