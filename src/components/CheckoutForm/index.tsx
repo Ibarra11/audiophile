@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState, useLayoutEffect } from 'react';
 import * as Yup from 'yup';
 import Buttons from '../Buttons';
 import CartList from '../CartList';
+import ConfirmationModal from './ConfirmationModal';
 import { useCart } from '../../context/ShoppingCartContext';
 import { TextInput, RadioButton } from './helpers';
 import numeral from 'numeral';
@@ -48,22 +49,24 @@ const CheckoutSchema = Yup.object().shape(
 );
 
 const CheckoutForm = () => {
+  const [showModal, setShowModal] = useState(false);
   const formik = useFormik({
     initialValues: {
-      Name: '',
-      Email: '',
-      'Phone Number': '',
-      Address: '',
-      'Zip Code': '',
-      City: '',
-      Country: '',
+      Name: 'Alan Ibarra',
+      Email: 'alan.ibarra209@gmail.com',
+      'Phone Number': '209-416-2966',
+      Address: '3561 Glenville CT',
+      'Zip Code': '95382',
+      City: 'Turlock',
+      Country: 'CA',
       'Payment Method': 'e-money',
-      'e-number': '',
-      'e-pin': '',
+      'e-number': 'afd',
+      'e-pin': 'fdasf',
     },
     validationSchema: CheckoutSchema,
     onSubmit: (values) => {
-      console.log(values);
+      window.scrollTo(0, 0);
+      setShowModal(!showModal);
     },
   });
   const cart = useCart();
@@ -210,6 +213,7 @@ const CheckoutForm = () => {
           </Buttons>
         </SummaryWrapper>
       </Form>
+      {showModal && <ConfirmationModal cart={cart} isOpen={showModal} />}
     </Wrapper>
   );
 };
