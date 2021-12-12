@@ -15,7 +15,7 @@ import ZX9_Recommendation_Mobile from '../assets/shared/mobile/image-zx9-speaker
 
 export const Speakers = [
   {
-    id: uniqid(),
+    id: '8bfb25bc-5b98-11ec-bf63-0242ac130002',
     mainImg: ZX9_Main,
     title: 'ZX9',
     description:
@@ -43,7 +43,7 @@ export const Speakers = [
     },
   },
   {
-    id: uniqid(),
+    id: '8bfb2698-5b98-11ec-bf63-0242ac130002',
     mainImg: ZX7_Main,
     title: 'ZX7' as const,
     description:

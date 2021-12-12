@@ -8,7 +8,7 @@ import YX1_Gallery_Mobile_3 from '../assets/product-yx1-earphones/mobile/image-g
 
 export const Earphones = [
   {
-    id: uniqid(),
+    id: '8bfb24cc-5b98-11ec-bf63-0242ac130002',
     mainImg: YX1_Main,
     title: 'YX1 WIRELESS',
     description:

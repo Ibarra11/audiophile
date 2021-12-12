@@ -29,7 +29,7 @@ const App = () => {
         <ScrollToTop>
           <Routes>
             <Route
-              path="/headphones/:headphone/:id"
+              path="/headphones/:headphones/:id"
               element={
                 <MainLayout>
                   <Product productType="headphones" />
@@ -37,7 +37,7 @@ const App = () => {
               }
             />
             <Route
-              path="/speakers/:speaker/:id"
+              path="/speakers/:speakers/:id"
               element={
                 <MainLayout>
                   <Product productType="speakers" />
@@ -45,7 +45,7 @@ const App = () => {
               }
             />
             <Route
-              path="/earphones/:earphone/:id"
+              path="/earphones/:earphones/:id"
               element={
                 <MainLayout>
                   <Product productType="earphones" />

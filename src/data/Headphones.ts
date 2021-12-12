@@ -21,7 +21,7 @@ import XX59_Gallery_Mobile_2 from '../assets/product-xx59-headphones/mobile/imag
 import XX59_Gallery_Mobile_3 from '../assets/product-xx59-headphones/mobile/image-gallery-3.jpg';
 export const Headphones = [
   {
-    id: uniqid(),
+    id: '8bfb1928-5b98-11ec-bf63-0242ac130002',
     mainImg: Mark_II_Main,
     title: 'XX99 MARK II',
     description:
@@ -49,7 +49,7 @@ export const Headphones = [
     },
   },
   {
-    id: uniqid(),
+    id: '8bfb222e-5b98-11ec-bf63-0242ac130002',
     mainImg: Mark_I_Main,
     title: 'XX99 MARK I',
     description:
@@ -76,7 +76,7 @@ export const Headphones = [
     },
   },
   {
-    id: uniqid(),
+    id: '8bfb23be-5b98-11ec-bf63-0242ac130002',
     mainImg: XX59_Main,
     title: 'XX59',
     description:

@@ -97,6 +97,7 @@ const ConfirmationContent = styled(DialogContent)`
   inset: 10% 36px 0 24px;
   margin: auto;
   height: 75%;
+  width: min(375px, 100%);
   padding: 32px;
   border-radius: 8px;
   animation: ${SlideLeft} 0.4s ease-in both;
@@ -151,8 +152,6 @@ const ConfirmationCartContent = styled.div`
   align-items: end;
   padding: 16px;
   padding-bottom: 9px;
-
-  border: 1px solid green;
 `;
 const ConfirmationCartTotal = styled.div`
   background-color: hsl(var(--clr-primary-black));

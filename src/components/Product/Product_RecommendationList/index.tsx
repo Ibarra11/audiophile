@@ -125,7 +125,7 @@ const ProductRecommendation = ({
       <ProductTitle>
         {title === 'ZX9' || title === 'ZX7' ? title + ' Speaker' : title}
       </ProductTitle>
-      <Button id={'btn1'}>See Prodcut</Button>
+      <Button id={'btn1'}>See Product</Button>
     </>
   );
 };

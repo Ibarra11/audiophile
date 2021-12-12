@@ -37,6 +37,7 @@ import {
 
 const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
   const { id } = useParams();
+
   const product = Products[productType].find(
     (product) => product.id === id,
   )!;
