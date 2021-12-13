@@ -1,5 +1,3 @@
-import uniqid from 'uniqid';
-
 import Mark_II_Main from '../assets/product-xx99-mark-two-headphones/mobile/image-product.jpg';
 import Mark_I_Main from '../assets/product-xx99-mark-one-headphones/mobile/image-product.jpg';
 import XX59_Main from '../assets/product-xx59-headphones/mobile/image-product.jpg';
@@ -19,6 +17,9 @@ import MarkI_Gallery_Mobile_3 from '../assets/product-xx99-mark-one-headphones/m
 import XX59_Gallery_Mobile_1 from '../assets/product-xx59-headphones/mobile/image-gallery-1.jpg';
 import XX59_Gallery_Mobile_2 from '../assets/product-xx59-headphones/mobile/image-gallery-2.jpg';
 import XX59_Gallery_Mobile_3 from '../assets/product-xx59-headphones/mobile/image-gallery-3.jpg';
+
+import ZX9_Recommendation_Mobile from '../assets/shared/mobile/image-zx9-speaker.jpg';
+
 export const Headphones = [
   {
     id: '8bfb1928-5b98-11ec-bf63-0242ac130002',
@@ -47,6 +48,26 @@ export const Headphones = [
     recommendationImages: {
       mobile: MarkII_Recommendation_Mobile,
     },
+    recommendedProducts: [
+      {
+        id: '8bfb222e-5b98-11ec-bf63-0242ac130002',
+        title: 'XX99 MARK I',
+        img: MarkI_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb23be-5b98-11ec-bf63-0242ac130002',
+        title: 'XX59',
+        img: XX59_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb25bc-5b98-11ec-bf63-0242ac130002',
+        title: 'ZX9 Speaker',
+        img: ZX9_Recommendation_Mobile,
+        productType: 'speakers',
+      },
+    ],
   },
   {
     id: '8bfb222e-5b98-11ec-bf63-0242ac130002',
@@ -74,6 +95,26 @@ export const Headphones = [
     recommendationImages: {
       mobile: MarkI_Recommendation_Mobile,
     },
+    recommendedProducts: [
+      {
+        id: '8bfb1928-5b98-11ec-bf63-0242ac130002',
+        title: 'XX99 MARK II',
+        img: MarkII_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb23be-5b98-11ec-bf63-0242ac130002',
+        title: 'XX59',
+        img: XX59_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb25bc-5b98-11ec-bf63-0242ac130002',
+        title: 'ZX9 Speaker',
+        img: ZX9_Recommendation_Mobile,
+        productType: 'speakers',
+      },
+    ],
   },
   {
     id: '8bfb23be-5b98-11ec-bf63-0242ac130002',
@@ -101,5 +142,25 @@ export const Headphones = [
     recommendationImages: {
       mobile: XX59_Recommendation_Mobile,
     },
+    recommendedProducts: [
+      {
+        id: '8bfb1928-5b98-11ec-bf63-0242ac130002',
+        title: 'XX99 MARK II',
+        img: MarkII_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb222e-5b98-11ec-bf63-0242ac130002',
+        title: 'XX99 MARK I',
+        img: MarkI_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb25bc-5b98-11ec-bf63-0242ac130002',
+        title: 'ZX9 Speaker',
+        img: ZX9_Recommendation_Mobile,
+        productType: 'speakers',
+      },
+    ],
   },
 ];

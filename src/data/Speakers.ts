@@ -1,4 +1,3 @@
-import uniqid from 'uniqid';
 import ZX9_Main from '../assets/product-zx9-speaker/mobile/image-product.jpg';
 import ZX7_Main from '../assets/product-zx7-speaker/mobile/image-product.jpg';
 
@@ -12,6 +11,9 @@ import ZX7_Gallery_Mobile_3 from '../assets/product-zx7-speaker/mobile/image-gal
 
 import ZX7_Recommendation_Mobile from '../assets/shared/mobile/image-zx7-speaker.jpg';
 import ZX9_Recommendation_Mobile from '../assets/shared/mobile/image-zx9-speaker.jpg';
+
+import MarkI_Recommendation_Mobile from '../assets/shared/mobile/image-xx99-mark-one-headphones.jpg';
+import XX59_Recommendation_Mobile from '../assets/shared/mobile/image-xx59-headphones.jpg';
 
 export const Speakers = [
   {
@@ -41,6 +43,26 @@ export const Speakers = [
     recommendationImages: {
       mobile: ZX9_Recommendation_Mobile,
     },
+    recommendedProducts: [
+      {
+        id: '8bfb2698-5b98-11ec-bf63-0242ac130002',
+        title: 'ZX7 Speaker',
+        img: ZX7_Recommendation_Mobile,
+        productType: 'speakers',
+      },
+      {
+        id: '8bfb222e-5b98-11ec-bf63-0242ac130002',
+        title: 'XX99 MARK I',
+        img: MarkI_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb23be-5b98-11ec-bf63-0242ac130002',
+        title: 'XX59',
+        img: XX59_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+    ],
   },
   {
     id: '8bfb2698-5b98-11ec-bf63-0242ac130002',
@@ -69,5 +91,25 @@ export const Speakers = [
     recommendationImages: {
       mobile: ZX7_Recommendation_Mobile,
     },
+    recommendedProducts: [
+      {
+        id: '8bfb25bc-5b98-11ec-bf63-0242ac130002',
+        title: 'ZX9 Speaker',
+        img: ZX9_Recommendation_Mobile,
+        productType: 'speakers',
+      },
+      {
+        id: '8bfb222e-5b98-11ec-bf63-0242ac130002',
+        title: 'XX99 MARK I',
+        img: MarkI_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb23be-5b98-11ec-bf63-0242ac130002',
+        title: 'XX59',
+        img: XX59_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+    ],
   },
 ];

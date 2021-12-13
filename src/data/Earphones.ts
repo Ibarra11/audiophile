@@ -1,10 +1,12 @@
-import uniqid from 'uniqid';
-
 import YX1_Main from '../assets/product-yx1-earphones/mobile/image-product.jpg';
 
 import YX1_Gallery_Mobile_1 from '../assets/product-yx1-earphones/mobile/image-gallery-1.jpg';
 import YX1_Gallery_Mobile_2 from '../assets/product-yx1-earphones/mobile/image-gallery-2.jpg';
 import YX1_Gallery_Mobile_3 from '../assets/product-yx1-earphones/mobile/image-gallery-3.jpg';
+
+import MarkI_Recommendation_Mobile from '../assets/shared/mobile/image-xx99-mark-one-headphones.jpg';
+import XX59_Recommendation_Mobile from '../assets/shared/mobile/image-xx59-headphones.jpg';
+import ZX9_Recommendation_Mobile from '../assets/shared/mobile/image-zx9-speaker.jpg';
 
 export const Earphones = [
   {
@@ -31,5 +33,25 @@ export const Earphones = [
       img_2_mb: YX1_Gallery_Mobile_2,
       img_3_mb: YX1_Gallery_Mobile_3,
     },
+    recommendedProducts: [
+      {
+        id: '8bfb222e-5b98-11ec-bf63-0242ac130002',
+        title: 'XX99 MARK I',
+        img: MarkI_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb23be-5b98-11ec-bf63-0242ac130002',
+        title: 'XX59',
+        img: XX59_Recommendation_Mobile,
+        productType: 'headphones',
+      },
+      {
+        id: '8bfb25bc-5b98-11ec-bf63-0242ac130002',
+        title: 'ZX9 Speaker',
+        img: ZX9_Recommendation_Mobile,
+        productType: 'speakers',
+      },
+    ],
   },
 ];

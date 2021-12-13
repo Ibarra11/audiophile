@@ -11,11 +11,7 @@ import { DollarSign } from 'react-feather';
 
 import { useCartDispatch } from '../../context/ShoppingCartContext';
 
-import {
-  ProductTitles,
-  ProductTypes,
-  ActionTypes,
-} from '../../shared/types';
+import { ProductTypes, ActionTypes } from '../../shared/types';
 
 import {
   SectionWrapper,
@@ -41,7 +37,7 @@ const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
   const product = Products[productType].find(
     (product) => product.id === id,
   )!;
-
+  console.log(product);
   return (
     <SectionWrapper>
       <PrevLink onClick={() => window.history.back()}>Go Back</PrevLink>
@@ -57,8 +53,7 @@ const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
       <ProductContentList contents={product.contents} />
       <ProductGallery images={product.gallery} />
       <ProductRecommendationList
-        currentProduct={product['title'] as ProductTitles}
-        productType={productType}
+        recommendations={product.recommendedProducts}
       />
     </SectionWrapper>
   );
