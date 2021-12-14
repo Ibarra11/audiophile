@@ -95,7 +95,6 @@ const App = () => {
 };
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
-  console.log(children);
   return (
     <>
       {children}

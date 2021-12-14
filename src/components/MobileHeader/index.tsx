@@ -36,7 +36,7 @@ const MobileHeader = () => {
       <MobileHeaderIconButtonWrapper onClick={toggleNav}>
         <MobileHeaderIcon src={HamburgerMenu} />
       </MobileHeaderIconButtonWrapper>
-      <MobileHeaderIconLinkWrapper>
+      <MobileHeaderIconLinkWrapper to="/">
         <MobileHeaderIcon src={Logo} />
       </MobileHeaderIconLinkWrapper>
       <MobileHeaderIconButtonWrapper onClick={toggleCart}>

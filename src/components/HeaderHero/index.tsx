@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../Buttons';
-
+import { getProductLink } from '../../utilities';
 import {
   HeaderHeroWrapper,
   HeaderHeroBody,
@@ -10,6 +10,11 @@ import {
 } from './styles';
 
 const Header = () => {
+  let link = getProductLink({
+    title: 'XX99 MARK II',
+    productType: 'headphones',
+  });
+  link = typeof link === 'string' ? link : '/';
   return (
     <HeaderHeroWrapper>
       <HeaderHeroBody>
@@ -21,7 +26,13 @@ const Header = () => {
           Experience natural, lifelike audio and exceptional build quality
           made for the passionate music enthusiast
         </HeaderHeroBodyText>
-        <Button id={'btn1'}>See Product</Button>
+        <Button
+          btnType="link"
+          path={typeof link === 'string' ? link : '/'}
+          id={'btn1'}
+        >
+          See Product
+        </Button>
       </HeaderHeroBody>
     </HeaderHeroWrapper>
   );

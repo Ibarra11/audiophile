@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-
+import { Link } from 'react-router-dom';
 const MobileHeaderWrapper = styled.header`
   background-color: hsl(var(--clr-primary-black) / 0.9);
   display: flex;
@@ -23,7 +23,7 @@ const MobileHeaderIconButtonWrapper = styled.button`
   border: none;
 `;
 
-const MobileHeaderIconLinkWrapper = styled.a``;
+const MobileHeaderIconLinkWrapper = styled(Link)``;
 
 export {
   MobileHeaderWrapper,

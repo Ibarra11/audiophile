@@ -37,7 +37,7 @@ const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
   const product = Products[productType].find(
     (product) => product.id === id,
   )!;
-  console.log(product);
+
   return (
     <SectionWrapper>
       <PrevLink onClick={() => window.history.back()}>Go Back</PrevLink>
