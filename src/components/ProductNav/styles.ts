@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-
+import { motion } from 'framer-motion';
 const ProductsNavWrapper = styled.nav`
   padding: 1rem ${24 / 16}rem 1rem;
   margin-top: ${40 / 16}rem;
@@ -10,7 +10,8 @@ const ProductsNavWrapper = styled.nav`
   gap: 1rem;
 `;
 
-const MobileProductsNavWrapper = styled.nav`
+const MobileProductsNavWrapper = styled(motion.nav)`
+  border: 2px solid blue;
   padding: ${32 / 16}rem ${24 / 16}rem ${35 / 16}rem;
   display: flex;
   flex-direction: column;
@@ -32,7 +33,7 @@ const Product = styled.div`
   padding-bottom: ${22 / 16}rem;
 `;
 
-const MobileProduct = styled.div`
+const MobileProduct = styled(motion.div)`
   height: 30%;
   flex: 1;
   isolation: isolate;

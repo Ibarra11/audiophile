@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import ProductButton from '../Buttons';
 
 import ProductHeadphoneImg from '../../assets/shared/desktop/image-category-thumbnail-headphones.png';
@@ -21,9 +22,38 @@ interface ProductNavProps {
   onCloseModal?: () => void;
 }
 
+const NavVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+  exit: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const ProductsVariants = {
+  hidden: {
+    opacity: 0,
+    x: '100%',
+  },
+  visible: {
+    opacity: 1,
+    x: 0,
+  },
+  exit: {
+    opacity: 0,
+    x: '-100%',
+  },
+};
+
 const ProductNav = ({ mobile, onCloseModal }: ProductNavProps) => {
   return mobile ? (
-    <MobileProductsNavWrapper>
+    <MobileProductsNavWrapper variants={NavVariants}>
       <ProductItem
         mobile={true}
         productImg={ProductHeadphoneImg}
@@ -84,7 +114,7 @@ const ProductItem = ({
   onCloseModal,
 }: ProductProps) => {
   return mobile ? (
-    <MobileProduct>
+    <MobileProduct variants={ProductsVariants}>
       <MobileProductImg
         src={productImg}
         alt={`${productTitle} category`}
