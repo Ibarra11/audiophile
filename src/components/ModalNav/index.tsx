@@ -83,7 +83,6 @@ const CustomDialogOverlay = styled(DialogOverlay)``;
 
 const AnimatedOvelay = styled(motion.div)`
   background-color: hsl(var(--clr-primary-black) / 0.5);
-
   position: fixed;
   inset: 90px 0 0 0;
 `;

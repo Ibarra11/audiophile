@@ -6,7 +6,7 @@ import ProductNav from '../ProductNav';
 import ProductShowcase from '../ProductShowcase';
 import ProductList from '../ProductList';
 import ImpactMessage from '../ImpactMessage';
-import MobileHeader from '../Header';
+import Header from '../Header';
 import Footer from '../Footer';
 import Product from '../Product';
 import CheckoutForm from '../CheckoutForm';
@@ -25,7 +25,7 @@ const App = () => {
   return (
     <AppContainer>
       <ShoppingCartProvider>
-        <MobileHeader />
+        <Header />
         <ScrollToTop>
           <Routes>
             <Route

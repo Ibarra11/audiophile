@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import styled from 'styled-components';
 import numeral from 'numeral';
 import CartList from '../CartList';
@@ -14,55 +15,106 @@ type Props = {
   isOpen: boolean;
   onClose: () => void;
 };
+
+const ModalOverlay = {
+  hidden: {
+    opacity: 0,
+  },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+    },
+  },
+  exit: {
+    opacity: 0,
+    transition: {
+      duration: 0.4,
+      when: 'afterChildren',
+    },
+  },
+};
+
+const ModalContent = {
+  hidden: {
+    opacity: 0,
+    scale: 0.2,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      duration: 0.5,
+      delay: 0.5,
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 0.2,
+    transition: {
+      duration: 0.25,
+    },
+  },
+};
 const ShoppingCart = ({ isOpen, onClose }: Props) => {
   const cart = useCart();
   const dispatch = useCartDispatch();
   const isCartEmpty = cart.size === 0;
+
   return (
-    <CustomDialogOverlay isOpen={isOpen} onDismiss={onClose}>
-      <CustomDialogContent aria-label="shopping cart modal">
-        <Row>
-          <CartHeading>Cart ({cart.size})</CartHeading>
-          <CartButton
-            onClick={() =>
-              dispatch({ type: ActionTypes.REMOVE_ALL_PRODUCTS })
-            }
-          >
-            Remove all
-          </CartButton>
-        </Row>
-        <CartList dispatch={dispatch} />
-        <CheckoutGroup>
-          <BottomRow>
-            <Text>Total</Text>
-            <CartHeading>
-              $ {numeral(cart.total).format('0,0')}
-            </CartHeading>
-          </BottomRow>
-          <Buttons
-            id={'btn1'}
-            width={'full'}
-            btnType="link"
-            path={isCartEmpty ? undefined : '/checkout'}
-            onClick={isCartEmpty ? undefined : () => onClose()}
-            opacity={isCartEmpty ? '3/4' : undefined}
-          >
-            Checkout
-          </Buttons>
-        </CheckoutGroup>
-      </CustomDialogContent>
-    </CustomDialogOverlay>
+    <DialogOverlay isOpen={isOpen} onDismiss={onClose}>
+      <AnimatedOverlay
+        variants={ModalOverlay}
+        initial="hidden"
+        animate="visible"
+        exit="exit"
+      >
+        <DialogContent aria-label="shopping cart modal">
+          <AnimatedDialogContent variants={ModalContent}>
+            <Row>
+              <CartHeading>Cart ({cart.size})</CartHeading>
+              <CartButton
+                onClick={() =>
+                  dispatch({ type: ActionTypes.REMOVE_ALL_PRODUCTS })
+                }
+              >
+                Remove all
+              </CartButton>
+            </Row>
+            <CartList dispatch={dispatch} />
+            <CheckoutGroup>
+              <BottomRow>
+                <Text>Total</Text>
+                <CartHeading>
+                  $ {numeral(cart.total).format('0,0')}
+                </CartHeading>
+              </BottomRow>
+              <Buttons
+                id={'btn1'}
+                width={'full'}
+                btnType="link"
+                path={isCartEmpty ? undefined : '/checkout'}
+                onClick={isCartEmpty ? undefined : () => onClose()}
+                opacity={isCartEmpty ? '3/4' : undefined}
+              >
+                Checkout
+              </Buttons>
+            </CheckoutGroup>
+          </AnimatedDialogContent>
+        </DialogContent>
+      </AnimatedOverlay>
+    </DialogOverlay>
   );
 };
 
-const CustomDialogOverlay = styled(DialogOverlay)`
+const AnimatedOverlay = styled(motion.div)`
   position: absolute;
   top: 0;
   inset: 90px 0 0 0;
   background-color: hsl(var(--clr-primary-black) / 0.5);
 `;
 
-const CustomDialogContent = styled(DialogContent)`
+const AnimatedDialogContent = styled(motion.div)`
   height: ${488 / 16}rem;
   width: ${327 / 16}rem;
   display: flex;

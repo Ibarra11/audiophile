@@ -38,7 +38,11 @@ const MobileHeader = () => {
   console.log(showNav);
   return (
     <HeaderWrapper>
-      <ShoppingCart isOpen={showCart} onClose={toggleCart} />
+      <AnimatePresence>
+        {showCart && (
+          <ShoppingCart isOpen={showCart} onClose={toggleCart} />
+        )}
+      </AnimatePresence>
       <MobileToTablet>
         <AnimatePresence>
           {showNav && (

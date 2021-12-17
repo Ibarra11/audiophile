@@ -11,7 +11,6 @@ const ProductsNavWrapper = styled.nav`
 `;
 
 const MobileProductsNavWrapper = styled(motion.nav)`
-  border: 2px solid blue;
   padding: ${32 / 16}rem ${24 / 16}rem ${35 / 16}rem;
   display: flex;
   flex-direction: column;
