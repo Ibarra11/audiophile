@@ -55,6 +55,24 @@ const Icon = styled.img`
 `;
 
 const IconLinkWrapper = styled(Link)`
+  position: relative;
+
+  &:after {
+    content: '';
+    background-color: hsl(var(--clr-primary-orange));
+    position: absolute;
+    bottom: -8px;
+    width: 100%;
+    height: 4px;
+    clip-path: polygon(50% 0%, 50% 0%, 50% 0%, 50% 0%);
+    transition: clip-path 0.2s ease-in;
+  }
+
+  &:hover&:after {
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+    transition: clip-path 0.4s ease-out;
+  }
+
   ${breakpoints.tabletAndUp} {
   }
 `;
