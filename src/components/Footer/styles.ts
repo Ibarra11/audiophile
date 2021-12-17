@@ -29,8 +29,11 @@ const Nav = styled.nav`
   letter-spacing: 2px;
 `;
 
-const NavLink = styled(Link)`
-  color: hsl(var(--clr-white));
+const NavLink = styled(Link)<{ isActive: boolean }>`
+  color: hsl(
+    ${(p) =>
+      p.isActive ? 'var(--clr-primary-orange)' : 'var(--clr-white)'}
+  );
   font-size: var(--text-subtitle);
   text-decoration: none;
   &:hover,

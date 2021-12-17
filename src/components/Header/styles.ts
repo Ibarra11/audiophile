@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
+import { Link } from '../../shared/css/components';
 import breakpoints from '../../shared/css/breakpoints';
 const HeaderWrapper = styled.header`
   background-color: hsl(var(--clr-primary-black) / 0.9);
@@ -54,28 +55,7 @@ const Icon = styled.img`
   display: block;
 `;
 
-const IconLinkWrapper = styled(Link)`
-  position: relative;
-
-  &:after {
-    content: '';
-    background-color: hsl(var(--clr-primary-orange));
-    position: absolute;
-    bottom: -8px;
-    width: 100%;
-    height: 4px;
-    clip-path: polygon(50% 0%, 50% 0%, 50% 0%, 50% 0%);
-    transition: clip-path 0.2s ease-in;
-  }
-
-  &:hover&:after {
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-    transition: clip-path 0.4s ease-out;
-  }
-
-  ${breakpoints.tabletAndUp} {
-  }
-`;
+const IconLink = styled(Link)``;
 
 export {
   HeaderWrapper,
@@ -83,7 +63,7 @@ export {
   LaptopToDesktop,
   Icon,
   IconButtonWrapper,
-  IconLinkWrapper,
+  IconLink,
   NavList,
   NavItem,
 };

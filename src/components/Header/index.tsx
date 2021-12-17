@@ -4,14 +4,14 @@ import ShoppingCart from '../ShoppingCart';
 import Logo from '../../assets/shared/desktop/logo.svg';
 import CartIcon from '../../assets/shared/desktop/icon-cart.svg';
 import HamburgerMenu from '../../assets/shared/tablet/icon-hamburger.svg';
-
+import { Link } from '../../shared/css/components';
 import {
   HeaderWrapper,
   MobileToTablet,
   LaptopToDesktop,
   Icon,
   IconButtonWrapper,
-  IconLinkWrapper,
+  IconLink,
   NavList,
   NavItem,
 } from './styles';
@@ -35,7 +35,6 @@ const MobileHeader = () => {
     setShowCart(!showCart);
   };
 
-  console.log(showNav);
   return (
     <HeaderWrapper>
       <AnimatePresence>
@@ -52,18 +51,17 @@ const MobileHeader = () => {
         <IconButtonWrapper onClick={toggleNav}>
           <Icon src={HamburgerMenu} />
         </IconButtonWrapper>
-
-        <IconLinkWrapper to="/">
+        <Link to="/">
           <Icon src={Logo} />
-        </IconLinkWrapper>
+        </Link>
         <IconButtonWrapper onClick={toggleCart}>
           <Icon src={CartIcon} />
         </IconButtonWrapper>
       </MobileToTablet>
       <LaptopToDesktop>
-        <IconLinkWrapper to="/">
+        <Link to="/">
           <Icon src={Logo} />
-        </IconLinkWrapper>
+        </Link>
         <NavList>
           <NavItem to="/">Home</NavItem>
           <NavItem to="/earphones">Headphones</NavItem>
