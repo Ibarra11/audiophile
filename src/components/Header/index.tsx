@@ -4,7 +4,7 @@ import ShoppingCart from '../ShoppingCart';
 import Logo from '../../assets/shared/desktop/logo.svg';
 import CartIcon from '../../assets/shared/desktop/icon-cart.svg';
 import HamburgerMenu from '../../assets/shared/tablet/icon-hamburger.svg';
-import { Link } from '../../shared/css/components';
+import { Link, MaxWidthWrapper } from '../../shared/css/components';
 import {
   HeaderWrapper,
   MobileToTablet,
@@ -13,7 +13,7 @@ import {
   IconButtonWrapper,
   IconLink,
   NavList,
-  NavItem,
+  NavLink,
 } from './styles';
 import { AnimatePresence } from 'framer-motion';
 
@@ -63,10 +63,10 @@ const MobileHeader = () => {
           <Icon src={Logo} />
         </Link>
         <NavList>
-          <NavItem to="/">Home</NavItem>
-          <NavItem to="/earphones">Headphones</NavItem>
-          <NavItem to="/speakers">Speakers</NavItem>
-          <NavItem to="/earphones">Earphones</NavItem>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/earphones">Headphones</NavLink>
+          <NavLink to="/speakers">Speakers</NavLink>
+          <NavLink to="/earphones">Earphones</NavLink>
         </NavList>
         <IconButtonWrapper onClick={toggleCart}>
           <Icon src={CartIcon} />

@@ -25,6 +25,9 @@ const LaptopToDesktop = styled.div`
   display: none;
   ${breakpoints.laptopAndUp} {
     display: flex;
+    max-width: 1110px;
+    margin: auto;
+    justify-content: space-between;
   }
 `;
 
@@ -47,9 +50,16 @@ const IconButtonWrapper = styled.button`
   }
 `;
 
-const NavList = styled.nav``;
-
-const NavItem = styled(Link)``;
+const NavList = styled.nav`
+  display: flex;
+  gap: 3rem;
+`;
+const NavLink = styled(Link)`
+  color: hsl(var(--clr-white));
+  font-size: var(--fs-text-subtitle);
+  text-transform: uppercase;
+  text-decoration: none;
+`;
 
 const Icon = styled.img`
   display: block;
@@ -65,5 +75,5 @@ export {
   IconButtonWrapper,
   IconLink,
   NavList,
-  NavItem,
+  NavLink,
 };

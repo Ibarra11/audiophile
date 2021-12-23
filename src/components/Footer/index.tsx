@@ -21,30 +21,29 @@ import {
 
 const Footer = () => {
   const location = useLocation();
-  console.log(location);
   return (
     <Wrapper>
       <OrangeInlineBorder />
       <LogoIcon src={Logo} alt="site logo" />
       <Nav>
-        <NavLink to="/" isActive={location.pathname === '/'}>
+        <NavLink to="/" active={location.pathname === '/' ? 1 : -1}>
           Home
         </NavLink>
         <NavLink
           to="/headphones"
-          isActive={location.pathname === '/headphones'}
+          active={location.pathname === '/headphones' ? 1 : -1}
         >
           Headphones
         </NavLink>
         <NavLink
           to="/speakers"
-          isActive={location.pathname === '/speakers'}
+          active={location.pathname === '/speakers' ? 1 : -1}
         >
           Speakers
         </NavLink>
         <NavLink
           to="/earphones"
-          isActive={location.pathname === '/earphones'}
+          active={location.pathname === '/earphones' ? 1 : -1}
         >
           Earphones
         </NavLink>

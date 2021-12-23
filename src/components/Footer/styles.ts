@@ -1,5 +1,5 @@
 import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
+import { Link } from '../../shared/css/components';
 const Wrapper = styled.footer`
   position: relative;
   display: flex;
@@ -29,10 +29,10 @@ const Nav = styled.nav`
   letter-spacing: 2px;
 `;
 
-const NavLink = styled(Link)<{ isActive: boolean }>`
+const NavLink = styled(Link)<{ active: 1 | -1 }>`
   color: hsl(
     ${(p) =>
-      p.isActive ? 'var(--clr-primary-orange)' : 'var(--clr-white)'}
+      p.active === 1 ? 'var(--clr-primary-orange)' : 'var(--clr-white)'}
   );
   font-size: var(--text-subtitle);
   text-decoration: none;

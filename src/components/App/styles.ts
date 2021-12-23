@@ -4,4 +4,7 @@ const AppContainer = styled.div`
   background-color: #f2f2f2;
 `;
 
-export { AppContainer };
+const MaxWidthWrapper = styled.div`
+  max-width: 1100px;
+`;
+export { AppContainer, MaxWidthWrapper };

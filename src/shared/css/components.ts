@@ -9,6 +9,7 @@ const Link = styled(RouterLink)`
     background-color: hsl(var(--clr-primary-orange));
     position: absolute;
     bottom: -8px;
+    left: 0;
     width: 100%;
     height: 4px;
     clip-path: polygon(50% 0%, 50% 0%, 50% 0%, 50% 0%);
@@ -21,4 +22,7 @@ const Link = styled(RouterLink)`
   }
 `;
 
-export { Link };
+const MaxWidthWrapper = styled.div`
+  max-width: 1110px;
+`;
+export { Link, MaxWidthWrapper };
