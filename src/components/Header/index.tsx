@@ -6,7 +6,7 @@ import CartIcon from '../../assets/shared/desktop/icon-cart.svg';
 import HamburgerMenu from '../../assets/shared/tablet/icon-hamburger.svg';
 import { Link, MaxWidthWrapper } from '../../shared/css/components';
 import {
-  HeaderWrapper,
+  HeaderLayout,
   MobileToTablet,
   LaptopToDesktop,
   Icon,
@@ -17,7 +17,7 @@ import {
 } from './styles';
 import { AnimatePresence } from 'framer-motion';
 
-const MobileHeader = () => {
+const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const [showCart, setShowCart] = useState(false);
 
@@ -36,7 +36,7 @@ const MobileHeader = () => {
   };
 
   return (
-    <HeaderWrapper>
+    <HeaderLayout>
       <AnimatePresence>
         {showCart && (
           <ShoppingCart isOpen={showCart} onClose={toggleCart} />
@@ -72,8 +72,8 @@ const MobileHeader = () => {
           <Icon src={CartIcon} />
         </IconButtonWrapper>
       </LaptopToDesktop>
-    </HeaderWrapper>
+    </HeaderLayout>
   );
 };
 
-export default MobileHeader;
+export default Header;

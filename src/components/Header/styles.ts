@@ -1,17 +1,24 @@
 import styled from 'styled-components';
 
-import { Link } from '../../shared/css/components';
+import { Link, MaxWidthWrapper } from '../../shared/css/components';
 import breakpoints from '../../shared/css/breakpoints';
-const HeaderWrapper = styled.header`
-  background-color: hsl(var(--clr-primary-black) / 0.9);
-  padding-block: 2rem;
-  padding-inline: ${24 / 16}rem;
+const HeaderLayout = styled(MaxWidthWrapper)`
+  margin: auto;
+  height: 5rem;
   border-bottom: 1px solid hsl(var(--clr-secondary-gray) / 0.25);
+  ${breakpoints.tabletAndUp} {
+    margin-inline: 2rem;
+  }
+  ${breakpoints.laptopAndUp} {
+    margin-inline: auto;
+  }
 `;
 
 const MobileToTablet = styled.div`
   display: flex;
-
+  height: 100%;
+  align-items: center;
+  padding-inline: 1rem;
   ${breakpoints.tabletAndUp} {
     gap: 4rem;
   }
@@ -23,11 +30,14 @@ const MobileToTablet = styled.div`
 
 const LaptopToDesktop = styled.div`
   display: none;
+
   ${breakpoints.laptopAndUp} {
     display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
     max-width: 1110px;
     margin: auto;
-    justify-content: space-between;
   }
 `;
 
@@ -68,7 +78,7 @@ const Icon = styled.img`
 const IconLink = styled(Link)``;
 
 export {
-  HeaderWrapper,
+  HeaderLayout,
   MobileToTablet,
   LaptopToDesktop,
   Icon,

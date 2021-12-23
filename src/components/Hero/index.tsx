@@ -9,7 +9,7 @@ import {
   HeaderHeroBodyText,
 } from './styles';
 
-const Header = () => {
+const Hero = () => {
   let link = getProductLink({
     title: 'XX99 MARK II',
     productType: 'headphones',
@@ -38,4 +38,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default Hero;

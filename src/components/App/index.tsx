@@ -1,11 +1,12 @@
 import React, { useEffect, ReactNode } from 'react';
 import ShoppingCartProvider from '../../context/ShoppingCartContext';
 import { AppContainer } from './styles';
-import HeaderHero from '../HeaderHero';
+// import HeaderHero from '../HeaderHero';
 import ProductNav from '../ProductNav';
 import ProductShowcase from '../ProductShowcase';
 import ProductList from '../ProductList';
 import ImpactMessage from '../ImpactMessage';
+import Landing from '../Landing';
 import Header from '../Header';
 import Footer from '../Footer';
 import Product from '../Product';
@@ -25,7 +26,8 @@ const App = () => {
   return (
     <AppContainer>
       <ShoppingCartProvider>
-        <Header />
+        {/* <Header /> */}
+        <Landing />
         <ScrollToTop>
           <Routes>
             <Route
@@ -79,13 +81,9 @@ const App = () => {
             <Route path="/checkout" element={<CheckoutForm />} />
             <Route
               path="/"
-              element={
-                <MainLayout>
-                  <HeaderHero />
-                </MainLayout>
-              }
+              element={<MainLayout>{/* <HeaderHero /> */}</MainLayout>}
             />
-            <Route path="*" element={<HeaderHero />} />
+            {/* <Route path="*" element={<HeaderHero />} /> */}
           </Routes>
         </ScrollToTop>
       </ShoppingCartProvider>
