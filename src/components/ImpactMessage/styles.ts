@@ -1,16 +1,48 @@
 import styled from 'styled-components/macro';
-
+import breakpoints from '../../shared/css/breakpoints';
 const Wrapper = styled.section`
-  margin-top: ${120 / 16}rem;
+  display: flex;
+  flex-direction: column;
   text-align: center;
+  margin-block: ${120 / 16}rem;
   padding: 0 ${24 / 16}rem;
+
+  ${breakpoints.tabletAndUp} {
+    margin-block: ${96 / 16}rem;
+  }
+  ${breakpoints.laptopAndUp} {
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: ${120 / 16}rem;
+    height: ${588 / 16}rem;
+  }
+`;
+
+const Picture = styled.picture`
+  flex: 1;
+  height: ${320 / 16}rem;
+  border-radius: 8px;
+  overflow: hidden;
+  ${breakpoints.laptopAndUp} {
+    height: 100%;
+  }
 `;
 
 const Img = styled.img`
-  min-height: ${300 / 16}rem;
-  max-height: ${588 / 16}rem;
-  border-radius: 8px;
-  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
+const Content = styled.div`
+  flex: 1;
+  ${breakpoints.tabletAndUp} {
+    width: 75%;
+    margin: auto;
+  }
+  ${breakpoints.laptopAndUp} {
+    width: 100%;
+  }
 `;
 
 const Header = styled.h2`
@@ -18,13 +50,15 @@ const Header = styled.h2`
   letter-spacing: 1px;
   margin-top: ${40 / 16}rem;
   margin-bottom: ${32 / 16}rem;
+  ${breakpoints.tabletAndUp} {
+    margin-top: ${62 / 16}rem;
+  }
 `;
 
 const Text = styled.p`
   color: hsl(var(--clr-primary-black) / 0.5);
   font-size: var(--text-body);
   font-weight: 200;
-  margin: 0;
   margin-bottom: ${25 / 16}rem;
 `;
 
@@ -32,4 +66,4 @@ const TextOrange = styled.span`
   color: hsl(var(--clr-primary-orange)); ;
 `;
 
-export { Wrapper, Img, Header, Text, TextOrange };
+export { Wrapper, Content, Picture, Img, Header, Text, TextOrange };
