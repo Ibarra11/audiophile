@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import ProductButton from '../Buttons';
+import { MaxWidthWrapper } from '../../shared/css/components';
 
 import ProductHeadphoneImg from '../../assets/shared/desktop/image-category-thumbnail-headphones.png';
 import ProductSpeakerImg from '../../assets/shared/desktop/image-category-thumbnail-speakers.png';
@@ -79,23 +79,25 @@ const ProductNav = ({ mobile, onCloseModal }: ProductNavProps) => {
       />
     </MobileProductsNavWrapper>
   ) : (
-    <ProductsNavWrapper>
-      <ProductItem
-        productImg={ProductHeadphoneImg}
-        productTitle="Headphones"
-        buttonLabel="Shop"
-      />
-      <ProductItem
-        productImg={ProductSpeakerImg}
-        productTitle="Speakers"
-        buttonLabel="Shop"
-      />
-      <ProductItem
-        productImg={ProductEarphonesImg}
-        productTitle="Earphones"
-        buttonLabel="Shop"
-      />
-    </ProductsNavWrapper>
+    <MaxWidthWrapper>
+      <ProductsNavWrapper>
+        <ProductItem
+          productImg={ProductHeadphoneImg}
+          productTitle="Headphones"
+          buttonLabel="Shop"
+        />
+        <ProductItem
+          productImg={ProductSpeakerImg}
+          productTitle="Speakers"
+          buttonLabel="Shop"
+        />
+        <ProductItem
+          productImg={ProductEarphonesImg}
+          productTitle="Earphones"
+          buttonLabel="Shop"
+        />
+      </ProductsNavWrapper>
+    </MaxWidthWrapper>
   );
 };
 

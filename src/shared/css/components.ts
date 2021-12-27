@@ -24,5 +24,6 @@ const Link = styled(RouterLink)`
 
 const MaxWidthWrapper = styled.div`
   max-width: 1110px;
+  margin: auto;
 `;
 export { Link, MaxWidthWrapper };

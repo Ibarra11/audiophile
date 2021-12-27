@@ -1,13 +1,12 @@
 import styled from 'styled-components/macro';
 import { motion } from 'framer-motion';
 const ProductsNavWrapper = styled.nav`
-  padding: 1rem ${24 / 16}rem 1rem;
-  margin-top: ${40 / 16}rem;
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+
   flex-wrap: wrap;
   gap: 1rem;
+  padding: 1rem ${24 / 16}rem 1rem;
+  margin-top: ${40 / 16}rem;
 `;
 
 const MobileProductsNavWrapper = styled(motion.nav)`

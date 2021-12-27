@@ -1,25 +1,36 @@
 import styled from 'styled-components/macro';
-
+import breakpoints from '../../../shared/css/breakpoints';
 const Wrapper = styled.div`
   position: relative;
-  height: 85vw;
-  isolation: isolate;
-  border-radius: 8px;
-  overflow: hidden;
+  height: ${320 / 16}rem;
   display: flex;
   align-items: center;
-  padding-left: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+`;
+
+const Picture = styled.picture`
+  position: absolute;
+  height: 100%;
+  width: 100%;
 `;
 
 const Img = styled.img`
-  position: absolute;
-  left: -24px;
-  z-index: -1;
-  width: calc(100% + 24px);
   height: 100%;
+  width: 100%;
+  object-fit: cover;
 `;
 
-const Content = styled.div``;
+const Content = styled.div`
+  position: relative;
+  padding-left: ${24 / 16}rem;
+  ${breakpoints.tabletAndUp} {
+    padding-left: ${48 / 16}rem;
+  }
+  ${breakpoints.laptopAndUp} {
+    padding-left: ${96 / 16}rem;
+  }
+`;
 
 const Title = styled.h3`
   color: hsl(--clr-primary-black);
@@ -27,8 +38,7 @@ const Title = styled.h3`
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin: 0;
   margin-bottom: 32px;
 `;
 
-export { Wrapper, Img, Content, Title };
+export { Wrapper, Picture, Img, Content, Title };
