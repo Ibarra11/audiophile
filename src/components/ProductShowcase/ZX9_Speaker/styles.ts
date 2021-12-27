@@ -46,6 +46,7 @@ const Title = styled.h3`
   text-transform: uppercase;
   margin-top: 0;
   margin-bottom: ${24 / 16}rem;
+  letter-spacing: 2px;
 `;
 
 const Text = styled.p`

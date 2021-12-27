@@ -37,7 +37,7 @@ const Title = styled.h3`
   font-size: ${28 / 16}rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
   margin-bottom: 32px;
 `;
 

@@ -12,11 +12,12 @@ const ZX7 = () => {
   return (
     <Wrapper>
       <Picture>
-        <source srcSet={SpeakerImg_tablet} media="(min-width: 550px)" />
         <source
           srcSet={SpeakerImg_laptopAndUp}
           media="(min-width: 1100px)"
         />
+        <source srcSet={SpeakerImg_tablet} media="(min-width: 550px)" />
+
         <Img src={SpeakerImg_mobile} alt="ZX7 speaker showcase" />
       </Picture>
 
