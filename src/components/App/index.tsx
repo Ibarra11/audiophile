@@ -1,6 +1,6 @@
 import React, { useEffect, ReactNode } from 'react';
 import ShoppingCartProvider from '../../context/ShoppingCartContext';
-import { AppContainer } from './styles';
+import { AppContainer, LayoutWrapper } from './styles';
 import { MaxWidthWrapper } from '../../shared/css/components';
 import ProductNav from '../ProductNav';
 import ProductShowcase from '../ProductShowcase';
@@ -96,9 +96,11 @@ const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
     <MaxWidthWrapper>
       {children}
-      <ProductNav />
-      <ProductShowcase />
-      <ImpactMessage />
+      <LayoutWrapper>
+        <ProductNav />
+        <ProductShowcase />
+        <ImpactMessage />
+      </LayoutWrapper>
     </MaxWidthWrapper>
   );
 };

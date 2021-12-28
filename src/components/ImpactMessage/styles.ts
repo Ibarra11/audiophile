@@ -4,12 +4,7 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   text-align: center;
-  margin-block: ${120 / 16}rem;
-  padding: 0 ${24 / 16}rem;
 
-  ${breakpoints.tabletAndUp} {
-    margin-block: ${96 / 16}rem;
-  }
   ${breakpoints.laptopAndUp} {
     flex-direction: row-reverse;
     align-items: center;
