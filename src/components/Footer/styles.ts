@@ -69,7 +69,6 @@ const ContentWrapper = styled(MaxWidthWrapper)`
 const LogoIcon = styled.img`
   grid-area: logo;
 `;
-
 const Nav = styled.nav`
   grid-area: nav;
   display: flex;
@@ -115,6 +114,7 @@ const SocialLinks = styled.div`
   display: flex;
   justify-content: center;
   gap: ${16 / 16}rem;
+
   ${breakpoints.tabletAndUp} {
     justify-self: end;
   }
@@ -127,20 +127,14 @@ const SocialLink = styled.a`
   display: flex;
   align-items: center;
   color: inherit;
+  transition: filter 200ms;
+  &:hover {
+    filter: invert(62%) sepia(18%) saturate(1524%) hue-rotate(336deg)
+      brightness(89%) contrast(91%);
+  }
 `;
 
 const Icon = styled.img``;
-
-const OrangeInlineBorder = styled.span`
-  height: 4px;
-  width: 101px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  background-color: hsl(var(--clr-orange)); ;
-`;
 
 export {
   Container,
@@ -153,5 +147,4 @@ export {
   SocialLinks,
   SocialLink,
   Icon,
-  OrangeInlineBorder,
 };

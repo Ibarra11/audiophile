@@ -1,7 +1,5 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { Link } from '../../shared/css/components';
-import { MaxWidthWrapper } from '../../shared/css/components';
 import Logo from '../../assets/shared/desktop/logo.svg';
 import FacebookIcon from '../../assets/shared/desktop/icon-facebook.svg';
 import TwitterIcon from '../../assets/shared/desktop/icon-twitter.svg';
@@ -17,14 +15,12 @@ import {
   SocialLinks,
   SocialLink,
   Icon,
-  OrangeInlineBorder,
 } from './styles';
 
 const Footer = () => {
   const location = useLocation();
   return (
     <Container>
-      <OrangeInlineBorder />
       <ContentWrapper>
         <LogoIcon src={Logo} alt="site logo" />
         <Nav>
