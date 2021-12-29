@@ -1,10 +1,18 @@
 import styled from 'styled-components/macro';
-
 import { motion } from 'framer-motion';
+import breakpoints from '../../shared/css/breakpoints';
 const ProductsNavWrapper = styled.nav`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+
+  ${breakpoints.tabletAndUp} {
+    gap: ${10 / 16}rem;
+  }
+
+  ${breakpoints.laptopAndUp} {
+    gap: ${30 / 16}rem;
+  }
 `;
 
 const MobileProductsNavWrapper = styled(motion.nav)`
