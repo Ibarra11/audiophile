@@ -15,7 +15,7 @@ export type ProductTypes = 'headphones' | 'speakers' | 'earphones';
 export type Product = {
   id: string;
   title: string;
-  mainImg: string;
+  mainImg: { mobile: string; tablet: string; desktop: string };
   price: number;
   amount: number;
 };

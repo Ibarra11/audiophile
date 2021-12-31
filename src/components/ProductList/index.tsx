@@ -5,7 +5,7 @@ import {
   ProductListWrapper,
   ProductListHeader,
   ProductWrapper,
-  ProductImgWrapper,
+  Picture,
   ProductImg,
   ProductContent,
   ProductText,
@@ -39,7 +39,7 @@ const ProductList = ({ productType }: ProductListProps) => {
 
 interface ProductProps {
   product: {
-    mainImg: string;
+    mainImg: { mobile: string; tablet: string; desktop: string };
     title: string;
     description: string;
     id: string;
@@ -51,10 +51,19 @@ interface ProductProps {
 const Product = ({ product, index, type }: ProductProps) => {
   const location = useLocation();
   return (
-    <ProductWrapper>
-      <ProductImgWrapper>
-        <ProductImg src={product.mainImg} />
-      </ProductImgWrapper>
+    <ProductWrapper index={index}>
+      <Picture>
+        <source
+          srcSet={product.mainImg.desktop}
+          media="(min-width: 1100px)"
+        />
+        <source
+          srcSet={product.mainImg.tablet}
+          media="(min-width: 550px)"
+        />
+
+        <ProductImg src={product.mainImg.mobile} />
+      </Picture>
       <ProductContent>
         {product.newProduct && (
           <ProductSubTitle>New Product</ProductSubTitle>

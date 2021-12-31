@@ -1,5 +1,10 @@
-import ZX9_Main from '../assets/product-zx9-speaker/mobile/image-product.jpg';
-import ZX7_Main from '../assets/product-zx7-speaker/mobile/image-product.jpg';
+import ZX9_Main_Mobile from '../assets/product-zx9-speaker/mobile/image-product.jpg';
+import ZX9_Main_Tablet from '../assets/product-zx9-speaker/tablet/image-product.jpg';
+import ZX9_Main_Desktop from '../assets/product-zx9-speaker/desktop/image-product.jpg';
+
+import ZX7_Main_Mobile from '../assets/product-zx7-speaker/mobile/image-product.jpg';
+import ZX7_Main_Tablet from '../assets/product-zx7-speaker/tablet/image-product.jpg';
+import ZX7_Main_Desktop from '../assets/product-zx7-speaker/desktop/image-product.jpg';
 
 import ZX9_Gallery_Mobile_1 from '../assets/product-zx9-speaker/mobile/image-gallery-1.jpg';
 import ZX9_Gallery_Mobile_2 from '../assets/product-zx9-speaker/mobile/image-gallery-2.jpg';
@@ -18,7 +23,11 @@ import XX59_Recommendation_Mobile from '../assets/shared/mobile/image-xx59-headp
 export const Speakers = [
   {
     id: '8bfb25bc-5b98-11ec-bf63-0242ac130002',
-    mainImg: ZX9_Main,
+    mainImg: {
+      mobile: ZX9_Main_Mobile,
+      tablet: ZX9_Main_Tablet,
+      desktop: ZX9_Main_Desktop,
+    },
     title: 'ZX9',
     description:
       'Upgrade your sound system with the all new ZX9 active speaker. It’s a bookshelf speaker system that offers truly wireless connectivity -- creating new possibilities for more pleasing and practical audio setups.',
@@ -66,7 +75,11 @@ export const Speakers = [
   },
   {
     id: '8bfb2698-5b98-11ec-bf63-0242ac130002',
-    mainImg: ZX7_Main,
+    mainImg: {
+      mobile: ZX7_Main_Mobile,
+      tablet: ZX7_Main_Tablet,
+      desktop: ZX7_Main_Desktop,
+    },
     title: 'ZX7' as const,
     description:
       'Stream high quality sound wirelessly with minimal to no loss. The ZX7 speaker uses high-end audiophile components that represents the top of the line powered speakers for home or studio use.',

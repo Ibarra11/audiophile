@@ -5,7 +5,6 @@ const ProductsNavWrapper = styled.nav`
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-
   ${breakpoints.tabletAndUp} {
     gap: ${10 / 16}rem;
   }

@@ -1,14 +1,14 @@
 import styled from 'styled-components/macro';
-
+import { MaxWidthWrapper } from '../../shared/css/components';
 import breakpoints from '../../shared/css/breakpoints';
 const AppContainer = styled.div`
   height: 100%;
   background-color: #f2f2f2;
 `;
 
-const LayoutWrapper = styled.div`
-  padding-inline: ${24 / 16}rem;
+const LayoutWrapper = styled(MaxWidthWrapper)`
 
+  padding-inline: ${24 / 16}rem;
   padding-top: ${40 / 16}rem;
   padding-bottom: ${120 / 16}rem;
   & > :not(:last-child) {

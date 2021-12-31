@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const SectionWrapper = styled.section`
   padding-inline: ${24 / 16}rem;
-
   & h3 {
     font-size: clamp(${24 / 16}rem, 2vw + 1rem, var(--fs-h3));
   }

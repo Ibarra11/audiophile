@@ -1,8 +1,13 @@
 import styled from 'styled-components';
+import breakpoints from '../../shared/css/breakpoints';
+import { MaxWidthWrapper } from '../../shared/css/components';
 
 const ProductListWrapper = styled.section`
-  margin-bottom: ${120 / 16}rem;
   text-align: center;
+
+  ${breakpoints.laptopAndUp} {
+    margin-bottom: ${20 / 16}rem;
+  }
 `;
 
 const ProductListHeader = styled.h2`
@@ -11,26 +16,71 @@ const ProductListHeader = styled.h2`
   background-color: hsl(var(--clr-primary-black) / 0.9);
   padding-block: 1.5em;
   letter-spacing: 2px;
-  margin-bottom: ${64 / 16}rem;
 `;
-const ProductWrapper = styled.div`
-  padding-inline: ${24 / 16}rem;
+const ProductWrapper = styled(MaxWidthWrapper)<{ index: number }>`
   display: flex;
   flex-direction: column;
   gap: ${32 / 16}rem;
+  padding-inline: ${24 / 16}rem;
+  padding-top: ${64 / 16}rem;
+
   &:not(:last-of-type) {
-    margin-bottom: ${120 / 16}rem;
+    margin-bottom: ${64 / 16}rem;
+
+    ${breakpoints.laptopAndUp} {
+      margin-bottom: ${120 / 16}rem;
+    }
+  }
+  &:first-of-type {
+    margin-top: ${64 / 16}rem;
+    ${breakpoints.tabletAndUp} {
+      margin-top: ${96 / 16}rem;
+    }
+  }
+
+  ${breakpoints.tabletAndUp} {
+    gap: ${48 / 16}rem;
+  }
+
+  ${breakpoints.laptopAndUp} {
+    flex-direction: ${(p) => (p.index % 2 === 0 ? 'row' : 'row-reverse')};
+    align-items: center;
+    gap: ${64 / 16}rem;
   }
 `;
 
-const ProductImgWrapper = styled.div``;
+const Picture = styled.picture`
+  height: ${352 / 16}rem;
+  overflow: hidden;
+  ${breakpoints.laptopAndUp} {
+    flex: 1;
+    height: ${420 / 16}rem;
+  }
+`;
 
-const ProductImg = styled.img``;
+const ProductImg = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  ${breakpoints.tabletAndUp} {
+    object-fit: contain;
+    transform: scale(2.25);
+  }
+  ${breakpoints.laptopAndUp} {
+    object-fit: cover;
+    transform: scale(1);
+  }
+`;
 const ProductContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: ${570 / 16}rem;
+  margin-inline: auto;
   gap: ${24 / 16}rem;
+  ${breakpoints.laptopAndUp} {
+    width: ${445 / 16}rem;
+  }
 `;
 
 const ProductSubTitle = styled.span`
@@ -50,7 +100,7 @@ export {
   ProductListWrapper,
   ProductListHeader,
   ProductWrapper,
-  ProductImgWrapper,
+  Picture,
   ProductImg,
   ProductContent,
   ProductSubTitle,

@@ -1,4 +1,6 @@
-import YX1_Main from '../assets/product-yx1-earphones/mobile/image-product.jpg';
+import YX1_Main_Mobile from '../assets/product-yx1-earphones/mobile/image-product.jpg';
+import YX1_Main_Tablet from '../assets/product-yx1-earphones/tablet/image-product.jpg';
+import YX1_Main_Desktop from '../assets/product-yx1-earphones/desktop/image-product.jpg';
 
 import YX1_Gallery_Mobile_1 from '../assets/product-yx1-earphones/mobile/image-gallery-1.jpg';
 import YX1_Gallery_Mobile_2 from '../assets/product-yx1-earphones/mobile/image-gallery-2.jpg';
@@ -8,10 +10,14 @@ import MarkI_Recommendation_Mobile from '../assets/shared/mobile/image-xx99-mark
 import XX59_Recommendation_Mobile from '../assets/shared/mobile/image-xx59-headphones.jpg';
 import ZX9_Recommendation_Mobile from '../assets/shared/mobile/image-zx9-speaker.jpg';
 
-export const Earphones = [
+const Earphones = [
   {
     id: '8bfb24cc-5b98-11ec-bf63-0242ac130002',
-    mainImg: YX1_Main,
+    mainImg: {
+      mobile: YX1_Main_Mobile,
+      tablet: YX1_Main_Tablet,
+      desktop: YX1_Main_Desktop,
+    },
     title: 'YX1 WIRELESS',
     description:
       'Tailor your listening experience with bespoke dynamic drivers from the new YX1 Wireless Earphones. Enjoy incredible high-fidelity sound even in noisy environments with its active noise cancellation feature.',
@@ -55,3 +61,5 @@ export const Earphones = [
     ],
   },
 ];
+
+export { Earphones };

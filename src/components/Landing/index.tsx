@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components/macro';
-import Header from '../Header';
+
 import Hero from '../Hero';
 import breakpoints from '../../shared/css/breakpoints';
 import Desktop_bg from '../../assets/home/desktop/image-hero.jpg';
@@ -9,7 +9,6 @@ import Mobile_bg from '../../assets/home/mobile/image-header.jpg';
 const Landing = () => {
   return (
     <Wrapper>
-      <Header />
       <Hero />
     </Wrapper>
   );

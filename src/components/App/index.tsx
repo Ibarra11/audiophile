@@ -26,8 +26,7 @@ const App = () => {
   return (
     <AppContainer>
       <ShoppingCartProvider>
-        {/* <Header /> */}
-        <Landing />
+        <Header />
         <ScrollToTop>
           <Routes>
             <Route
@@ -81,7 +80,11 @@ const App = () => {
             <Route path="/checkout" element={<CheckoutForm />} />
             <Route
               path="/"
-              element={<MainLayout>{/* <HeaderHero /> */}</MainLayout>}
+              element={
+                <MainLayout>
+                  <Landing />
+                </MainLayout>
+              }
             />
             {/* <Route path="*" element={<HeaderHero />} /> */}
           </Routes>
@@ -94,14 +97,14 @@ const App = () => {
 
 const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
-    <MaxWidthWrapper>
+    <>
       {children}
       <LayoutWrapper>
         <ProductNav />
         <ProductShowcase />
         <ImpactMessage />
       </LayoutWrapper>
-    </MaxWidthWrapper>
+    </>
   );
 };
 

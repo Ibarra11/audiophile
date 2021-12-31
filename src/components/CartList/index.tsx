@@ -16,7 +16,7 @@ const CartList = ({ dispatch }: Props) => {
       {cart.products.map((product) => {
         return (
           <CartRow key={product.id}>
-            <ProductImg src={product.mainImg} />
+            <ProductImg src={product.mainImg.mobile} />
             <ProductDetails>
               <ProductTitle>{product.title}</ProductTitle>
               <ProductPrice>

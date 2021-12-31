@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams, useLocation } from 'react-router';
+import { useParams } from 'react-router';
 import numeral from 'numeral';
 import ProductFeatures from './Product_Features';
 import ProductContentList from './Product_Content_List';
@@ -7,7 +7,6 @@ import ProductGallery from './Product_Gallery';
 import ProductRecommendationList from './Product_RecommendationList';
 import Products from '../../data';
 import Buttons from '../Buttons';
-import { DollarSign } from 'react-feather';
 
 import { useCartDispatch } from '../../context/ShoppingCartContext';
 
@@ -60,7 +59,7 @@ const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
 };
 
 interface ProductProps {
-  mainImg: string;
+  mainImg: { mobile: string; tablet: string; desktop: string };
   newProduct: boolean;
   title: string;
   description: string;
@@ -109,7 +108,7 @@ function Product({
   return (
     <ProductWrapper>
       <ProductImgWrapper>
-        <ProductImg src={mainImg} />
+        <ProductImg src={mainImg.mobile} />
       </ProductImgWrapper>
       <ProductContent>
         {newProduct && <ProductSubHeading>New Product</ProductSubHeading>}

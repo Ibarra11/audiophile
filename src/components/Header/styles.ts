@@ -2,15 +2,15 @@ import styled from 'styled-components';
 
 import { Link, MaxWidthWrapper } from '../../shared/css/components';
 import breakpoints from '../../shared/css/breakpoints';
-const HeaderLayout = styled(MaxWidthWrapper)`
+const HeaderLayout = styled.div`
+  background-color: hsl(var(--clr-primary-black) / 0.9);
   margin: auto;
   height: 5rem;
-  border-bottom: 1px solid hsl(var(--clr-secondary-gray) / 0.25);
   ${breakpoints.tabletAndUp} {
-    margin-inline: 2rem;
+    padding-inline: 2rem;
   }
   ${breakpoints.laptopAndUp} {
-    margin-inline: auto;
+    padding-inline: 0;
   }
 `;
 
@@ -19,8 +19,10 @@ const MobileToTablet = styled.div`
   height: 100%;
   align-items: center;
   padding-inline: 1rem;
+  border-bottom: 1px solid hsl(var(--clr-secondary-gray) / 0.25);
   ${breakpoints.tabletAndUp} {
     gap: 4rem;
+    padding-inline: 0;
   }
 
   ${breakpoints.laptopAndUp} {
@@ -28,16 +30,14 @@ const MobileToTablet = styled.div`
   }
 `;
 
-const LaptopToDesktop = styled.div`
+const LaptopToDesktop = styled(MaxWidthWrapper)`
   display: none;
-
+  border-bottom: 1px solid hsl(var(--clr-secondary-gray) / 0.25);
   ${breakpoints.laptopAndUp} {
     display: flex;
     height: 100%;
     align-items: center;
     justify-content: space-between;
-    max-width: 1110px;
-    margin: auto;
   }
 `;
 

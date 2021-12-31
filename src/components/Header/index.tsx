@@ -64,7 +64,7 @@ const Header = () => {
         </Link>
         <NavList>
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/earphones">Headphones</NavLink>
+          <NavLink to="/headphones">Headphones</NavLink>
           <NavLink to="/speakers">Speakers</NavLink>
           <NavLink to="/earphones">Earphones</NavLink>
         </NavList>
