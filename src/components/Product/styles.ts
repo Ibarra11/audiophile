@@ -1,34 +1,92 @@
 import styled from 'styled-components';
-
+import breakpoints from '../../shared/css/breakpoints';
 const SectionWrapper = styled.section`
-  padding-inline: ${24 / 16}rem;
   & h3 {
     font-size: clamp(${24 / 16}rem, 2vw + 1rem, var(--fs-h3));
   }
+  margin-bottom: ${120 / 16}rem;
   & > :not(:last-child) {
     margin-bottom: ${88 / 16}rem;
+
+    ${breakpoints.tabletAndUp} {
+      margin-bottom: ${120 / 16}rem;
+    }
+    ${breakpoints.laptopAndUp} {
+      margin-bottom: ${160 / 16}rem;
+    }
   }
-  margin-bottom: ${120 / 16}rem;
+  ${breakpoints.tabletAndUp} {
+    margin-top: -${36 / 16}rem;
+  }
+  ${breakpoints.laptopAndUp} {
+    margin-top: -${48 / 16}rem;
+    margin-bottom: ${160 / 16}rem;
+  }
 `;
 
 const PrevLink = styled.a`
-  display: block;
+  position: relative;
+  top: -${16 / 16}rem;
   color: hsl(var(--clr-primary-black));
   text-decoration: none;
-  margin-top: 1rem;
-  margin-bottom: ${24 / 16}rem;
+  ${breakpoints.tabletAndUp} {
+    top: -${24 / 16}rem;
+  }
+  ${breakpoints.laptopAndUp} {
+    top: -${36 / 16}rem;
+  }
 `;
 
 const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: ${32 / 16}rem;
+  ${breakpoints.tabletAndUp} {
+    flex-direction: revert;
+    align-items: center;
+    gap: ${48 / 16}rem;
+  }
+  ${breakpoints.laptopAndUp} {
+    gap: ${72 / 16}rem;
+  }
 `;
 
-const ProductImgWrapper = styled.div``;
-const ProductImg = styled.img``;
+const Picture = styled.picture`
+  height: ${352 / 16}rem;
+  ${breakpoints.tabletAndUp} {
+    height: ${480 / 16}rem;
+    overflow: hidden;
+  }
+  ${breakpoints.laptopAndUp} {
+    height: ${560 / 16}rem;
+  }
+`;
+const ProductImg = styled.img`
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  ${breakpoints.tabletAndUp} {
+    transform: scale(1.25);
+  }
+`;
 
-const ProductContent = styled.div``;
+const ProductContent = styled.div`
+  ${breakpoints.tabletAndUp} {
+    flex: 1;
+  }
+`;
+
+const ProductFeatureBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${88 / 16}rem;
+  ${breakpoints.tabletAndUp} {
+    gap: ${120 / 16}rem;
+  }
+  ${breakpoints.laptopAndUp} {
+    flex-direction: revert;
+  }
+`;
 
 const ProductSubHeading = styled.span`
   color: hsl(var(--clr-primary-orange));
@@ -57,7 +115,6 @@ const ProductPrice = styled.span`
 const ProductButtons = styled.div`
   display: flex;
   gap: 1rem;
-  justify-content: space-between;
   padding-right: ${25 / 16}rem;
 `;
 
@@ -86,26 +143,15 @@ const CountValue = styled.span`
   font-weight: 700;
 `;
 
-const ProductFeaturesWrapper = styled.div``;
-
-const ProductFeature = styled.div``;
-
-const ProductFeatureHeading = styled.h3``;
-
-const ProductParts = styled.ul``;
-
-const ProductPart = styled.li;
-
-const ProductGallery = styled.div``;
-
 export {
   SectionWrapper,
   PrevLink,
   ProductWrapper,
-  ProductImgWrapper,
+  Picture,
   ProductImg,
   ProductContent,
   ProductHeading,
+  ProductFeatureBox,
   ProductSubHeading,
   Text,
   ProductPrice,

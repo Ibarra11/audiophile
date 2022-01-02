@@ -86,7 +86,7 @@ const App = () => {
                 </MainLayout>
               }
             />
-            {/* <Route path="*" element={<HeaderHero />} /> */}
+            {/* Add a 404 page route */}
           </Routes>
         </ScrollToTop>
       </ShoppingCartProvider>
@@ -98,8 +98,8 @@ const App = () => {
 const MainLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
-      {children}
       <LayoutWrapper>
+        {children}
         <ProductNav />
         <ProductShowcase />
         <ImpactMessage />

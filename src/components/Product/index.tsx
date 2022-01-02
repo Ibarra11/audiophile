@@ -16,11 +16,12 @@ import {
   SectionWrapper,
   PrevLink,
   ProductWrapper,
-  ProductImgWrapper,
+  Picture,
   ProductImg,
   ProductContent,
   ProductHeading,
   ProductSubHeading,
+  ProductFeatureBox,
   Text,
   ProductPrice,
   ProductButtons,
@@ -43,13 +44,15 @@ const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
       <Product
         mainImg={product.mainImg}
         newProduct={product.newProduct}
-        title={product.title}
+        title={product.title + ' ' + productType}
         description={product.description}
         id={product.id}
         price={product.price}
       />
-      <ProductFeatures features={product.features} />
-      <ProductContentList contents={product.contents} />
+      <ProductFeatureBox>
+        <ProductFeatures features={product.features} />
+        <ProductContentList contents={product.contents} />
+      </ProductFeatureBox>
       <ProductGallery images={product.gallery} />
       <ProductRecommendationList
         recommendations={product.recommendedProducts}
@@ -105,11 +108,15 @@ function Product({
     }
   }
 
+  console.log(title);
+
   return (
     <ProductWrapper>
-      <ProductImgWrapper>
+      <Picture>
+        <source srcSet={mainImg.desktop} media="(min-width: 1100px)" />
+        <source srcSet={mainImg.tablet} media="(min-width: 550px)" />
         <ProductImg src={mainImg.mobile} />
-      </ProductImgWrapper>
+      </Picture>
       <ProductContent>
         {newProduct && <ProductSubHeading>New Product</ProductSubHeading>}
         <ProductHeading>{title}</ProductHeading>
