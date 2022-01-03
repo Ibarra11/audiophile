@@ -36,17 +36,15 @@ const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
   const product = Products[productType].find(
     (product) => product.id === id,
   )!;
-  console.log(productType === 'speakers' ? 'speaker' : productType);
+
   return (
     <SectionWrapper>
       <PrevLink onClick={() => window.history.back()}>Go Back</PrevLink>
       <Product
         mainImg={product.mainImg}
         newProduct={product.newProduct}
-        title={`
-          ${product.title} ${
-          productType === 'speakers' ? 'speaker' : productType
-        }`}
+        title={product.title}
+        productType={productType}
         description={product.description}
         id={product.id}
         price={product.price}
@@ -70,6 +68,7 @@ interface ProductProps {
   description: string;
   id: string;
   price: number;
+  productType: ProductTypes;
 }
 function Product({
   mainImg,
@@ -78,6 +77,7 @@ function Product({
   description,
   id,
   price,
+  productType,
 }: ProductProps) {
   const [productCount, setProductCount] = useState(1);
   const dispatch = useCartDispatch();
@@ -110,8 +110,6 @@ function Product({
     }
   }
 
-  console.log(title);
-
   return (
     <ProductWrapper>
       <Picture>
@@ -121,7 +119,9 @@ function Product({
       </Picture>
       <ProductContent>
         {newProduct && <ProductSubHeading>New Product</ProductSubHeading>}
-        <ProductHeading>{title}</ProductHeading>
+        <ProductHeading>{`${title}  ${
+          productType === 'speakers' ? 'speaker' : productType
+        }`}</ProductHeading>
         <Text>{description}</Text>
         <ProductPrice>$ {numeral(price).format('0,0')}</ProductPrice>
         <ProductButtons>

@@ -10,6 +10,7 @@ import {
   useCartDispatch,
 } from '../../context/ShoppingCartContext';
 import { ActionTypes } from '../../shared/types';
+import breakpoints from '../../shared/css/breakpoints';
 
 type Props = {
   isOpen: boolean;
@@ -110,22 +111,34 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
 const AnimatedOverlay = styled(motion.div)`
   position: absolute;
   top: 0;
-  inset: 90px 0 0 0;
+  inset: 80px 0 0 0;
   background-color: hsl(var(--clr-primary-black) / 0.5);
 `;
 
 const AnimatedDialogContent = styled(motion.div)`
-  height: ${488 / 16}rem;
-  width: ${327 / 16}rem;
+  position: absolute;
+  top: ${24 / 16}rem;
+  left: 0;
+  right: 0;
   display: flex;
-  gap: 32px;
+  gap: ${32 / 16}rem;
   flex-direction: column;
   justify-content: space-between;
-  margin-top: 24px;
-  margin-inline: auto;
+  height: ${488 / 16}rem;
+  width: ${327 / 16}rem;
+  margin: auto;
   padding: 32px 28px;
   border-radius: 6px;
   background-color: hsl(var(--clr-white));
+  ${breakpoints.tabletAndUp} {
+    width: ${377 / 16}rem;
+    right: ${40 / 16}rem;
+    left: auto;
+  }
+  ${breakpoints.laptopAndUp} {
+    top: ${32 / 16}rem;
+    right: ${160 / 16}rem;
+  }
 `;
 
 const Row = styled.div`

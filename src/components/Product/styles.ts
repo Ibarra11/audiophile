@@ -139,7 +139,7 @@ const ButtonIncrement = styled(Button)``;
 const ButtonDecrement = styled(Button)``;
 
 const CountValue = styled.span`
-  font-size: ${13 / 16}rem;
+  font-size: ${15 / 16}rem;
   font-weight: 700;
 `;
 

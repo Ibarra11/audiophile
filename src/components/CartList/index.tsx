@@ -8,6 +8,15 @@ type Props = {
   dispatch?: Dispatch;
 };
 
+function convertTitle(originalTitle: string) {
+  console.log(originalTitle);
+  if (originalTitle === 'YX1 WIRELESS EARPHONES') {
+    return 'YX1';
+  } else {
+    return originalTitle;
+  }
+}
+
 const CartList = ({ dispatch }: Props) => {
   const cart = useCart();
 
@@ -18,7 +27,7 @@ const CartList = ({ dispatch }: Props) => {
           <CartRow key={product.id}>
             <ProductImg src={product.mainImg.mobile} />
             <ProductDetails>
-              <ProductTitle>{product.title}</ProductTitle>
+              <ProductTitle>{convertTitle(product.title)}</ProductTitle>
               <ProductPrice>
                 $ {numeral(product.price).format('0,0')}
               </ProductPrice>
