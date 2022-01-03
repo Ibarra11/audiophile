@@ -33,18 +33,20 @@ import {
 
 const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
   const { id } = useParams();
-
   const product = Products[productType].find(
     (product) => product.id === id,
   )!;
-
+  console.log(productType === 'speakers' ? 'speaker' : productType);
   return (
     <SectionWrapper>
       <PrevLink onClick={() => window.history.back()}>Go Back</PrevLink>
       <Product
         mainImg={product.mainImg}
         newProduct={product.newProduct}
-        title={product.title + ' ' + productType}
+        title={`
+          ${product.title} ${
+          productType === 'speakers' ? 'speaker' : productType
+        }`}
         description={product.description}
         id={product.id}
         price={product.price}

@@ -68,7 +68,9 @@ const Product = ({ product, index, type }: ProductProps) => {
         {product.newProduct && (
           <ProductSubTitle>New Product</ProductSubTitle>
         )}
-        <ProductTitle>{`${product.title} ${type}`}</ProductTitle>
+        <ProductTitle>{`${product.title} ${
+          type === 'speakers' ? 'speaker' : type
+        }`}</ProductTitle>
         <ProductText>{product.description}</ProductText>
         <Buttons
           path={`${location.pathname}/${product.title
