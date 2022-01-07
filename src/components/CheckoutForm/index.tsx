@@ -1,5 +1,6 @@
-import React, { useState, useLayoutEffect } from 'react';
+import React, { useState } from 'react';
 import * as Yup from 'yup';
+import { DollarSign } from 'react-feather';
 import Buttons from '../Buttons';
 import CartList from '../CartList';
 import ConfirmationModal from './ConfirmationModal';
@@ -13,14 +14,22 @@ import {
   Heading,
   FormGroupWrapper,
   FormGroup,
+  FormGroupGrid,
+  RadioGroupGrid,
   FormGroupHeader,
+  PaymentDetailsMobileToTablet,
+  PaymentDetailsLaptopAndUp,
   SummaryWrapper,
   SummaryHeading,
   SummaryRow,
+  RadioGroupHeading,
   RowTitle,
   RowPrice,
+  CashOption,
+  CashText,
   OrangeRowPrice,
   ErrorText,
+  GoBackLink,
 } from './styles';
 
 const CheckoutSchema = Yup.object().shape(
@@ -76,6 +85,9 @@ const CheckoutForm = () => {
 
   return (
     <Wrapper>
+      <GoBackLink onClick={() => window.history.back()}>
+        Go Back
+      </GoBackLink>
       <Form
         onSubmit={(e) => {
           e.preventDefault();
@@ -86,105 +98,154 @@ const CheckoutForm = () => {
           <Heading>Checkout</Heading>
           <FormGroup>
             <FormGroupHeader>Billing Details</FormGroupHeader>
-            <TextInput
-              label="Name"
-              name="Name"
-              id="Name"
-              type="text"
-              fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
-            />
-            <TextInput
-              label="Email Address"
-              name="Email"
-              id="Email"
-              type="email"
-              fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
-            />
-            <TextInput
-              label="Phone Number"
-              name="Phone Number"
-              id="Phone Number"
-              type="tel"
-              fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
-            />
+            <FormGroupGrid>
+              <TextInput
+                label="Name"
+                name="Name"
+                id="Name"
+                type="text"
+                fieldProps={formik.getFieldProps}
+                meta={[formik.touched, formik.errors]}
+              />
+              <TextInput
+                label="Email Address"
+                name="Email"
+                id="Email"
+                type="email"
+                fieldProps={formik.getFieldProps}
+                meta={[formik.touched, formik.errors]}
+              />
+              <TextInput
+                label="Phone Number"
+                name="Phone Number"
+                id="Phone Number"
+                type="tel"
+                fieldProps={formik.getFieldProps}
+                meta={[formik.touched, formik.errors]}
+              />
+            </FormGroupGrid>
           </FormGroup>
           <FormGroup>
             <FormGroupHeader>Shipping Info</FormGroupHeader>
-            <TextInput
-              label="Address"
-              name="Address"
-              id="Address"
-              type="text"
-              fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
-            />
-            <TextInput
-              label="Zip Code"
-              name="Zip Code"
-              id="Zip Code"
-              type="text"
-              fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
-            />
-            <TextInput
-              label="City"
-              name="City"
-              id="City"
-              type="text"
-              fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
-            />
-            <TextInput
-              label="Country"
-              name="Country"
-              id="Country"
-              type="text"
-              fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
-            />
+            <FormGroupGrid>
+              <TextInput
+                label="Address"
+                name="Address"
+                id="Address"
+                type="text"
+                fieldProps={formik.getFieldProps}
+                meta={[formik.touched, formik.errors]}
+                columns={2}
+              />
+              <TextInput
+                label="Zip Code"
+                name="Zip Code"
+                id="Zip Code"
+                type="text"
+                fieldProps={formik.getFieldProps}
+                meta={[formik.touched, formik.errors]}
+              />
+              <TextInput
+                label="City"
+                name="City"
+                id="City"
+                type="text"
+                fieldProps={formik.getFieldProps}
+                meta={[formik.touched, formik.errors]}
+              />
+              <TextInput
+                label="Country"
+                name="Country"
+                id="Country"
+                type="text"
+                fieldProps={formik.getFieldProps}
+                meta={[formik.touched, formik.errors]}
+              />
+            </FormGroupGrid>
           </FormGroup>
           <FormGroup>
             <FormGroupHeader>Payment Details</FormGroupHeader>
-            <RadioButton
-              label="e-Money"
-              id="e-money"
-              name="Payment Method"
-              type="radio"
-              fieldProps={formik.getFieldProps}
-              checked={formik.values['Payment Method'] === 'e-money'}
-            />
+            <RadioGroupGrid>
+              <RadioGroupHeading>Payment Method</RadioGroupHeading>
+              <RadioButton
+                label="e-Money"
+                id="e-money"
+                name="Payment Method"
+                type="radio"
+                fieldProps={formik.getFieldProps}
+                checked={formik.values['Payment Method'] === 'e-money'}
+              />
 
-            <RadioButton
-              label="Cash on Delivery"
-              name="Payment Method"
-              id="cash"
-              type="radio"
-              fieldProps={formik.getFieldProps}
-              checked={formik.values['Payment Method'] === 'cash'}
-            />
-            {formik.errors['Payment Method'] &&
-            formik.touched['Payment Method'] ? (
-              <ErrorText>Select one of the payment methods</ErrorText>
-            ) : null}
-            <TextInput
-              label="e-money Number"
-              name="e-number"
-              id="e-number"
-              type="text"
-              fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
-            />
-            <TextInput
-              label="e-Money PIN"
-              name="e-pin"
-              id="e-pin"
-              type="text"
-              fieldProps={formik.getFieldProps}
-              meta={[formik.touched, formik.errors]}
-            />
+              <RadioButton
+                label="Cash on Delivery"
+                name="Payment Method"
+                id="cash"
+                type="radio"
+                fieldProps={formik.getFieldProps}
+                checked={formik.values['Payment Method'] === 'cash'}
+              />
+              {formik.errors['Payment Method'] &&
+              formik.touched['Payment Method'] ? (
+                <ErrorText>Select one of the payment methods</ErrorText>
+              ) : null}
+            </RadioGroupGrid>
+
+            <PaymentDetailsMobileToTablet>
+              <RadioGroupGrid>
+                <TextInput
+                  label="e-money Number"
+                  name="e-number"
+                  id="e-number"
+                  type="text"
+                  fieldProps={formik.getFieldProps}
+                  meta={[formik.touched, formik.errors]}
+                  columns={1}
+                />
+                <TextInput
+                  label="e-Money PIN"
+                  name="e-pin"
+                  id="e-pin"
+                  type="text"
+                  fieldProps={formik.getFieldProps}
+                  meta={[formik.touched, formik.errors]}
+                  columns={1}
+                />
+              </RadioGroupGrid>
+            </PaymentDetailsMobileToTablet>
+            <PaymentDetailsLaptopAndUp>
+              {formik.values['Payment Method'] === 'cash' ? (
+                <CashOption>
+                  <DollarSign size={64} color="hsl(22, 65%, 57%)" />
+                  <CashText>
+                    The ‘Cash on Delivery’ option enables you to pay in
+                    cash when our delivery courier arrives at your
+                    residence. Just make sure your address is correct so
+                    that your order will not be cancelled.
+                  </CashText>
+                </CashOption>
+              ) : (
+                <RadioGroupGrid>
+                  <TextInput
+                    label="e-money Number"
+                    name="e-number"
+                    id="e-number"
+                    type="text"
+                    fieldProps={formik.getFieldProps}
+                    meta={[formik.touched, formik.errors]}
+                    columns={1}
+                  />
+                  <TextInput
+                    label="e-Money PIN"
+                    name="e-pin"
+                    id="e-pin"
+                    type="text"
+                    fieldProps={formik.getFieldProps}
+                    meta={[formik.touched, formik.errors]}
+                    columns={1}
+                  />
+                </RadioGroupGrid>
+              )}
+            </PaymentDetailsLaptopAndUp>
           </FormGroup>
         </FormGroupWrapper>
         <SummaryWrapper>

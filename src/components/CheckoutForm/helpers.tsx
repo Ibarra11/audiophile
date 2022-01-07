@@ -8,12 +8,21 @@ interface ITextInput {
   type: 'text' | 'email' | 'tel';
   fieldProps: (nameOrOptions: any) => FieldInputProps<any>;
   meta: [FormikTouched<any>, FormikErrors<any>];
+  columns?: number;
+  rows?: number;
 }
-const TextInput = ({ label, fieldProps, meta, ...props }: ITextInput) => {
+const TextInput = ({
+  label,
+  fieldProps,
+  meta,
+  rows,
+  columns,
+  ...props
+}: ITextInput) => {
   const [touched, errors] = meta;
 
   return (
-    <InputGroup>
+    <InputGroup rows={rows} columns={columns}>
       <Label htmlFor={props.name || props.id}>{label}</Label>
       <Input {...props} {...fieldProps(props.name)} />
       {touched[props.name] && errors[props.name] ? (
@@ -30,16 +39,20 @@ interface IRadioButton {
   type: 'radio';
   fieldProps: (nameOrOptions: any) => FieldInputProps<any>;
   checked: boolean;
+  rows?: number;
+  columns?: number;
 }
 
 const RadioButton = ({
   label,
   fieldProps,
   checked,
+  rows,
+  columns,
   ...props
 }: IRadioButton) => {
   return (
-    <RadioGroup checked={checked}>
+    <RadioGroup checked={checked} rows={rows} columns={columns}>
       <Input
         {...props}
         {...fieldProps(props.name)}
