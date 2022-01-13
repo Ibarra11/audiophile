@@ -84,8 +84,14 @@ const SlideLeft = keyframes`
 const ConfirmationOverlay = styled(DialogOverlay)`
   background-color: hsl(var(--clr-primary-black) / 0.5);
   position: fixed;
-  inset: 0;
-  animation: ${Show} 0.5s ease-in both;
+  top: 0;
+  left: 0;
+  right: 0;
+  left: 0;
+  border: 1px solid red;
+  height: 100vh;
+  width: 100vw;
+  /* animation: ${Show} 0.5s ease-in both; */
 `;
 
 const ConfirmationContent = styled(DialogContent)`

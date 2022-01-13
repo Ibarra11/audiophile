@@ -9,7 +9,6 @@ type Props = {
 };
 
 function convertTitle(originalTitle: string) {
-  console.log(originalTitle);
   if (originalTitle === 'YX1 WIRELESS EARPHONES') {
     return 'YX1';
   } else {
@@ -19,7 +18,6 @@ function convertTitle(originalTitle: string) {
 
 const CartList = ({ dispatch }: Props) => {
   const cart = useCart();
-
   return (
     <Wrapper>
       {cart.products.map((product) => {

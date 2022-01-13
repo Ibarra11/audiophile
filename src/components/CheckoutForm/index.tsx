@@ -1,33 +1,24 @@
 import React, { useState } from 'react';
 import * as Yup from 'yup';
 import { DollarSign } from 'react-feather';
-import Buttons from '../Buttons';
-import CartList from '../CartList';
+import Summary from './Summary';
+import FormGroup from './FormGroup';
+import RadioGroup from './RadioGroup';
+import TextInput from './TextInput';
+import RadioButton from './RadioButton';
 import ConfirmationModal from './ConfirmationModal';
 import { useCart } from '../../context/ShoppingCartContext';
-import { TextInput, RadioButton } from './helpers';
-import numeral from 'numeral';
+
 import { useFormik } from 'formik';
 import {
   Wrapper,
   Form,
   Heading,
   FormGroupWrapper,
-  FormGroup,
-  FormGroupGrid,
-  RadioGroupGrid,
-  FormGroupHeader,
-  PaymentDetailsMobileToTablet,
-  PaymentDetailsLaptopAndUp,
-  SummaryWrapper,
-  SummaryHeading,
-  SummaryRow,
-  RadioGroupHeading,
-  RowTitle,
-  RowPrice,
+  MobileToTablet,
+  LaptopAndUp,
   CashOption,
   CashText,
-  OrangeRowPrice,
   ErrorText,
   GoBackLink,
 } from './styles';
@@ -59,6 +50,9 @@ const CheckoutSchema = Yup.object().shape(
 
 const CheckoutForm = () => {
   const [showModal, setShowModal] = useState(false);
+  const cart = useCart();
+  console.log('checkout form re-render');
+  console.log(showModal);
   const formik = useFormik({
     initialValues: {
       Name: 'Alan Ibarra',
@@ -78,13 +72,10 @@ const CheckoutForm = () => {
       setShowModal(!showModal);
     },
   });
-  const cart = useCart();
-  const shippingCost = cart.total * 0.025;
-  const vatCost = cart.total * 0.08;
-  const grandTotal = cart.total + shippingCost + vatCost;
 
   return (
     <Wrapper>
+      {showModal && <ConfirmationModal cart={cart} isOpen={showModal} />}
       <GoBackLink onClick={() => window.history.back()}>
         Go Back
       </GoBackLink>
@@ -96,77 +87,69 @@ const CheckoutForm = () => {
       >
         <FormGroupWrapper>
           <Heading>Checkout</Heading>
-          <FormGroup>
-            <FormGroupHeader>Billing Details</FormGroupHeader>
-            <FormGroupGrid>
-              <TextInput
-                label="Name"
-                name="Name"
-                id="Name"
-                type="text"
-                fieldProps={formik.getFieldProps}
-                meta={[formik.touched, formik.errors]}
-              />
-              <TextInput
-                label="Email Address"
-                name="Email"
-                id="Email"
-                type="email"
-                fieldProps={formik.getFieldProps}
-                meta={[formik.touched, formik.errors]}
-              />
-              <TextInput
-                label="Phone Number"
-                name="Phone Number"
-                id="Phone Number"
-                type="tel"
-                fieldProps={formik.getFieldProps}
-                meta={[formik.touched, formik.errors]}
-              />
-            </FormGroupGrid>
+          <FormGroup heading="Billing Details">
+            <TextInput
+              label="Name"
+              name="Name"
+              id="Name"
+              type="text"
+              fieldProps={formik.getFieldProps}
+              meta={[formik.touched, formik.errors]}
+            />
+            <TextInput
+              label="Email Address"
+              name="Email"
+              id="Email"
+              type="email"
+              fieldProps={formik.getFieldProps}
+              meta={[formik.touched, formik.errors]}
+            />
+            <TextInput
+              label="Phone Number"
+              name="Phone Number"
+              id="Phone Number"
+              type="tel"
+              fieldProps={formik.getFieldProps}
+              meta={[formik.touched, formik.errors]}
+            />
           </FormGroup>
-          <FormGroup>
-            <FormGroupHeader>Shipping Info</FormGroupHeader>
-            <FormGroupGrid>
-              <TextInput
-                label="Address"
-                name="Address"
-                id="Address"
-                type="text"
-                fieldProps={formik.getFieldProps}
-                meta={[formik.touched, formik.errors]}
-                columns={2}
-              />
-              <TextInput
-                label="Zip Code"
-                name="Zip Code"
-                id="Zip Code"
-                type="text"
-                fieldProps={formik.getFieldProps}
-                meta={[formik.touched, formik.errors]}
-              />
-              <TextInput
-                label="City"
-                name="City"
-                id="City"
-                type="text"
-                fieldProps={formik.getFieldProps}
-                meta={[formik.touched, formik.errors]}
-              />
-              <TextInput
-                label="Country"
-                name="Country"
-                id="Country"
-                type="text"
-                fieldProps={formik.getFieldProps}
-                meta={[formik.touched, formik.errors]}
-              />
-            </FormGroupGrid>
+          <FormGroup heading="Shipping Info">
+            <TextInput
+              label="Address"
+              name="Address"
+              id="Address"
+              type="text"
+              fieldProps={formik.getFieldProps}
+              meta={[formik.touched, formik.errors]}
+              columns={2}
+            />
+            <TextInput
+              label="Zip Code"
+              name="Zip Code"
+              id="Zip Code"
+              type="text"
+              fieldProps={formik.getFieldProps}
+              meta={[formik.touched, formik.errors]}
+            />
+            <TextInput
+              label="City"
+              name="City"
+              id="City"
+              type="text"
+              fieldProps={formik.getFieldProps}
+              meta={[formik.touched, formik.errors]}
+            />
+            <TextInput
+              label="Country"
+              name="Country"
+              id="Country"
+              type="text"
+              fieldProps={formik.getFieldProps}
+              meta={[formik.touched, formik.errors]}
+            />
           </FormGroup>
-          <FormGroup>
-            <FormGroupHeader>Payment Details</FormGroupHeader>
-            <RadioGroupGrid>
-              <RadioGroupHeading>Payment Method</RadioGroupHeading>
+          <FormGroup heading="Payment Details">
+            <RadioGroup heading="Payment Method">
               <RadioButton
                 label="e-Money"
                 id="e-money"
@@ -175,7 +158,6 @@ const CheckoutForm = () => {
                 fieldProps={formik.getFieldProps}
                 checked={formik.values['Payment Method'] === 'e-money'}
               />
-
               <RadioButton
                 label="Cash on Delivery"
                 name="Payment Method"
@@ -188,31 +170,28 @@ const CheckoutForm = () => {
               formik.touched['Payment Method'] ? (
                 <ErrorText>Select one of the payment methods</ErrorText>
               ) : null}
-            </RadioGroupGrid>
-
-            <PaymentDetailsMobileToTablet>
-              <RadioGroupGrid>
-                <TextInput
-                  label="e-money Number"
-                  name="e-number"
-                  id="e-number"
-                  type="text"
-                  fieldProps={formik.getFieldProps}
-                  meta={[formik.touched, formik.errors]}
-                  columns={1}
-                />
-                <TextInput
-                  label="e-Money PIN"
-                  name="e-pin"
-                  id="e-pin"
-                  type="text"
-                  fieldProps={formik.getFieldProps}
-                  meta={[formik.touched, formik.errors]}
-                  columns={1}
-                />
-              </RadioGroupGrid>
-            </PaymentDetailsMobileToTablet>
-            <PaymentDetailsLaptopAndUp>
+            </RadioGroup>
+            <MobileToTablet>
+              <TextInput
+                label="e-money Number"
+                name="e-number"
+                id="e-number"
+                type="text"
+                fieldProps={formik.getFieldProps}
+                meta={[formik.touched, formik.errors]}
+                columns={1}
+              />
+              <TextInput
+                label="e-Money PIN"
+                name="e-pin"
+                id="e-pin"
+                type="text"
+                fieldProps={formik.getFieldProps}
+                meta={[formik.touched, formik.errors]}
+                columns={1}
+              />
+            </MobileToTablet>
+            <LaptopAndUp>
               {formik.values['Payment Method'] === 'cash' ? (
                 <CashOption>
                   <DollarSign size={64} color="hsl(22, 65%, 57%)" />
@@ -224,7 +203,7 @@ const CheckoutForm = () => {
                   </CashText>
                 </CashOption>
               ) : (
-                <RadioGroupGrid>
+                <>
                   <TextInput
                     label="e-money Number"
                     name="e-number"
@@ -243,38 +222,13 @@ const CheckoutForm = () => {
                     meta={[formik.touched, formik.errors]}
                     columns={1}
                   />
-                </RadioGroupGrid>
+                </>
               )}
-            </PaymentDetailsLaptopAndUp>
+            </LaptopAndUp>
           </FormGroup>
         </FormGroupWrapper>
-        <SummaryWrapper>
-          <SummaryHeading>Summary</SummaryHeading>
-          <CartList />
-          <SummaryRow>
-            <RowTitle>Total</RowTitle>
-            <RowPrice>{numeral(cart.total).format('0,0.00')}</RowPrice>
-          </SummaryRow>
-          <SummaryRow>
-            <RowTitle>Shipping</RowTitle>
-            <RowPrice>{numeral(shippingCost).format('0,0.00')}</RowPrice>
-          </SummaryRow>
-          <SummaryRow>
-            <RowTitle>Vat (included)</RowTitle>
-            <RowPrice>{numeral(vatCost).format('0,0.00')}</RowPrice>
-          </SummaryRow>
-          <SummaryRow>
-            <RowTitle>Grand Total</RowTitle>
-            <OrangeRowPrice>
-              {numeral(grandTotal).format('0,0.00')}
-            </OrangeRowPrice>
-          </SummaryRow>
-          <Buttons id={'btn1'} btnType="btn" width={'full'}>
-            Continue & Pay
-          </Buttons>
-        </SummaryWrapper>
+        <Summary cart={cart} />
       </Form>
-      {showModal && <ConfirmationModal cart={cart} isOpen={showModal} />}
     </Wrapper>
   );
 };

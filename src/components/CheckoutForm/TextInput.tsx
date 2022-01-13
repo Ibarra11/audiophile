@@ -1,5 +1,6 @@
+import React from 'react';
 import { FieldInputProps, FormikErrors, FormikTouched } from 'formik';
-import { InputGroup, Label, Input, RadioGroup, ErrorText } from './styles';
+import { InputGroup, Label, Input, ErrorText } from './styles';
 
 interface ITextInput {
   label: string;
@@ -11,6 +12,7 @@ interface ITextInput {
   columns?: number;
   rows?: number;
 }
+
 const TextInput = ({
   label,
   fieldProps,
@@ -32,36 +34,4 @@ const TextInput = ({
   );
 };
 
-interface IRadioButton {
-  label: string;
-  name: string;
-  id: string;
-  type: 'radio';
-  fieldProps: (nameOrOptions: any) => FieldInputProps<any>;
-  checked: boolean;
-  rows?: number;
-  columns?: number;
-}
-
-const RadioButton = ({
-  label,
-  fieldProps,
-  checked,
-  rows,
-  columns,
-  ...props
-}: IRadioButton) => {
-  return (
-    <RadioGroup checked={checked} rows={rows} columns={columns}>
-      <Input
-        {...props}
-        {...fieldProps(props.name)}
-        value={props.id}
-        checked={checked}
-      />
-      <Label htmlFor={props.name || props.id}>{label}</Label>
-    </RadioGroup>
-  );
-};
-
-export { TextInput, RadioButton };
+export default TextInput;
