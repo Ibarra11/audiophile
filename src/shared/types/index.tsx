@@ -40,9 +40,6 @@ export type Actions =
       };
     }
   | { type: ActionTypes.REMOVE_ALL_PRODUCTS };
-// type CartItem = {
-//   [productId: string]: Product;
-// };
 
 export type Cart = {
   products: Product[];

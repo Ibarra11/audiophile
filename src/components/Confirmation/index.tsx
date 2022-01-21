@@ -3,15 +3,25 @@ import ConfirmationCart from './ConfirmationCart';
 import ConfirmationHeader from './ConfirmationHeader';
 import styled, { keyframes } from 'styled-components';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
+import { useCartDispatch } from '../../context/ShoppingCartContext';
 import breakpoints from '../../shared/css/breakpoints';
-
+import { ActionTypes } from '../../shared/types';
 const ConfirmationModal = ({ isOpen }: { isOpen: boolean }) => {
+  const dispatch = useCartDispatch();
   return (
     <ConfirmationOverlay isOpen={isOpen}>
       <ConfirmationContent aria-label="Confirmation modal with cart">
         <ConfirmationHeader />
         <ConfirmationCart />
-        <Buttons id={'btn1'} width={'full'} btnType="link" path="/">
+        <Buttons
+          id={'btn1'}
+          width={'full'}
+          btnType="link"
+          path="/"
+          onClick={() =>
+            dispatch({ type: ActionTypes.REMOVE_ALL_PRODUCTS })
+          }
+        >
           Back To Home
         </Buttons>
       </ConfirmationContent>

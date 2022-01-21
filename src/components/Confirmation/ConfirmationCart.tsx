@@ -4,12 +4,11 @@ import numeral from 'numeral';
 import breakpoints from '../../shared/css/breakpoints';
 import { useCart } from '../../context/ShoppingCartContext';
 import { Product } from '../../shared/types';
+
 const ConfirmationCart = () => {
   const [showItems, setShowItems] = useState(false);
   const cart = useCart();
   const firstProduct = cart.products[0];
-
-  //  <Divider />
 
   const productJSX = ({ mainImg, title, price, amount }: Product) => (
     <CartRow>
@@ -32,7 +31,6 @@ const ConfirmationCart = () => {
   return (
     <ConfirmationCartDetail>
       <ConfirmationCartContent>
-        {/* <MobileToTablet>{MobileToTabletJSX}</MobileToTablet> */}
         <LaptopAndUp>
           <CartItemsContainer>
             {showItems ? cartProductsJSX() : productJSX(firstProduct)}
