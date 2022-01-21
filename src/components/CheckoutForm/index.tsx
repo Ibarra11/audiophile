@@ -6,7 +6,7 @@ import FormGroup from './FormGroup';
 import RadioGroup from './RadioGroup';
 import TextInput from './TextInput';
 import RadioButton from './RadioButton';
-import ConfirmationModal from './ConfirmationModal';
+import ConfirmationModal from '../Confirmation';
 import { useCart } from '../../context/ShoppingCartContext';
 
 import { useFormik } from 'formik';
@@ -51,8 +51,6 @@ const CheckoutSchema = Yup.object().shape(
 const CheckoutForm = () => {
   const [showModal, setShowModal] = useState(false);
   const cart = useCart();
-  console.log('checkout form re-render');
-  console.log(showModal);
   const formik = useFormik({
     initialValues: {
       Name: 'Alan Ibarra',
@@ -75,7 +73,7 @@ const CheckoutForm = () => {
 
   return (
     <Wrapper>
-      {showModal && <ConfirmationModal cart={cart} isOpen={showModal} />}
+      {showModal && <ConfirmationModal isOpen={showModal} />}
       <GoBackLink onClick={() => window.history.back()}>
         Go Back
       </GoBackLink>
