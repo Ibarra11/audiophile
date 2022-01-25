@@ -1,11 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { motion } from 'framer-motion';
 import ProductNav from '../ProductNav';
 import { DialogOverlay, DialogContent } from '@reach/dialog';
 import { VisuallyHidden } from '@reach/visually-hidden';
 import { X } from 'react-feather';
-
+import breakpoints from '../../shared/css/breakpoints';
 const ModalOverlay = {
   hidden: {
     opacity: 0,
@@ -25,26 +24,28 @@ const ModalOverlay = {
   },
 };
 
-const ModalContent = {
-  hidden: {
-    height: 0,
-    opacity: 0,
-  },
-  visible: {
-    height: '80%',
-    opacity: 1,
-    transition: {
-      when: 'beforeChildren',
-      delay: 0.4,
-      transition: { duration: 0.4 },
+function ModalContent(screenType: 'mobile' | 'tablet') {
+  return {
+    hidden: {
+      height: 0,
+      opacity: 0,
     },
-  },
-  exit: {
-    height: 0,
-    opacity: 0,
-    transition: { duration: 0.3, delay: 0.4 },
-  },
-};
+    visible: {
+      height: screenType === 'mobile' ? '80%' : '340px',
+      opacity: 1,
+      transition: {
+        when: 'beforeChildren',
+        delay: 0.4,
+        transition: { duration: 0.4 },
+      },
+    },
+    exit: {
+      height: 0,
+      opacity: 0,
+      transition: { duration: 0.3, delay: 0.5 },
+    },
+  };
+}
 
 interface ModalNavProps {
   isOpen: boolean;
@@ -65,13 +66,30 @@ const MobileNav = ({ isOpen, onCloseModal }: ModalNavProps) => {
             key="modal"
             aria-label="Mobile Navigation for products"
           >
-            <AnimatedDialogContent variants={ModalContent}>
-              <CloseButtonWrapper onClick={onCloseModal}>
-                <VisuallyHidden>Close</VisuallyHidden>
-                <X size={24} />
-              </CloseButtonWrapper>
-              <ProductNav onCloseModal={onCloseModal} mobile={true} />
-            </AnimatedDialogContent>
+            <MobileDisplay>
+              <AnimatedDialogContent variants={ModalContent('mobile')}>
+                <CloseButtonWrapper onClick={onCloseModal}>
+                  <VisuallyHidden>Close</VisuallyHidden>
+                  <X size={24} />
+                </CloseButtonWrapper>
+                <ProductNav
+                  screenType="mobile"
+                  onCloseModal={onCloseModal}
+                />
+              </AnimatedDialogContent>
+            </MobileDisplay>
+            <TabletDisplay>
+              <AnimatedDialogContent variants={ModalContent('tablet')}>
+                <CloseButtonWrapper onClick={onCloseModal}>
+                  <VisuallyHidden>Close</VisuallyHidden>
+                  <X size={24} />
+                </CloseButtonWrapper>
+                <ProductNav
+                  screenType="tablet"
+                  onCloseModal={onCloseModal}
+                />
+              </AnimatedDialogContent>
+            </TabletDisplay>
           </CustomDialogContent>
         </AnimatedOvelay>
       ) : null}
@@ -107,6 +125,19 @@ const CloseButtonWrapper = styled(motion.button)`
   align-items: center;
   background: transparent;
   border: none;
+`;
+
+const MobileDisplay = styled.div`
+  ${breakpoints.tabletAndUp} {
+    display: none;
+  }
+`;
+
+const TabletDisplay = styled.div`
+  display: none;
+  ${breakpoints.tabletAndUp} {
+    display: block;
+  }
 `;
 
 export default MobileNav;

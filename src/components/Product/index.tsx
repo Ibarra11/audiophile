@@ -7,6 +7,7 @@ import ProductGallery from './Product_Gallery';
 import ProductRecommendationList from './Product_RecommendationList';
 import Products from '../../data';
 import Buttons from '../Buttons';
+import { MaxWidthWrapper } from '../../shared/css/components';
 
 import { useCartDispatch } from '../../context/ShoppingCartContext';
 
@@ -14,6 +15,7 @@ import { ProductTypes, ActionTypes } from '../../shared/types';
 
 import {
   SectionWrapper,
+  FlexWrapper,
   PrevLink,
   ProductWrapper,
   Picture,
@@ -39,24 +41,28 @@ const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
 
   return (
     <SectionWrapper>
-      <PrevLink onClick={() => window.history.back()}>Go Back</PrevLink>
-      <Product
-        mainImg={product.mainImg}
-        newProduct={product.newProduct}
-        title={product.title}
-        productType={productType}
-        description={product.description}
-        id={product.id}
-        price={product.price}
-      />
-      <ProductFeatureBox>
-        <ProductFeatures features={product.features} />
-        <ProductContentList contents={product.contents} />
-      </ProductFeatureBox>
-      <ProductGallery images={product.gallery} />
-      <ProductRecommendationList
-        recommendations={product.recommendedProducts}
-      />
+      <MaxWidthWrapper>
+        <PrevLink onClick={() => window.history.back()}>Go Back</PrevLink>
+        <FlexWrapper>
+          <Product
+            mainImg={product.mainImg}
+            newProduct={product.newProduct}
+            title={product.title}
+            productType={productType}
+            description={product.description}
+            id={product.id}
+            price={product.price}
+          />
+          <ProductFeatureBox>
+            <ProductFeatures features={product.features} />
+            <ProductContentList contents={product.contents} />
+          </ProductFeatureBox>
+          <ProductGallery images={product.gallery} />
+          <ProductRecommendationList
+            recommendations={product.recommendedProducts}
+          />
+        </FlexWrapper>
+      </MaxWidthWrapper>
     </SectionWrapper>
   );
 };

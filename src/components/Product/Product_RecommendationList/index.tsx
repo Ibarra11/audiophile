@@ -17,17 +17,20 @@ interface Props {
 const ProductRecommendationList = ({ recommendations }: Props) => {
   return (
     <Wrapper>
-      {recommendations.map((recommendation) => {
-        return (
-          <ProductRecommendation
-            key={recommendation.id}
-            id={recommendation.id}
-            title={recommendation.title}
-            img={recommendation.img}
-            productType={recommendation.productType}
-          />
-        );
-      })}
+      <Heading>You May Also Like</Heading>
+      <FlexWrapper>
+        {recommendations.map((recommendation) => {
+          return (
+            <ProductRecommendation
+              key={recommendation.id}
+              id={recommendation.id}
+              title={recommendation.title}
+              img={recommendation.img}
+              productType={recommendation.productType}
+            />
+          );
+        })}
+      </FlexWrapper>
     </Wrapper>
   );
 };
@@ -57,7 +60,9 @@ const ProductRecommendation = ({
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.div``;
+
+const FlexWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -68,6 +73,19 @@ const Wrapper = styled.div`
   }
   ${breakpoints.laptopAndUp} {
     gap: ${32 / 16}rem;
+  }
+`;
+
+const Heading = styled.h3`
+  font-size: clamp(${24 / 16}rem, 3vw + 1rem, var(--fs-h3));
+  font-weight: 700;
+  margin-bottom: ${40 / 16}rem;
+  text-align: center;
+  ${breakpoints.tabletAndUp} {
+    margin-bottom: ${56 / 16}rem;
+  }
+  ${breakpoints.laptopAndUp} {
+    margin-bottom: ${64 / 16}rem;
   }
 `;
 

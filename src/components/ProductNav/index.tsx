@@ -15,10 +15,11 @@ import {
   MobileProduct,
   MobileProductImg,
 } from './styles';
+import { MaxWidthWrapper } from '../../shared/css/components';
 
 interface ProductNavProps {
-  mobile?: boolean;
   onCloseModal?: () => void;
+  screenType?: 'mobile' | 'tablet';
 }
 
 const NavVariants = {
@@ -35,66 +36,87 @@ const NavVariants = {
   },
 };
 
-const ProductsVariants = {
-  hidden: {
-    opacity: 0,
-    x: '100%',
-  },
-  visible: {
-    opacity: 1,
-    x: 0,
-  },
-  exit: {
-    opacity: 0,
-    x: '-100%',
-  },
+const ProductVariants = (screenType: 'mobile' | 'tablet') => {
+  const variants = {
+    mobile: {
+      hidden: {
+        opacity: 0,
+        x: '100%',
+      },
+      visible: {
+        opacity: 1,
+        x: 0,
+      },
+      exit: {
+        opacity: 0,
+        x: '-100%',
+      },
+    },
+    tablet: {
+      hidden: {
+        opacity: 0,
+        y: '100%',
+      },
+      visible: {
+        opacity: 1,
+        y: 0,
+      },
+      exit: {
+        opacity: 0,
+        x: '100%',
+      },
+    },
+  };
+
+  return variants[screenType];
 };
 
-const ProductNav = ({ mobile, onCloseModal }: ProductNavProps) => {
-  return mobile ? (
+const ProductNav = ({ onCloseModal, screenType }: ProductNavProps) => {
+  return screenType ? (
     <MobileProductsNavWrapper variants={NavVariants}>
       <ProductItem
-        mobile={true}
         productImg={ProductHeadphoneImg}
         productTitle="Headphones"
         buttonLabel="shop"
         onCloseModal={onCloseModal}
+        screenType={screenType}
       />
-
       <ProductItem
-        mobile={true}
         productImg={ProductSpeakerImg}
         productTitle="Speakers"
         buttonLabel="shop"
         onCloseModal={onCloseModal}
+        screenType={screenType}
       />
 
       <ProductItem
-        mobile={true}
         productImg={ProductEarphonesImg}
         productTitle="Earphones"
         buttonLabel="shop"
         onCloseModal={onCloseModal}
+        screenType={screenType}
       />
     </MobileProductsNavWrapper>
   ) : (
-    <ProductsNavWrapper>
-      <ProductItem
-        productImg={ProductHeadphoneImg}
-        productTitle="Headphones"
-        buttonLabel="Shop"
-      />
-      <ProductItem
-        productImg={ProductSpeakerImg}
-        productTitle="Speakers"
-        buttonLabel="Shop"
-      />
-      <ProductItem
-        productImg={ProductEarphonesImg}
-        productTitle="Earphones"
-        buttonLabel="Shop"
-      />
-    </ProductsNavWrapper>
+    <MaxWidthWrapper>
+      <ProductsNavWrapper>
+        <ProductItem
+          productImg={ProductHeadphoneImg}
+          productTitle="Headphones"
+          buttonLabel="Shop"
+        />
+        <ProductItem
+          productImg={ProductSpeakerImg}
+          productTitle="Speakers"
+          buttonLabel="Shop"
+        />
+        <ProductItem
+          productImg={ProductEarphonesImg}
+          productTitle="Earphones"
+          buttonLabel="Shop"
+        />
+      </ProductsNavWrapper>
+    </MaxWidthWrapper>
   );
 };
 
@@ -102,18 +124,18 @@ interface ProductProps {
   productImg: string;
   productTitle: string;
   buttonLabel: string;
-  mobile?: boolean;
+  screenType?: 'mobile' | 'tablet';
   onCloseModal?: () => void;
 }
 const ProductItem = ({
   productImg,
   productTitle,
   buttonLabel,
-  mobile,
+  screenType,
   onCloseModal,
 }: ProductProps) => {
-  return mobile ? (
-    <MobileProduct variants={ProductsVariants}>
+  return screenType ? (
+    <MobileProduct variants={ProductVariants(screenType)}>
       <MobileProductImg
         src={productImg}
         alt={`${productTitle} category`}

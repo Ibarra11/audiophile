@@ -5,6 +5,7 @@ const SectionWrapper = styled.section`
     font-size: clamp(${24 / 16}rem, 2vw + 1rem, var(--fs-h3));
   }
   margin-bottom: ${120 / 16}rem;
+  padding-inline: ${24 / 16}rem;
   & > :not(:last-child) {
     margin-bottom: ${88 / 16}rem;
 
@@ -16,24 +17,20 @@ const SectionWrapper = styled.section`
     }
   }
   ${breakpoints.tabletAndUp} {
-    margin-top: -${36 / 16}rem;
   }
   ${breakpoints.laptopAndUp} {
-    margin-top: -${48 / 16}rem;
     margin-bottom: ${160 / 16}rem;
   }
 `;
 
 const PrevLink = styled.a`
-  position: relative;
-  top: -${16 / 16}rem;
+  display: inline-block;
   color: hsl(var(--clr-primary-black));
   text-decoration: none;
+  margin-top: ${16 / 16}rem;
+  margin-bottom: ${24 / 16}rem;
   ${breakpoints.tabletAndUp} {
-    top: -${24 / 16}rem;
-  }
-  ${breakpoints.laptopAndUp} {
-    top: -${36 / 16}rem;
+    margin-top: ${32 / 16}rem;
   }
 `;
 
@@ -41,6 +38,7 @@ const ProductWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${32 / 16}rem;
+  align-items: center;
   ${breakpoints.tabletAndUp} {
     flex-direction: revert;
     align-items: center;
@@ -59,6 +57,15 @@ const Picture = styled.picture`
   }
   ${breakpoints.laptopAndUp} {
     height: ${560 / 16}rem;
+  }
+`;
+
+const FlexWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${88 / 16}rem;
+  ${breakpoints.tabletAndUp} {
+    gap: ${120 / 16}rem;
   }
 `;
 const ProductImg = styled.img`
@@ -145,6 +152,7 @@ const CountValue = styled.span`
 
 export {
   SectionWrapper,
+  FlexWrapper,
   PrevLink,
   ProductWrapper,
   Picture,
