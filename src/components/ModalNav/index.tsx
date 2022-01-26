@@ -109,7 +109,7 @@ const CustomDialogContent = styled(DialogContent)``;
 
 const AnimatedDialogContent = styled(motion.div)`
   position: fixed;
-  top: 90px;
+  top: 80px;
   width: 100%;
   background-color: hsl(var(--clr-white));
 `;
