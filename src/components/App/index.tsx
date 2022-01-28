@@ -1,7 +1,6 @@
-import React, { useEffect, ReactNode } from 'react';
+import React, { useEffect } from 'react';
 import ShoppingCartProvider from '../../context/ShoppingCartContext';
-import { AppContainer, LayoutWrapper } from './styles';
-import { MaxWidthWrapper } from '../../shared/css/components';
+import { AppContainer } from './styles';
 import ProductNav from '../ProductNav';
 import ProductShowcase from '../ProductShowcase';
 import ProductList from '../ProductList';
@@ -31,59 +30,56 @@ const App = () => {
           <Routes>
             <Route
               path="/headphones/:headphones/:id"
-              element={
-                <MainLayout>
-                  <Product productType="headphones" />
-                </MainLayout>
-              }
+              element={<Product productType="headphones" />}
             />
             <Route
               path="/speakers/:speakers/:id"
-              element={
-                <MainLayout>
-                  <Product productType="speakers" />
-                </MainLayout>
-              }
+              element={<Product productType="speakers" />}
             />
             <Route
               path="/earphones/:earphones/:id"
-              element={
-                <MainLayout>
-                  <Product productType="earphones" />
-                </MainLayout>
-              }
+              element={<Product productType="earphones" />}
             />
             <Route
               path="/headphones"
               element={
-                <MainLayout>
+                <>
                   <ProductList productType="headphones" />
-                </MainLayout>
+                  <ProductNav />
+                  <ImpactMessage />
+                </>
               }
             />
             <Route
               path="/speakers"
               element={
-                <MainLayout>
+                <>
                   <ProductList productType="speakers" />
-                </MainLayout>
+                  <ProductNav />
+                  <ImpactMessage />
+                </>
               }
             />
             <Route
               path="/earphones"
               element={
-                <MainLayout>
+                <>
                   <ProductList productType="earphones" />
-                </MainLayout>
+                  <ProductNav />
+                  <ImpactMessage />
+                </>
               }
             />
             <Route path="/checkout" element={<CheckoutForm />} />
             <Route
               path="/"
               element={
-                <MainLayout>
+                <>
                   <Landing />
-                </MainLayout>
+                  <ProductNav />
+                  <ProductShowcase />
+                  <ImpactMessage />
+                </>
               }
             />
             {/* Add a 404 page route */}
@@ -92,19 +88,6 @@ const App = () => {
       </ShoppingCartProvider>
       <Footer />
     </AppContainer>
-  );
-};
-
-const MainLayout = ({ children }: { children: ReactNode }) => {
-  return (
-    <>
-      <LayoutWrapper>
-        {children}
-        <ProductNav />
-        <ProductShowcase />
-        <ImpactMessage />
-      </LayoutWrapper>
-    </>
   );
 };
 

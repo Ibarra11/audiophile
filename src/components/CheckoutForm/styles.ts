@@ -4,15 +4,16 @@ import { MaxWidthWrapper } from '../../shared/css/components';
 const Wrapper = styled(MaxWidthWrapper)`
   background: #f2f2f2;
   padding: ${24 / 16}rem;
-  margin-top: ${24 / 16}rem;
-  margin-bottom: ${96 / 16}rem;
+  padding-bottom: ${96 / 16}rem;
+
   ${breakpoints.tabletAndUp} {
     margin-top: ${48 / 16}rem;
+    padding-bottom: ${120 / 16}rem;
   }
   ${breakpoints.laptopAndUp} {
-    margin-bottom: ${140 / 16}rem;
-    margin-top: ${96 / 16}rem;
     padding: 0;
+    padding-top: ${64 / 16}rem;
+    padding-bottom: ${140 / 16}rem;
   }
 `;
 const Form = styled.form`
@@ -30,15 +31,18 @@ const Heading = styled.h3`
   margin-bottom: 32px;
 `;
 
-const GoBackLink = styled.button`
+const GoBackLink = styled.button`c
   margin-bottom: ${24 / 16}rem;
 `;
 
 const FormGroupWrapper = styled.div`
   flex: 2;
   background: hsl(var(--clr-white));
-  padding: ${24 / 16}rem ${32 / 16}rem;
+  padding: ${24 / 16}rem;
   border-radius: 8px;
+  ${breakpoints.laptopAndUp} {
+    padding: ${54 / 16}rem ${48 / 16}rem;
+  }
 `;
 
 const InputGroup = styled.div<{

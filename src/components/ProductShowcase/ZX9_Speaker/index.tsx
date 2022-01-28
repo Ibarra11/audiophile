@@ -21,22 +21,22 @@ const Speaker = () => {
     <Wrapper>
       <CircleImgWrapper>
         <img src={circle_bg} alt="" />
+        <FlexContainer>
+          <ProductImgWrapper>
+            <img src={SpeakerProductImg} alt="A zx9 speaker" />
+          </ProductImgWrapper>
+          <Content>
+            <Title>ZX9 Speaker</Title>
+            <Text>
+              Upgrade to premium speakers that are phenomenally built to
+              deliver truly remarkable sound.
+            </Text>
+            <Button id={'btn2'} btnType="link" path={link}>
+              See Product
+            </Button>
+          </Content>
+        </FlexContainer>
       </CircleImgWrapper>
-      <FlexContainer>
-        <ProductImgWrapper>
-          <img src={SpeakerProductImg} alt="A zx9 speaker" />
-        </ProductImgWrapper>
-        <Content>
-          <Title>ZX9 Speaker</Title>
-          <Text>
-            Upgrade to premium speakers that are phenomenally built to
-            deliver truly remarkable sound.
-          </Text>
-          <Button id={'btn2'} btnType="link" path={link}>
-            See Product
-          </Button>
-        </Content>
-      </FlexContainer>
     </Wrapper>
   );
 };

@@ -1,26 +1,29 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { AnimatePresence } from 'framer-motion';
 import MobileNav from '../ModalNav';
 import ShoppingCart from '../ShoppingCart';
 import Logo from '../../assets/shared/desktop/logo.svg';
 import CartIcon from '../../assets/shared/desktop/icon-cart.svg';
 import HamburgerMenu from '../../assets/shared/tablet/icon-hamburger.svg';
-import { Link, MaxWidthWrapper } from '../../shared/css/components';
+import { Link } from '../../shared/css/components';
+import { useCart } from '../../context/ShoppingCartContext';
 import {
   HeaderLayout,
   MobileToTablet,
   LaptopToDesktop,
   Icon,
   IconButtonWrapper,
-  IconLink,
   NavList,
   NavLink,
+  CartAmount,
 } from './styles';
-import { AnimatePresence } from 'framer-motion';
 
 const Header = () => {
   const [showNav, setShowNav] = useState(false);
   const [showCart, setShowCart] = useState(false);
+  const cart = useCart();
 
+  console.log(cart);
   const toggleNav = () => {
     if (showCart) {
       setShowCart(false);
@@ -56,6 +59,7 @@ const Header = () => {
         </Link>
         <IconButtonWrapper onClick={toggleCart}>
           <Icon src={CartIcon} />
+          {cart.size > 0 ? <CartAmount>{cart.size}</CartAmount> : null}
         </IconButtonWrapper>
       </MobileToTablet>
       <LaptopToDesktop>

@@ -3,6 +3,7 @@ import Buttons from '../Buttons';
 import styled from 'styled-components/macro';
 import numeral from 'numeral';
 import { Cart } from '../../shared/types';
+import breakpoints from '../../shared/css/breakpoints';
 interface ISummary {
   cart: Cart;
 }
@@ -43,10 +44,13 @@ export default Summary;
 
 const SummaryWrapper = styled.div`
   background: hsl(var(--clr-white));
-  padding: ${24 / 16}rem ${32 / 16}rem;
+  padding: ${24 / 16}rem;
   border-radius: 8px;
   flex: 1;
   margin: 0;
+  ${breakpoints.laptopAndUp} {
+    padding: ${32 / 16}rem;
+  }
 `;
 
 const SummaryHeading = styled.h6`

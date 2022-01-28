@@ -4,12 +4,18 @@ const Wrapper = styled.section`
   display: flex;
   flex-direction: column;
   text-align: center;
-
+  margin-bottom: ${120 / 16}rem;
+  padding-inline: ${24 / 16}rem;
+  ${breakpoints.tabletAndUp} {
+    padding-inline: ${40 / 16}rem;
+  }
   ${breakpoints.laptopAndUp} {
     flex-direction: row-reverse;
     align-items: center;
     gap: ${120 / 16}rem;
     height: ${588 / 16}rem;
+    margin-bottom: ${160 / 16}rem;
+    padding-inline: 0;
   }
 `;
 

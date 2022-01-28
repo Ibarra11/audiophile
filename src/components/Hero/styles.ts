@@ -1,11 +1,12 @@
 import styled from 'styled-components/macro';
-import { MaxWidthWrapper } from '../../shared/css/components';
 import breakpoints from '../../shared/css/breakpoints';
+import { MaxWidthWrapper } from '../../shared/css/components';
 const HeaderHeroWrapper = styled(MaxWidthWrapper)`
   display: flex;
   align-items: center;
-  height: calc(100% - 5rem);
-  margin: auto;
+  justify-content: center;
+  height: 100%;
+  padding-inline: ${24 / 16}rem;
   ${breakpoints.tabletAndUp} {
     margin-inline: 2rem;
     justify-content: center;
@@ -13,6 +14,7 @@ const HeaderHeroWrapper = styled(MaxWidthWrapper)`
   ${breakpoints.laptopAndUp} {
     margin-inline: auto;
     justify-content: flex-start;
+    padding-inline: 0;
   }
 `;
 
@@ -20,19 +22,13 @@ const HeaderHeroBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   justify-content: center;
+  max-width: ${380 / 16}rem;
   text-align: center;
-  padding-inline: ${24 / 16}rem;
-  ${breakpoints.tabletAndUp} {
-    padding-inline: 0;
-    /* margin: auto; */
-  }
   ${breakpoints.laptopAndUp} {
-    flex: revert;
-    width: 30rem;
     align-items: flex-start;
     text-align: left;
-    /* margin: 0; */
   }
 `;
 const HeaderHeroBodyMainHeading = styled.h1`

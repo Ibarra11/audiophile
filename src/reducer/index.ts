@@ -19,7 +19,6 @@ export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
           ...productsCpy[productIndex],
           amount: productsCpy[productIndex].amount + product.amount,
         };
-
         return {
           products: productsCpy,
           size: cart.size + product.amount,
