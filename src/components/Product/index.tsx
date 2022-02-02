@@ -8,9 +8,7 @@ import ProductRecommendationList from './Product_RecommendationList';
 import Products from '../../data';
 import Buttons from '../Buttons';
 import { MaxWidthWrapper } from '../../shared/css/components';
-
 import { useCartDispatch } from '../../context/ShoppingCartContext';
-
 import { ProductTypes, ActionTypes } from '../../shared/types';
 
 import {
@@ -108,6 +106,7 @@ function Product({
         },
       },
     });
+
     setProductCount(1);
   }
   function handleDecrementProductCount() {

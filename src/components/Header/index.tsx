@@ -23,7 +23,6 @@ const Header = () => {
   const [showCart, setShowCart] = useState(false);
   const cart = useCart();
 
-  console.log(cart);
   const toggleNav = () => {
     if (showCart) {
       setShowCart(false);
@@ -37,6 +36,8 @@ const Header = () => {
     }
     setShowCart(!showCart);
   };
+
+  console.log(cart.size);
 
   return (
     <HeaderLayout>
@@ -74,6 +75,7 @@ const Header = () => {
         </NavList>
         <IconButtonWrapper onClick={toggleCart}>
           <Icon src={CartIcon} />
+          {cart.size > 0 ? <CartAmount>{cart.size}</CartAmount> : null}
         </IconButtonWrapper>
       </LaptopToDesktop>
     </HeaderLayout>
