@@ -95,6 +95,7 @@ select {
     --clr-secondary-gray: 0 0% 98%;
     --clr-primary-black: 0 0% 0%;
     --clr-secondary-black: #101010;
+    --clr-error: 	hsl(0, 65%, 49%);
 
     /* Font Sizes */
     --fs-h1: ${56 / 16}rem;

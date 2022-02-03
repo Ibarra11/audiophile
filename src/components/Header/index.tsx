@@ -37,8 +37,6 @@ const Header = () => {
     setShowCart(!showCart);
   };
 
-  console.log(cart.size);
-
   return (
     <HeaderLayout>
       <AnimatePresence>

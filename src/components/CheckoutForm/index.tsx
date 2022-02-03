@@ -53,16 +53,16 @@ const CheckoutForm = () => {
   const cart = useCart();
   const formik = useFormik({
     initialValues: {
-      Name: 'Alan Ibarra',
-      Email: 'alan.ibarra209@gmail.com',
-      'Phone Number': '209-416-2966',
-      Address: '3561 Glenville CT',
-      'Zip Code': '95382',
-      City: 'Turlock',
-      Country: 'CA',
-      'Payment Method': 'e-money',
-      'e-number': 'afd',
-      'e-pin': 'fdasf',
+      Name: '',
+      Email: '',
+      'Phone Number': '',
+      Address: '',
+      'Zip Code': '',
+      City: '',
+      Country: '',
+      'Payment Method': '',
+      'e-number': '',
+      'e-pin': '',
     },
     validationSchema: CheckoutSchema,
     onSubmit: (values) => {

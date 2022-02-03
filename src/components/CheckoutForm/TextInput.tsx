@@ -1,6 +1,13 @@
 import React from 'react';
 import { FieldInputProps, FormikErrors, FormikTouched } from 'formik';
-import { InputGroup, Label, Input, ErrorText } from './styles';
+import {
+  InputGroup,
+  Label,
+  ErrorLabel,
+  Input,
+  ErrorInput,
+  ErrorText,
+} from './styles';
 
 interface ITextInput {
   label: string;
@@ -25,11 +32,20 @@ const TextInput = ({
 
   return (
     <InputGroup rows={rows} columns={columns}>
-      <Label htmlFor={props.name || props.id}>{label}</Label>
-      <Input {...props} {...fieldProps(props.name)} />
       {touched[props.name] && errors[props.name] ? (
-        <ErrorText>{errors[props.name]}</ErrorText>
-      ) : null}
+        <>
+          <ErrorLabel htmlFor={props.name || props.id}>
+            {label}
+            <span>Wrong Format</span>
+          </ErrorLabel>
+          <ErrorInput {...props} {...fieldProps(props.name)} />
+        </>
+      ) : (
+        <>
+          <Label htmlFor={props.name || props.id}>{label}</Label>
+          <Input {...props} {...fieldProps(props.name)} />
+        </>
+      )}
     </InputGroup>
   );
 };

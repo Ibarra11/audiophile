@@ -64,6 +64,12 @@ const Label = styled.label`
   font-weight: 700;
 `;
 
+const ErrorLabel = styled(Label)`
+  display: flex;
+  justify-content: space-between;
+  color: var(--clr-error);
+`;
+
 const Input = styled.input`
   position: relative;
   padding: 18px 24px;
@@ -99,6 +105,10 @@ const Input = styled.input`
   }
 `;
 
+const ErrorInput = styled(Input)`
+  border: 2px solid var(--clr-error);
+`;
+
 const RadioGroup = styled(InputGroup)<{
   checked: boolean | undefined;
 }>`
@@ -117,6 +127,10 @@ const MobileToTablet = styled.div`
   ${breakpoints.laptopAndUp} {
     display: none;
   }
+
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
 
 const LaptopAndUp = styled.div`
@@ -159,7 +173,9 @@ export {
   CashText,
   CashOption,
   Label,
+  ErrorLabel,
   Input,
+  ErrorInput,
   MobileToTablet,
   LaptopAndUp,
   ErrorText,
