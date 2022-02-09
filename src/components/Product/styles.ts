@@ -32,6 +32,9 @@ const PrevLink = styled.a`
   ${breakpoints.tabletAndUp} {
     margin-top: ${32 / 16}rem;
   }
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
 const ProductWrapper = styled.div`
