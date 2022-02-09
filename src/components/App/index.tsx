@@ -1,4 +1,6 @@
 import React, { useEffect } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence, motion } from 'framer-motion';
 import ShoppingCartProvider from '../../context/ShoppingCartContext';
 import { AppContainer } from './styles';
 import ProductNav from '../ProductNav';
@@ -10,81 +12,175 @@ import Header from '../Header';
 import Footer from '../Footer';
 import Product from '../Product';
 import CheckoutForm from '../CheckoutForm';
-import { Routes, Route, useLocation } from 'react-router-dom';
-
-function ScrollToTop({ children }: { children: React.ReactNode }) {
-  const location = useLocation();
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
-
-  return <>{children}</>;
-}
 
 const App = () => {
+  const location = useLocation();
+  const variants = {
+    hidden: {
+      opacity: 0,
+      x: -300,
+      y: 0,
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      y: 0,
+    },
+    exit: {
+      opacity: 0,
+      x: 300,
+      y: 0,
+    },
+  };
   return (
     <AppContainer>
       <ShoppingCartProvider>
         <Header />
-        <ScrollToTop>
-          <Routes>
+        <AnimatePresence
+          exitBeforeEnter
+          onExitComplete={() => window.scrollTo(0, 0)}
+        >
+          <Routes location={location} key={location.pathname}>
             <Route
               path="/headphones/:headphones/:id"
-              element={<Product productType="headphones" />}
+              element={
+                <motion.div
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                >
+                  <Product productType="headphones" />
+                </motion.div>
+              }
             />
             <Route
               path="/speakers/:speakers/:id"
-              element={<Product productType="speakers" />}
+              element={
+                <motion.div
+                  initial={{ opacity: 0, x: -300, y: 0 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  exit={{ opacity: 0, x: 300, y: 0 }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <Product productType="speakers" />
+                </motion.div>
+              }
             />
             <Route
               path="/earphones/:earphones/:id"
-              element={<Product productType="earphones" />}
+              element={
+                <motion.div
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                >
+                  <Product productType="earphones" />
+                </motion.div>
+              }
             />
             <Route
               path="/headphones"
+              key="/headphones"
               element={
-                <>
+                <motion.div
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                >
                   <ProductList productType="headphones" />
                   <ProductNav />
                   <ImpactMessage />
-                </>
+                </motion.div>
               }
             />
             <Route
               path="/speakers"
               element={
-                <>
+                <motion.div
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                >
                   <ProductList productType="speakers" />
                   <ProductNav />
                   <ImpactMessage />
-                </>
+                </motion.div>
               }
             />
             <Route
               path="/earphones"
               element={
-                <>
+                <motion.div
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                >
                   <ProductList productType="earphones" />
                   <ProductNav />
                   <ImpactMessage />
-                </>
+                </motion.div>
               }
             />
-            <Route path="/checkout" element={<CheckoutForm />} />
+            <Route
+              path="/checkout"
+              element={
+                <motion.div
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                >
+                  <CheckoutForm />
+                </motion.div>
+              }
+            />
             <Route
               path="/"
               element={
-                <>
+                <motion.div
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                >
                   <Landing />
                   <ProductNav />
                   <ProductShowcase />
                   <ImpactMessage />
-                </>
+                </motion.div>
               }
             />
-            {/* Add a 404 page route */}
+            <Route
+              path="*"
+              element={
+                <motion.div
+                  variants={variants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  transition={{ duration: 0.5 }}
+                >
+                  <Landing />
+                  <ProductNav />
+                  <ProductShowcase />
+                  <ImpactMessage />
+                </motion.div>
+              }
+            />
           </Routes>
-        </ScrollToTop>
+        </AnimatePresence>
       </ShoppingCartProvider>
       <Footer />
     </AppContainer>
