@@ -33,6 +33,7 @@ import {
 
 const ProductLayout = ({ productType }: { productType: ProductTypes }) => {
   const { id } = useParams();
+
   const product = Products[productType].find(
     (product) => product.id === id,
   )!;
@@ -134,7 +135,9 @@ function Product({
             <ButtonDecrement onClick={handleDecrementProductCount}>
               -
             </ButtonDecrement>
-            <CountValue>{productCount}</CountValue>
+            <CountValue data-testid="count-value">
+              {productCount}
+            </CountValue>
             <ButtonIncrement
               onClick={() => setProductCount(productCount + 1)}
             >
