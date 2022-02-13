@@ -35,6 +35,7 @@ export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
 
     case ActionTypes.REMOVE_PRODUCT: {
       const { id } = action.payload;
+
       const productIndex = cart.products.findIndex(
         (product) => product.id === id,
       );
