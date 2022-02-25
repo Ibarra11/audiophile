@@ -70,6 +70,13 @@ const CheckoutForm = () => {
       setShowModal(!showModal);
     },
   });
+  /* 
+    We redirect the user if the cart is empty because there is no
+    point in filling out the checkout form is cart is empty.
+  */
+  if (cart.size === 0) {
+    window.location.replace('/');
+  }
 
   return (
     <Wrapper>
