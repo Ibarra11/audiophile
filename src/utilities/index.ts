@@ -25,7 +25,6 @@ export const getProductLink = ({ title, productType }: ProductDetails) => {
   try {
     const id = getProductId(title, productType);
 
-    console.log(title, id);
     if (!id) throw new Error('No link for the product found');
     const urlTitle = title.split(' ').join('_');
     return `/${productType}/${urlTitle}/${id}`;

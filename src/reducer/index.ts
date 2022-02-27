@@ -66,9 +66,5 @@ export function ShoppingCartReducer(cart: Cart, action: Actions): Cart {
       }
       return cart;
     }
-    default: {
-      const _exhaustiveCheck: never = action;
-      return cart;
-    }
   }
 }
