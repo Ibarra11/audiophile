@@ -10,7 +10,10 @@ const ConfirmationModal = ({ isOpen }: { isOpen: boolean }) => {
   const dispatch = useCartDispatch();
   return (
     <ConfirmationOverlay isOpen={isOpen}>
-      <ConfirmationContent aria-label="Confirmation modal with cart">
+      <ConfirmationContent
+        data-testid="confirmation-modal"
+        aria-label="Confirmation modal with cart"
+      >
         <ConfirmationHeader />
         <ConfirmationCart />
         <Buttons

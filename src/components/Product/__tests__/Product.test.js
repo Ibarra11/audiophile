@@ -1,35 +1,9 @@
 /* eslint-disable no-undef */
-import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { createMemoryHistory } from 'history';
+import { screen, fireEvent } from '@testing-library/react';
+import { renderWithRouter } from '../../../utilities/test';
+
 import ProductLayout from '../index';
 import ShoppingCartProvider from '../../../context/ShoppingCartContext';
-// const renderWithRouter = (
-//   ui,
-//   {
-//     path = '/',
-//     route = '/',
-//     history = createMemoryHistory({ initialEntries: [route] }),
-//   } = {},
-// ) => {
-//   return {
-//     ...render(
-//       <Router history={history}>
-//         <Route path={path} element={ui} />
-//       </Router>,
-//     ),
-//   };
-// };
-
-const renderWithRouter = (component, route, path) => {
-  return render(
-    <Router>
-      <Routes location={route}>
-        <Route path={path} element={component} />
-      </Routes>
-    </Router>,
-  );
-};
 
 const testingComponent = (
   <ShoppingCartProvider>

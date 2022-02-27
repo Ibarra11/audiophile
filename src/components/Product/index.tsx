@@ -125,11 +125,13 @@ function Product({
       </Picture>
       <ProductContent>
         {newProduct && <ProductSubHeading>New Product</ProductSubHeading>}
-        <ProductHeading>{`${title}  ${
+        <ProductHeading data-test="product">{`${title}  ${
           productType === 'speakers' ? 'speaker' : productType
         }`}</ProductHeading>
         <Text>{description}</Text>
-        <ProductPrice>$ {numeral(price).format('0,0')}</ProductPrice>
+        <ProductPrice data-test="product-price">
+          $ {numeral(price).format('0,0')}
+        </ProductPrice>
         <ProductButtons>
           <ButtonCounterWrapper>
             <ButtonDecrement onClick={handleDecrementProductCount}>

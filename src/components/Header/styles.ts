@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import { Link, MaxWidthWrapper } from '../../shared/css/components';
 import breakpoints from '../../shared/css/breakpoints';
 const HeaderLayout = styled.div`

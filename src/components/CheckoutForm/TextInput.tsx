@@ -6,7 +6,6 @@ import {
   ErrorLabel,
   Input,
   ErrorInput,
-  ErrorText,
 } from './styles';
 
 interface ITextInput {
@@ -34,7 +33,10 @@ const TextInput = ({
     <InputGroup rows={rows} columns={columns}>
       {touched[props.name] && errors[props.name] ? (
         <>
-          <ErrorLabel htmlFor={props.name || props.id}>
+          <ErrorLabel
+            data-testid="error-label"
+            htmlFor={props.name || props.id}
+          >
             {label}
             <span>Wrong Format</span>
           </ErrorLabel>
@@ -43,7 +45,11 @@ const TextInput = ({
       ) : (
         <>
           <Label htmlFor={props.name || props.id}>{label}</Label>
-          <Input {...props} {...fieldProps(props.name)} />
+          <Input
+            data-test="test-input"
+            {...props}
+            {...fieldProps(props.name)}
+          />
         </>
       )}
     </InputGroup>

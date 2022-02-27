@@ -18,11 +18,12 @@ function convertTitle(originalTitle: string) {
 
 const CartList = ({ dispatch }: Props) => {
   const cart = useCart();
+
   return (
-    <Wrapper>
+    <Wrapper data-test="cart-list">
       {cart.products.map((product) => {
         return (
-          <CartRow key={product.id}>
+          <CartRow key={product.id} data-test="cart-item">
             <ProductImg src={product.mainImg.mobile} />
             <ProductDetails>
               <ProductTitle>{convertTitle(product.title)}</ProductTitle>

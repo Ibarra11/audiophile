@@ -6,13 +6,19 @@ import { Cart, Dispatch } from '../shared/types';
 const ShoppingCartContext = createContext<Cart | null>(null);
 
 const ShoppingCartDispatchContext = createContext<Dispatch | null>(null);
-
-const ShoppingCartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, dispatch] = useReducer(ShoppingCartReducer, {
-    products: [],
-    size: 0,
-    total: 0,
-  });
+const emptyCart = {
+  products: [],
+  size: 0,
+  total: 0,
+} as Cart;
+const ShoppingCartProvider = ({
+  children,
+  defaultCart = emptyCart,
+}: {
+  children: ReactNode;
+  defaultCart?: Cart;
+}) => {
+  const [cart, dispatch] = useReducer(ShoppingCartReducer, defaultCart);
   return (
     <ShoppingCartContext.Provider value={cart}>
       <ShoppingCartDispatchContext.Provider value={dispatch}>

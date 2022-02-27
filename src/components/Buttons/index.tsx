@@ -14,6 +14,7 @@ interface ButtonProps {
   disabled?: boolean | undefined;
   width?: WidthTypes;
   opacity?: OpacityTypes;
+  testId?: string;
 }
 
 const Buttons = ({
@@ -25,6 +26,7 @@ const Buttons = ({
   width,
   opacity,
   disabled,
+  testId,
 }: ButtonProps) => {
   switch (id) {
     case 'btn1':
@@ -36,6 +38,7 @@ const Buttons = ({
             opacity={opacity}
             onClick={onClick}
             disabled={disabled}
+            data-test={testId}
           >
             {children}
           </Button1>
@@ -47,18 +50,27 @@ const Buttons = ({
             opacity={opacity}
             onClick={onClick}
             to={path}
+            data-test={testId}
           >
             {children}
           </Button1>
         );
       }
     case 'btn2':
-      return <Button2 to={path}>{children}</Button2>;
+      return (
+        <Button2 to={path} data-test={testId}>
+          {children}
+        </Button2>
+      );
     case 'btn3':
-      return <Button3 to={path}>{children}</Button3>;
+      return (
+        <Button3 to={path} data-test={testId}>
+          {children}
+        </Button3>
+      );
     case 'btn4':
       return (
-        <ButtonLink to={path || '/'} onClick={onClick}>
+        <ButtonLink to={path || '/'} data-test={testId} onClick={onClick}>
           {children}
           <Icon src={ArrowRight} alt="right arrow icon" />
         </ButtonLink>
@@ -122,16 +134,6 @@ const Button3 = styled(BaseButton)`
   &:active {
     background-color: hsl(var(--clr-primary-black));
     color: hsl(var(--clr-white));
-  }
-`;
-
-const Button4 = styled(BaseButton)`
-  background-color: transparent;
-  padding: 0;
-  width: ${57 / 16}rem;
-  justify-content: space-between;
-  &:hover {
-    color: hsl(var(--clr-primary-orange));
   }
 `;
 

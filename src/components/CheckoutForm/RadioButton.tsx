@@ -27,6 +27,7 @@ const RadioButton = ({
         {...fieldProps(props.name)}
         value={props.id}
         checked={checked}
+        data-testid={props.id}
       />
       <Label htmlFor={props.name || props.id}>{label}</Label>
     </RadioGroup>

@@ -70,10 +70,12 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
         animate="visible"
         exit="exit"
       >
-        <DialogContent aria-label="shopping cart modal">
+        <DialogContent aria-label="shopping cart">
           <AnimatedDialogContent variants={ModalContent}>
             <Row>
-              <CartHeading>Cart ({cart.size})</CartHeading>
+              <CartHeading data-test="cart-size">
+                Cart ({cart.size})
+              </CartHeading>
               <CartButton
                 onClick={() =>
                   dispatch({ type: ActionTypes.REMOVE_ALL_PRODUCTS })
@@ -86,20 +88,34 @@ const ShoppingCart = ({ isOpen, onClose }: Props) => {
             <CheckoutGroup>
               <BottomRow>
                 <Text>Total</Text>
-                <CartHeading>
+                <CartHeading data-test="cart-total">
                   $ {numeral(cart.total).format('0,0')}
                 </CartHeading>
               </BottomRow>
-              <Buttons
-                id={'btn1'}
-                width={'full'}
-                btnType="link"
-                path={isCartEmpty ? undefined : '/checkout'}
-                onClick={isCartEmpty ? undefined : () => onClose()}
-                opacity={isCartEmpty ? '3/4' : undefined}
-              >
-                Checkout
-              </Buttons>
+              {isCartEmpty ? (
+                <Buttons
+                  id={'btn1'}
+                  width={'full'}
+                  btnType="btn"
+                  onClick={isCartEmpty ? undefined : () => onClose()}
+                  opacity={isCartEmpty ? '3/4' : undefined}
+                  testId="checkout-btn"
+                >
+                  Checkout
+                </Buttons>
+              ) : (
+                <Buttons
+                  id={'btn1'}
+                  width={'full'}
+                  btnType="link"
+                  path={isCartEmpty ? undefined : '/checkout'}
+                  onClick={isCartEmpty ? undefined : () => onClose()}
+                  opacity={isCartEmpty ? '3/4' : undefined}
+                  testId="checkout-btn"
+                >
+                  Checkout
+                </Buttons>
+              )}
             </CheckoutGroup>
           </AnimatedDialogContent>
         </DialogContent>

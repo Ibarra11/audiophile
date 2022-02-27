@@ -56,7 +56,7 @@ const Header = () => {
         <Link to="/">
           <Icon src={Logo} />
         </Link>
-        <IconButtonWrapper onClick={toggleCart}>
+        <IconButtonWrapper data-test="cart" onClick={toggleCart}>
           <Icon src={CartIcon} />
           {cart.size > 0 ? <CartAmount>{cart.size}</CartAmount> : null}
         </IconButtonWrapper>
@@ -73,7 +73,9 @@ const Header = () => {
         </NavList>
         <IconButtonWrapper onClick={toggleCart}>
           <Icon src={CartIcon} />
-          {cart.size > 0 ? <CartAmount>{cart.size}</CartAmount> : null}
+          {cart.size > 0 ? (
+            <CartAmount data-testid="cart-amount">{cart.size}</CartAmount>
+          ) : null}
         </IconButtonWrapper>
       </LaptopToDesktop>
     </HeaderLayout>
