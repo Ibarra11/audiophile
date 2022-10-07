@@ -1,46 +1,69 @@
-# Getting Started with Create React App
+# Audiophile
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A fictional e-commerce site for headphones.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
 
-### `yarn start`
+- [The challenge](#the-challenge)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Screenshot](#screenshot)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [Links](#links)
 
-### `yarn test`
+- [My process](#my-process)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Built with](#built-with)
 
-### `yarn build`
+- [What I learned](#what-i-learned)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [Author](#author)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Overview
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### The challenge
 
-### `yarn eject`
+Implement a multi page e-commerce site for headphones that is responsive. Users should be able to add/remove items from their cart and checkout their cart.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### Screenshot
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+![home](/screenshots/home.png)
+![product](/screenshots/product.png)
+![cart](/screenshots/cart.png)
+![checkout](/screenshots/checkout.png)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Links
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Live Site URL: [https://audiophile-ruby.vercel.app/](https://audiophile-ruby.vercel.app/)
 
-## Learn More
+## My process
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Built with
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- React
+
+- TypeScript
+- React Router
+- Styled Components
+- Cypress
+- Jest Testing Library
+- Framer Motion
+
+### What I learned
+
+### Framer Motion
+
+I learned how to use Framer Motion to animate page transitions in the application and a modal. Framer motion makes it very easy to animate pages based on when they mount and unmount. Essentially, the initial state for the page begins offscreen to the left and transitions in the correct position. For the modal, I just animated it coming in from afar giving the illusion that it is coming at you.
+
+#### Context
+
+I utilized context for this project in order to prevent prop drilling. I had global state, the shopping cart, which some components needed to add/remove items. Instead of having to pass the state and the updater function through intermediary components, the components that needed the state or update function could just use it.
+
+#### Testing
+
+For testing, I used Cypress and Jest Testing Library. I used Jest Testing Library for unit testing, in this case it was the incrementing/decrementing items before you add them to the cart. I just tested that the user could not decrement to a number smaller to 1 and clicking the increment button increased the item amount by 1. For Cypress, I did more integration test on the checkout form and cart functionality. For the cart, I tried to simulate a process that a user would take and assert that the app reflected the correct state. For example, if a user adds an item to the cart, and then opens the cart, it should display the item I just added.
+
+## Author
+
+- Website - [Add your name here](https://www.your-site.com)
